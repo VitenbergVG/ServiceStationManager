@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.14.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\MySQL\Connector NET 8.0\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,14 +50,207 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Add\FormAddAction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Add\FormAddAction.Designer.cs">
+      <DependentUpon>FormAddAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\FormAddCar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\FormAddCar.Designer.cs">
+      <DependentUpon>FormAddCar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\FormAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\FormAddEmployee.Designer.cs">
+      <DependentUpon>FormAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\FormAddRepair.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\FormAddRepair.Designer.cs">
+      <DependentUpon>FormAddRepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\FormAddWorkHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\FormAddWorkHours.Designer.cs">
+      <DependentUpon>FormAddWorkHours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\FormAddWorkHoursRepair.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\FormAddWorkHoursRepair.Designer.cs">
+      <DependentUpon>FormAddWorkHoursRepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassDB.cs" />
+    <Compile Include="FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAboutCar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAboutCar.Designer.cs">
+      <DependentUpon>FormAboutCar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\FormAddClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\FormAddClient.Designer.cs">
+      <DependentUpon>FormAddClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAboutCurrentRepair.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAboutCurrentRepair.Designer.cs">
+      <DependentUpon>FormAboutCurrentRepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\FormActions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\FormActions.Designer.cs">
+      <DependentUpon>FormActions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\FormCars.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\FormCars.Designer.cs">
+      <DependentUpon>FormCars.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\FormClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\FormClients.Designer.cs">
+      <DependentUpon>FormClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\FormEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\FormEmployees.Designer.cs">
+      <DependentUpon>FormEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEnter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEnter.Designer.cs">
+      <DependentUpon>FormEnter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPicClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPicClient.Designer.cs">
+      <DependentUpon>FormPicClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPicWorkHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPicWorkHours.Designer.cs">
+      <DependentUpon>FormPicWorkHours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\FormRepairs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\FormRepairs.Designer.cs">
+      <DependentUpon>FormRepairs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\FormRequests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\FormRequests.Designer.cs">
+      <DependentUpon>FormRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\FormWorkHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\FormWorkHours.Designer.cs">
+      <DependentUpon>FormWorkHours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\FormWorkHoursRepairs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\FormWorkHoursRepairs.Designer.cs">
+      <DependentUpon>FormWorkHoursRepairs.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Add\FormAddAction.resx">
+      <DependentUpon>FormAddAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\FormAddCar.resx">
+      <DependentUpon>FormAddCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\FormAddEmployee.resx">
+      <DependentUpon>FormAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\FormAddRepair.resx">
+      <DependentUpon>FormAddRepair.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\FormAddWorkHours.resx">
+      <DependentUpon>FormAddWorkHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\FormAddWorkHoursRepair.resx">
+      <DependentUpon>FormAddWorkHoursRepair.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAboutCar.resx">
+      <DependentUpon>FormAboutCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\FormAddClient.resx">
+      <DependentUpon>FormAddClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAboutCurrentRepair.resx">
+      <DependentUpon>FormAboutCurrentRepair.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPicClient.resx">
+      <DependentUpon>FormPicClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\FormActions.resx">
+      <DependentUpon>FormActions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\FormCars.resx">
+      <DependentUpon>FormCars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\FormClients.resx">
+      <DependentUpon>FormClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\FormEmployees.resx">
+      <DependentUpon>FormEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEnter.resx">
+      <DependentUpon>FormEnter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPicWorkHours.resx">
+      <DependentUpon>FormPicWorkHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\FormRepairs.resx">
+      <DependentUpon>FormRepairs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\FormRequests.resx">
+      <DependentUpon>FormRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\FormWorkHours.resx">
+      <DependentUpon>FormWorkHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\FormWorkHoursRepairs.resx">
+      <DependentUpon>FormWorkHoursRepairs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +259,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -75,6 +273,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0003-005-.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
