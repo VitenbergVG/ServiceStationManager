@@ -55,13 +55,18 @@ namespace ServiceStationManager.Add
             }
 
         }
-        
+
         private void tbNumSTS_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Delete))
             {
                 e.Handled = true;
             }
+        }
+
+        private void checkBoxIsDateEmpty_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpDateTO.Enabled = !checkBoxIsDateEmpty.Checked;
         }
     }
 }

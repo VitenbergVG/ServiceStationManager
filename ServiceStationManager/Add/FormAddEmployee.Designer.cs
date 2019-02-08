@@ -74,7 +74,7 @@
             // 
             this.btAdd.BackColor = System.Drawing.Color.SeaShell;
             this.btAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAdd.Location = new System.Drawing.Point(189, 279);
+            this.btAdd.Location = new System.Drawing.Point(393, 285);
             this.btAdd.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(120, 47);
@@ -159,6 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(527, 345);
             this.Controls.Add(this.cbPosition);
             this.Controls.Add(this.label5);
@@ -171,8 +172,9 @@
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormAddEmployee";
-            this.Text = "FormAddEmployee";
+            this.Text = "Добавить сотрудника";
             this.ResumeLayout(false);
             this.PerformLayout();
 

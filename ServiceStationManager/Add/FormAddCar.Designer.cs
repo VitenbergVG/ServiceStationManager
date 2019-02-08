@@ -167,6 +167,7 @@
             this.checkBoxIsDateEmpty.TabIndex = 41;
             this.checkBoxIsDateEmpty.Text = "Неизвестно";
             this.checkBoxIsDateEmpty.UseVisualStyleBackColor = false;
+            this.checkBoxIsDateEmpty.CheckedChanged += new System.EventHandler(this.checkBoxIsDateEmpty_CheckedChanged);
             // 
             // FormAddCar
             // 

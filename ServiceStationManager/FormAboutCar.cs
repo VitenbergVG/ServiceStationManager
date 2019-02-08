@@ -20,7 +20,7 @@ namespace ServiceStationManager
             db = new ClassDB(ipDB, portDB, loginDB, passDB);
 
             dgvAboutCar.ColumnCount = 3;
-            dgvAboutCar.Columns[0].HeaderCell.Value = "id";
+            dgvAboutCar.Columns[0].HeaderCell.Value = "ID клиента";
             dgvAboutCar.Columns[1].HeaderCell.Value = "Модель";
             dgvAboutCar.Columns[2].HeaderCell.Value = "Марка";
             db.ShowInfoCar(dgvAboutCar, curRow);

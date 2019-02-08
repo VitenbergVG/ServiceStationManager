@@ -152,7 +152,6 @@ namespace ServiceStationManager
             conn.Open();
             MySqlCommand command = new MySqlCommand("SELECT clients.id_client, cars.model, cars.brand FROM clients" +
                 " JOIN cars ON clients.cars_number_sts = cars.number_sts WHERE clients.id_client = '" + curRow + "'", conn);
-            Console.WriteLine(curRow);
             List<string[]> data = new List<string[]>();
             MySqlDataReader reader = command.ExecuteReader();
 
@@ -240,9 +239,7 @@ namespace ServiceStationManager
             }
 
             conn.Close();//Закрываем соединение для того чтобы метод Works открыл новое соединение и мог стабильно работать
-
-            Console.WriteLine(dataSource.RowCount + "Вот столько строк я насчитал");
-
+            
             for (int i = 0; i < dataSource.RowCount; i++)
             {
                 for (int j = 0; j < dataSource.ColumnCount; j++)
@@ -341,7 +338,6 @@ namespace ServiceStationManager
                 for (int j = 0; j < dataSource.ColumnCount; j++)
                 {
                     idWorkHours = SearchIdWorkHours(idEmployees[i], dates[j].ToString("yyyy-MM-dd"));
-                    Console.WriteLine(idWorkHours);
                     dataSource.Rows[i].Cells[j].Value = CurrentRepairs(idWorkHours);
                 }
             }
@@ -540,6 +536,26 @@ namespace ServiceStationManager
                 dataSource.Rows.Add(s);
             }
             return data;
+        }
+
+        //максимальное ID среди всех ремонтных работ в таблице repairs
+        public int LastRepair()
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT MAX(id_repair) FROM repairs", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            int resId = 0;
+
+            while (reader.Read())
+            {
+                resId = Convert.ToInt32(reader[0].ToString());
+            }
+
+            reader.Close();
+            conn.Close();
+
+            return resId;
         }
     }
 }

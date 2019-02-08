@@ -49,6 +49,7 @@
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(330, 73);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormAbout";
             this.Text = "О программе";
             this.ResumeLayout(false);

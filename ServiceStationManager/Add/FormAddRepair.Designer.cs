@@ -48,7 +48,7 @@
             this.cbCategory.Location = new System.Drawing.Point(227, 121);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(279, 21);
-            this.cbCategory.TabIndex = 68;
+            this.cbCategory.TabIndex = 2;
             // 
             // cbPosition
             // 
@@ -57,7 +57,7 @@
             this.cbPosition.Location = new System.Drawing.Point(227, 236);
             this.cbPosition.Name = "cbPosition";
             this.cbPosition.Size = new System.Drawing.Size(279, 21);
-            this.cbPosition.TabIndex = 69;
+            this.cbPosition.TabIndex = 4;
             // 
             // label5
             // 
@@ -75,17 +75,18 @@
             this.textBox4.Location = new System.Drawing.Point(227, 174);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(279, 20);
-            this.textBox4.TabIndex = 66;
+            this.textBox4.TabIndex = 3;
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // btAdd
             // 
             this.btAdd.BackColor = System.Drawing.Color.SeaShell;
             this.btAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAdd.Location = new System.Drawing.Point(166, 290);
+            this.btAdd.Location = new System.Drawing.Point(394, 297);
             this.btAdd.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(120, 47);
-            this.btAdd.TabIndex = 65;
+            this.btAdd.TabIndex = 5;
             this.btAdd.Text = "Добавить";
             this.btAdd.UseVisualStyleBackColor = false;
             this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
@@ -144,7 +145,7 @@
             this.textBox2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(279, 20);
-            this.textBox2.TabIndex = 60;
+            this.textBox2.TabIndex = 1;
             // 
             // textBox1
             // 
@@ -152,12 +153,14 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(279, 20);
-            this.textBox1.TabIndex = 59;
+            this.textBox1.TabIndex = 6;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // FormAddRepair
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(528, 357);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.cbPosition);
@@ -170,8 +173,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormAddRepair";
-            this.Text = "FormAddRepair";
+            this.Text = "Добавить ремонтную работу";
             this.ResumeLayout(false);
             this.PerformLayout();
 

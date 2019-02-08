@@ -46,10 +46,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(439, 86);
             this.Controls.Add(this.dgvAboutCar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormAboutCar";
-            this.Text = "FormAboutCar";
+            this.Text = "Информация о выбранной машине";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAboutCar)).EndInit();
             this.ResumeLayout(false);
 

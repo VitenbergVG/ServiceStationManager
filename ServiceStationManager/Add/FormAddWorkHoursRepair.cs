@@ -19,9 +19,9 @@ namespace ServiceStationManager.Add
         private string portDB;
         private string ipDB;
 
-        int idRepair;
-        int idClient;
-        int idWorkHours;
+        int idRepair = -1;
+        int idClient = -1;
+        int idWorkHours = -1;
 
         public FormAddWorkHoursRepair(string loginDB, string passDB, string ipDB, string portDB)
         {
@@ -39,11 +39,33 @@ namespace ServiceStationManager.Add
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            string factQuery;
-            factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, `time_start`, `time_finish`) VALUES('" +
-                       idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + textBox4.Text + "', '" + textBox5.Text + "');";
-            db.Add("current_repairs", factQuery);
-            Hide();
+            if (idWorkHours == -1 || cbCategoryRepair.Text == "" || idRepair == -1 || idClient == -1)
+            {
+                MessageBox.Show("Заполните все поля!", "Ошибка");
+            }
+            else
+            {
+                string factQuery;
+
+                if (!cbTimeStartIsEmpty.Checked && !cbTimeFinishIsEmpty.Checked)
+                {
+                    factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, `time_start`, `time_finish`) VALUES('" +
+                                           idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + dtpStart.Text + "', '" + dtpFinish.Text + "');";
+                }
+                else if (cbTimeStartIsEmpty.Checked && !cbTimeFinishIsEmpty.Checked)
+                {
+                    factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, `time_finish`) VALUES('" +
+                                           idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + dtpFinish.Text + "');";
+                }
+                else
+                {
+                    factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, `time_start`) VALUES('" +
+                                           idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + dtpStart.Text + "');";
+                }
+
+                db.Add("current_repairs", factQuery);
+                Hide();
+            }
         }
 
         private void btPicClient_Click(object sender, EventArgs e)
@@ -71,6 +93,16 @@ namespace ServiceStationManager.Add
             fpwh.ShowDialog();
             labelWorkHours.Text = fpwh.currentRow;
             idWorkHours = Convert.ToInt32(fpwh.currentRow);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpStart.Enabled = !cbTimeStartIsEmpty.Checked;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpFinish.Enabled = !cbTimeFinishIsEmpty.Checked;
         }
     }
 }

@@ -233,10 +233,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(583, 304);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormAddWorkHours";
-            this.Text = "FormAddWorkHours";
+            this.Text = "Добавить смену/-ы сотрудникам";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
