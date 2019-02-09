@@ -239,7 +239,7 @@ namespace ServiceStationManager
             }
 
             conn.Close();//Закрываем соединение для того чтобы метод Works открыл новое соединение и мог стабильно работать
-            
+
             for (int i = 0; i < dataSource.RowCount; i++)
             {
                 for (int j = 0; j < dataSource.ColumnCount; j++)
@@ -556,6 +556,75 @@ namespace ServiceStationManager
             conn.Close();
 
             return resId;
+        }
+
+        //Поиск сотрудников которые могут выполнять определенную работу и работают в данный момент
+        public void SearchSurnameEmployeesForRepair(ComboBox dataSource, string nameRepair)
+        {
+            conn.Open();
+
+            DateTime today = DateTime.Today;
+
+            MySqlCommand command = new MySqlCommand("SELECT employees.surname, employees.id_employee FROM repairs " +
+                "JOIN employees ON repairs.position_position = employees.position_position " +
+                "JOIN work_hours ON employees.id_employee = work_hours.employees_id_employee " +
+                "WHERE repairs.name = '" + nameRepair + "' and work_hours.dates_of_month = '" + today.ToString("yyyy-MM-dd") + "'; ", conn);
+
+            //MySqlCommand command = new MySqlCommand("SELECT employees.surname FROM repairs " +
+            //    "JOIN employees ON repairs.position_position = employees.position_position " +
+            //    "WHERE repairs.name = '" + nameRepair + "'; ", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                dataSource.Items.Add(reader[0].ToString() + "/id: " + reader[1].ToString());
+            }
+            reader.Close();
+            conn.Close();
+        }
+
+        //Цена выбранной ремонтной работы
+        public void SearchCostRepairs(string name, ListBox dataSource)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT cost FROM `sto_db`.repairs WHERE name = '" + name + "'", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                dataSource.Items.Add(reader[0].ToString());
+            }
+            reader.Close();
+            conn.Close();
+        }
+
+        //Информация по выбранному клиенту
+        public void ShowPickedClient(string curRow, string atribute, TextBox tbSource)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT " + atribute + " FROM sto_db.clients WHERE id_client = '" + curRow + "'", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                tbSource.Text = reader[0].ToString();
+            }
+            reader.Close();
+            conn.Close();
+        }
+
+        //Информация по выбранной машине
+        public void ShowPickedCar(string curRow, string atribute, TextBox tbSource)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT cars." + atribute + " FROM clients " +
+                "JOIN cars ON clients.cars_number_sts = cars.number_sts WHERE clients.id_client = '" + curRow + "'", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                tbSource.Text = reader[0].ToString();
+            }
+            reader.Close();
+            conn.Close();
         }
     }
 }

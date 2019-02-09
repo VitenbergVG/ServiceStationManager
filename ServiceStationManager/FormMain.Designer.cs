@@ -42,14 +42,20 @@
             this.списокАкцийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.видыРемонтныхРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripBtNewClient = new System.Windows.Forms.ToolStripButton();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.toolStripBtDeleteClient = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 552);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 576);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1133, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1228, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -64,7 +70,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1133, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1228, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -157,20 +163,70 @@
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.BackColor = System.Drawing.Color.SeaShell;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripBtNewClient,
+            this.toolStripBtDeleteClient});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1228, 25);
+            this.toolStrip1.TabIndex = 9;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripBtNewClient
+            // 
+            this.toolStripBtNewClient.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtNewClient.Image = global::ServiceStationManager.Properties.Resources.user_add;
+            this.toolStripBtNewClient.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtNewClient.Name = "toolStripBtNewClient";
+            this.toolStripBtNewClient.Size = new System.Drawing.Size(23, 22);
+            this.toolStripBtNewClient.Text = "toolStripButton1";
+            this.toolStripBtNewClient.ToolTipText = "Новый клиент";
+            this.toolStripBtNewClient.Click += new System.EventHandler(this.toolStripBtNewClient_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 49);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1228, 527);
+            this.tabControl1.TabIndex = 10;
+            // 
+            // toolStripBtDeleteClient
+            // 
+            this.toolStripBtDeleteClient.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtDeleteClient.Image = global::ServiceStationManager.Properties.Resources.user_delete;
+            this.toolStripBtDeleteClient.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtDeleteClient.Name = "toolStripBtDeleteClient";
+            this.toolStripBtDeleteClient.Size = new System.Drawing.Size(23, 22);
+            this.toolStripBtDeleteClient.Text = "Завершить работу с клиентом";
+            this.toolStripBtDeleteClient.Click += new System.EventHandler(this.toolStripBtDeleteClient_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
-            this.ClientSize = new System.Drawing.Size(1133, 574);
+            this.ClientSize = new System.Drawing.Size(1228, 598);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
-            this.Text = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
+            this.Text = "Система управления станцией технического обслуживания автомобилей";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,5 +248,9 @@
         private System.Windows.Forms.ToolStripMenuItem списокАкцийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem видыРемонтныхРаботToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripBtNewClient;
+        private System.Windows.Forms.TabControl tabControl1;
+        public System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripBtDeleteClient;
     }
 }

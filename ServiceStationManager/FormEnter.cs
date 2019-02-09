@@ -18,8 +18,6 @@ namespace ServiceStationManager
         const int ADMIN = 1;
         const int USER = 2;
 
-        string database = "sto_db";
-
         bool error = false;
 
         ClassDB db;

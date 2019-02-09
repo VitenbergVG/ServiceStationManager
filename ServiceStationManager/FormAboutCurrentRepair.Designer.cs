@@ -53,6 +53,7 @@
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(1151, 217);
             this.Controls.Add(this.dgvInfoCurrentRepairs);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormAboutCurrentRepair";
             this.Text = "Полная информация о проведённых работах";
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoCurrentRepairs)).EndInit();

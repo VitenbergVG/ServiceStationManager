@@ -72,7 +72,7 @@
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormPicWorkHours";
-            this.Text = "FormPicWorkHours";
+            this.Text = "Кликните дважды по нужной рабочей смене";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

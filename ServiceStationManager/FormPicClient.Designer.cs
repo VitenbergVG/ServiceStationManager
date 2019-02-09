@@ -67,12 +67,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btSearch);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormPicClient";
-            this.Text = "FormPicClient";
+            this.Text = "Кликните два раза по нужному клиенту";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
