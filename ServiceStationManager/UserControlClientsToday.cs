@@ -20,6 +20,10 @@ namespace ServiceStationManager
 
         ClassDB db;
 
+        string timeStartRepair;
+
+        public int idClient = -1;
+
         public UserControlClientsToday(string loginDB, string passDB, string ipDB, string portDB)
         {
             InitializeComponent();
@@ -30,6 +34,10 @@ namespace ServiceStationManager
             this.portDB = portDB;
 
             db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            timeStartRepair = DateTime.Now.ToString("HH:mm:ss");
+
+            toolStripBtFinishRepair.Enabled = false;
+            toolStripBtDeleteRepair.Enabled = false;
         }
 
         private void toolStripBtAddRepair_Click(object sender, EventArgs e)
@@ -97,6 +105,97 @@ namespace ServiceStationManager
 
             e.Graphics.DrawString(result, new Font("Arial", 12), Brushes.Black, 100, 100);
             e.Graphics.DrawString(resultCost, new Font("Arial", 12), Brushes.Black, 600, 180);
+        }
+
+        private void clbRepairs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (clbRepairs.Items.Count != 0 && clbRepairs.SelectedIndex != -1)
+            {
+                if (!clbRepairs.GetItemChecked(clbRepairs.SelectedIndex))
+                {
+                    toolStripBtFinishRepair.Enabled = true;
+                    toolStripBtDeleteRepair.Enabled = true;
+                }
+                else
+                {
+                    toolStripBtFinishRepair.Enabled = false;
+                    toolStripBtDeleteRepair.Enabled = false;
+                }
+
+                lbEmployeesRepairs.SelectedIndex = clbRepairs.SelectedIndex;
+                lbRepairsCosts.SelectedIndex = clbRepairs.SelectedIndex;
+            }
+        }
+
+        private void lbRepairsCosts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (clbRepairs.Items.Count != 0)
+            {
+                lbEmployeesRepairs.SelectedIndex = lbRepairsCosts.SelectedIndex;
+                clbRepairs.SelectedIndex = lbRepairsCosts.SelectedIndex;
+            }
+        }
+
+        private void lbEmployeesRepairs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (clbRepairs.Items.Count != 0)
+            {
+                clbRepairs.SelectedIndex = lbEmployeesRepairs.SelectedIndex;
+                lbRepairsCosts.SelectedIndex = lbEmployeesRepairs.SelectedIndex;
+            }
+        }
+
+        private void clbRepairs_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            e.NewValue = e.CurrentValue;
+        }
+
+        public void SetCheckState(int itemIndex, CheckState newState)
+        {
+            clbRepairs.ItemCheck -= clbRepairs_ItemCheck; // отключаем обработчик
+            clbRepairs.SetItemCheckState(itemIndex, newState); // меняем состояние
+            clbRepairs.ItemCheck += clbRepairs_ItemCheck; // подключаем обработчик
+        }
+
+        private void toolStripBtFinishRepair_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Работа завершена?", "Подтверждение", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                string[] strEmployee = lbEmployeesRepairs.SelectedItem.ToString().Split(new char[] { ' ' });
+                int idEmployee = Convert.ToInt32(strEmployee[strEmployee.Length - 1]);
+
+                string factQuery;
+                factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, `time_start`, `time_finish`) VALUES('" +
+                           db.SearchIdWorkHours(idEmployee, DateTime.Today.ToString("yyyy-MM-dd")) + "', '" +
+                           db.SearchIdRepairs(clbRepairs.SelectedItem.ToString()) +
+                           "', '" + idClient + "', '" + timeStartRepair + "', '" + DateTime.Now.ToString("HH:mm:ss") + "');";
+                db.Add("current_repairs", factQuery);
+
+                toolStripBtFinishRepair.Enabled = false;
+                toolStripBtDeleteRepair.Enabled = false;
+
+                SetCheckState(clbRepairs.SelectedIndex, CheckState.Checked);
+            }
+        }
+
+        private void toolStripBtDeleteRepair_Click(object sender, EventArgs e)
+        {
+            int index = clbRepairs.SelectedIndex;
+            clbRepairs.Items.RemoveAt(index);
+            lbEmployeesRepairs.Items.RemoveAt(index);
+            lbRepairsCosts.Items.RemoveAt(index);
+
+            int totalCost = 0;
+
+            for (int i = 0; i < lbRepairsCosts.Items.Count; i++)
+            {
+                totalCost += Convert.ToInt32(lbRepairsCosts.Items[i].ToString());
+            }
+
+            lbRepairsTotalCost.Text = "Итоговая\nстоимость:\n" + totalCost + " рублей";
+
+            toolStripBtDeleteRepair.Enabled = false;
         }
     }
 

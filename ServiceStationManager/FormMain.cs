@@ -27,8 +27,6 @@ namespace ServiceStationManager
         //Клиенты сегодня
         int i = 1;
 
-        string timeStartRepair;
-
         public FormMain(int statusLogin, string loginDB, string passDB, string ipDB, string portDB)
         {
             InitializeComponent();
@@ -117,12 +115,30 @@ namespace ServiceStationManager
             tabControl1.TabPages.Add(newTabPage);
             newTabPage.Controls.Add(ucct);
             tabControl1.SelectedTab = newTabPage;
+
+            toolStripBtSave.Click += (sender, args) =>
+            {
+                if (ucct.tbSurnameDriver.Text == "" || ucct.tbNameDriver.Text == "" || ucct.tbPatronimycDriver.Text == ""
+                || ucct.tbBrandCar.Text == "" || ucct.tbModelCar.Text == "" || ucct.tbYearCar.Text == ""
+                || ucct.tbNumberSTSCar.Text == "")
+                {
+                    MessageBox.Show("Пожалуйста, заполните все поля");
+                    return;
+                }
+
+                db.UpdateOrInsertClient(ucct.idClient.ToString(), ucct.tbSurnameDriver.Text, ucct.tbNameDriver.Text, ucct.tbPatronimycDriver.Text,
+                    ucct.tbPhoneNumber.Text, ucct.tbBrandCar.Text, ucct.tbModelCar.Text, ucct.tbYearCar.Text,
+                    ucct.tbNumberSTSCar.Text);
+                newTabPage.Text = ucct.tbNameDriver.Text + "/" + ucct.tbModelCar.Text;
+                MessageBox.Show("Изменения сохранены");
+            };
         }
 
         //Для клиента из БД
         private void CreateTab(string currentClient, UserControlClientsToday ucct)
         {
-            db.ShowPickedClient(currentClient, "id_client", ucct.tbIdDriver);
+            //db.ShowPickedClient(currentClient, "id_client", ucct.tbIdDriver);
+            ucct.idClient = Convert.ToInt32(currentClient);
             db.ShowPickedClient(currentClient, "surname", ucct.tbSurnameDriver);
             db.ShowPickedClient(currentClient, "name", ucct.tbNameDriver);
             db.ShowPickedClient(currentClient, "patronimyc", ucct.tbPatronimycDriver);
@@ -137,11 +153,27 @@ namespace ServiceStationManager
             tabControl1.TabPages.Add(newTabPage);
             newTabPage.Controls.Add(ucct);
             tabControl1.SelectedTab = newTabPage;
+
+            toolStripBtSave.Click += (sender, args) =>
+            {
+                if (ucct.tbSurnameDriver.Text == "" || ucct.tbNameDriver.Text == "" || ucct.tbPatronimycDriver.Text == ""
+                || ucct.tbBrandCar.Text == "" || ucct.tbModelCar.Text == "" || ucct.tbYearCar.Text == ""
+                || ucct.tbNumberSTSCar.Text == "")
+                {
+                    MessageBox.Show("Пожалуйста, заполните все поля");
+                    return;
+                }
+
+                db.UpdateOrInsertClient(ucct.idClient.ToString(), ucct.tbSurnameDriver.Text, ucct.tbNameDriver.Text, ucct.tbPatronimycDriver.Text,
+                    ucct.tbPhoneNumber.Text, ucct.tbBrandCar.Text, ucct.tbModelCar.Text, ucct.tbYearCar.Text,
+                    ucct.tbNumberSTSCar.Text);
+                newTabPage.Text = ucct.tbNameDriver.Text + "/" + ucct.tbModelCar.Text;
+                MessageBox.Show("Изменения сохранены");
+            };
         }
 
         private void toolStripBtNewClient_Click(object sender, EventArgs e)
         {
-            timeStartRepair = DateTime.Now.ToString("HH:mm:ss");
             UserControlClientsToday ucct = new UserControlClientsToday(loginDB, passDB, ipDB, portDB);
             ucct.Dock = DockStyle.Fill;
 
@@ -170,10 +202,6 @@ namespace ServiceStationManager
                 {
                     toolStripBtDeleteClient.Enabled = false;
                 }
-
-            }
-            else if (dialogResult == DialogResult.No)
-            {
             }
         }
     }

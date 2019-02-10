@@ -626,5 +626,25 @@ namespace ServiceStationManager
             reader.Close();
             conn.Close();
         }
+
+        //Добавить или редактировать информацию о клиеенте и его автомобиле
+        public void UpdateOrInsertClient(string idClient, string surname, string name, string patronimyc,
+            string phoneNumber, string brand, string model, string yearCreated, string numSTS)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("INSERT INTO cars SET number_sts = '" + numSTS + "', " +
+                "brand = '" + brand + "', model = '" + model + "', year_created = '" + yearCreated + "' " +
+                "ON DUPLICATE KEY UPDATE number_sts = '" + numSTS + "', " +
+                "brand = '" + brand + "', model = '" + model + "', year_created = '" + yearCreated + "';" +
+                "INSERT INTO clients SET id_client = '" + idClient + "', surname = '" + surname + "', " +
+                "name = '" + name + "', patronimyc = '" + patronimyc + "', phone_number = '" + phoneNumber + 
+                "', cars_number_sts = '" + numSTS + "' " +
+                "ON DUPLICATE KEY UPDATE surname = '" + surname + "', " +
+                "name = '" + name + "', patronimyc = '" + patronimyc + "', phone_number = '" + phoneNumber + 
+                "', cars_number_sts = '" + numSTS + "';", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+            reader.Close();
+            conn.Close();
+        }
     }
 }

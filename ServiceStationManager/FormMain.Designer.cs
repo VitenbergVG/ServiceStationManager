@@ -44,8 +44,11 @@
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripBtNewClient = new System.Windows.Forms.ToolStripButton();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.toolStripBtDeleteClient = new System.Windows.Forms.ToolStripButton();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.toolStripBtSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -170,7 +173,10 @@
             this.toolStrip1.BackColor = System.Drawing.Color.SeaShell;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripBtNewClient,
-            this.toolStripBtDeleteClient});
+            this.toolStripBtDeleteClient,
+            this.toolStripSeparator1,
+            this.toolStripSeparator2,
+            this.toolStripBtSave});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1228, 25);
@@ -188,15 +194,6 @@
             this.toolStripBtNewClient.ToolTipText = "Новый клиент";
             this.toolStripBtNewClient.Click += new System.EventHandler(this.toolStripBtNewClient_Click);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 49);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1228, 527);
-            this.tabControl1.TabIndex = 10;
-            // 
             // toolStripBtDeleteClient
             // 
             this.toolStripBtDeleteClient.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -206,6 +203,34 @@
             this.toolStripBtDeleteClient.Size = new System.Drawing.Size(23, 22);
             this.toolStripBtDeleteClient.Text = "Завершить работу с клиентом";
             this.toolStripBtDeleteClient.Click += new System.EventHandler(this.toolStripBtDeleteClient_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 49);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1228, 527);
+            this.tabControl1.TabIndex = 10;
+            // 
+            // toolStripBtSave
+            // 
+            this.toolStripBtSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtSave.Image = global::ServiceStationManager.Properties.Resources.disk;
+            this.toolStripBtSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtSave.Name = "toolStripBtSave";
+            this.toolStripBtSave.Size = new System.Drawing.Size(23, 22);
+            this.toolStripBtSave.Text = "Сохранить изменения";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // FormMain
             // 
@@ -252,5 +277,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         public System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripBtDeleteClient;
+        private System.Windows.Forms.ToolStripButton toolStripBtSave;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

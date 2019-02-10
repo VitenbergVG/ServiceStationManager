@@ -12,7 +12,7 @@ namespace ServiceStationManager.ClientsToday
 {
     public partial class FormAddRepairForCurrentClient : Form
     {
-        internal object clbRepairs;
+        //internal object clbRepairs;
         ClassDB db;
         
         public FormAddRepairForCurrentClient(string loginDB, string passDB, string ipDB, string portDB)
