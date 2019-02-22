@@ -15,21 +15,11 @@ namespace ServiceStationManager
     {
         ClassDB db;
 
-        private string loginDB;
-        private string passDB;
-        private string portDB;
-        private string ipDB;
-
-        public FormActions(string loginDB, string passDB, string ipDB, string portDB)
+        public FormActions(ClassDB db)
         {
             InitializeComponent();
 
-            this.loginDB = loginDB;
-            this.passDB = passDB;
-            this.ipDB = ipDB;
-            this.portDB = portDB;
-
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
 
             dgvActions.ColumnCount = 3;
             dgvActions.Columns[0].HeaderCell.Value = "ID";
@@ -41,7 +31,7 @@ namespace ServiceStationManager
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            FormAddAction faa = new FormAddAction(loginDB, passDB, ipDB, portDB);
+            FormAddAction faa = new FormAddAction(db);
             faa.ShowDialog();
             dgvActions.Rows.Clear();
             db.LoadTables("actions", dgvActions);
@@ -49,7 +39,8 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            db.Delete("actions", "id_action", dgvActions);
+            int id = Convert.ToInt32(dgvActions.CurrentRow.Cells[0].Value);
+            db.Delete("actions", "id_action", id);
             dgvActions.Rows.Clear();
             db.LoadTables("actions", dgvActions);
         }

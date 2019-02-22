@@ -14,27 +14,18 @@ namespace ServiceStationManager.Add
     {
         ClassDB db;
 
-        private string loginDB;
-        private string passDB;
-        private string portDB;
-        private string ipDB;
-
         int idRepair = -1;
         int idClient = -1;
         int idWorkHours = -1;
 
-        public FormAddWorkHoursRepair(string loginDB, string passDB, string ipDB, string portDB)
+        public FormAddWorkHoursRepair(ClassDB db)
         {
             InitializeComponent();
 
-            this.loginDB = loginDB;
-            this.passDB = passDB;
-            this.ipDB = ipDB;
-            this.portDB = portDB;
-
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
 
             db.SearchCategoriesRepairs(cbCategoryRepair);
+            cbStatusRepair.SelectedIndex = 0;
         }
 
         private void btAdd_Click(object sender, EventArgs e)
@@ -49,18 +40,24 @@ namespace ServiceStationManager.Add
 
                 if (!cbTimeStartIsEmpty.Checked && !cbTimeFinishIsEmpty.Checked)
                 {
-                    factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, `time_start`, `time_finish`) VALUES('" +
-                                           idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + dtpStart.Text + "', '" + dtpFinish.Text + "');";
+                    factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, " +
+                        "`time_start`, `time_finish`, `status_repair`) " +
+                        "VALUES('" + idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + 
+                        dtpStart.Text + "', '" + dtpFinish.Text + "', '" + cbStatusRepair.Text + "');";
                 }
                 else if (cbTimeStartIsEmpty.Checked && !cbTimeFinishIsEmpty.Checked)
                 {
-                    factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, `time_finish`) VALUES('" +
-                                           idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + dtpFinish.Text + "');";
+                    factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, " +
+                        "`time_finish`, `status_repair`) " +
+                        "VALUES('" + idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + 
+                        dtpFinish.Text + "', '" + cbStatusRepair.Text + "');";
                 }
                 else
                 {
-                    factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, `time_start`) VALUES('" +
-                                           idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + dtpStart.Text + "');";
+                    factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, " +
+                        "`time_start`, `status_repair`) " +
+                        "VALUES('" + idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + 
+                        dtpStart.Text + "', '" + cbStatusRepair.Text + "');";
                 }
 
                 db.Add("current_repairs", factQuery);
@@ -70,7 +67,7 @@ namespace ServiceStationManager.Add
 
         private void btPicClient_Click(object sender, EventArgs e)
         {
-            FormPicClient fpc = new FormPicClient(loginDB, passDB, ipDB, portDB);
+            FormPicClient fpc = new FormPicClient(db);
             fpc.ShowDialog();
             labelClient.Text = fpc.currentRow;
             idClient = Convert.ToInt32(fpc.currentRow);
@@ -89,7 +86,7 @@ namespace ServiceStationManager.Add
 
         private void btPicWorkHours_Click(object sender, EventArgs e)
         {
-            FormPicWorkHours fpwh = new FormPicWorkHours(loginDB, passDB, ipDB, portDB);
+            FormPicWorkHours fpwh = new FormPicWorkHours(db);
             fpwh.ShowDialog();
             labelWorkHours.Text = fpwh.currentRow;
             idWorkHours = Convert.ToInt32(fpwh.currentRow);

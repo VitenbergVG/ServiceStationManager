@@ -15,28 +15,28 @@ namespace ServiceStationManager
         ClassDB db;
         public string currentRow;
 
-        public FormPicWorkHours(string loginDB, string passDB, string ipDB, string portDB)
+        public FormPicWorkHours(ClassDB db)
         {
             InitializeComponent();
-            db = new ClassDB(ipDB, portDB, loginDB,passDB);
-            dataGridView1.ColumnCount = 4;
-            dataGridView1.Columns[0].HeaderCell.Value = "ID Смены";
-            dataGridView1.Columns[1].HeaderCell.Value = "Дата";
-            dataGridView1.Columns[2].HeaderCell.Value = "Фамилия сотрудника";
-            dataGridView1.Columns[3].HeaderCell.Value = "Должность";
-            db.SearchWorkHoursForPic(dataGridView1);
+            this.db = db;
+            dgvWorkHours.ColumnCount = 4;
+            dgvWorkHours.Columns[0].HeaderCell.Value = "ID Смены";
+            dgvWorkHours.Columns[1].HeaderCell.Value = "Дата";
+            dgvWorkHours.Columns[2].HeaderCell.Value = "Фамилия сотрудника";
+            dgvWorkHours.Columns[3].HeaderCell.Value = "Должность";
+            db.SearchWorkHoursForPic(dgvWorkHours);
         }
 
         public void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            currentRow = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            currentRow = dgvWorkHours.CurrentRow.Cells[0].Value.ToString();
             Hide();
         }
 
         private void btSearch_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Clear();
-            db.SearchInWorkHours(tbSearch.Text, dataGridView1);
+            dgvWorkHours.Rows.Clear();
+            db.SearchInWorkHours(tbSearch.Text, dgvWorkHours);
         }
     }
 }

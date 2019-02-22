@@ -38,13 +38,13 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.tbSurnameDriver = new System.Windows.Forms.TextBox();
-            this.tbYearCar = new System.Windows.Forms.TextBox();
             this.tbModelCar = new System.Windows.Forms.TextBox();
             this.tbBrandCar = new System.Windows.Forms.TextBox();
             this.tbPhoneNumber = new System.Windows.Forms.TextBox();
             this.tbPatronimycDriver = new System.Windows.Forms.TextBox();
             this.tbNameDriver = new System.Windows.Forms.TextBox();
             this.tbNumberSTSCar = new System.Windows.Forms.TextBox();
+            this.cbYearCreated = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lbRepairsTotalCost = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,18 +54,29 @@
             this.label3 = new System.Windows.Forms.Label();
             this.clbRepairs = new System.Windows.Forms.CheckedListBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripBtSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtPrint = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBtAddRepair = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtFinishRepair = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtDeleteRepair = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripBtPrint = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripBtExtension = new System.Windows.Forms.ToolStripButton();
+            this.toolStripComboBoxQuantityDays = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelInfoClient = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBarStatusRepairs = new System.Windows.Forms.ToolStripProgressBar();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -83,13 +94,13 @@
             this.tableLayoutPanel2.Controls.Add(this.label17, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.label18, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.tbSurnameDriver, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.tbYearCar, 1, 6);
             this.tableLayoutPanel2.Controls.Add(this.tbModelCar, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.tbBrandCar, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.tbPhoneNumber, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.tbPatronimycDriver, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.tbNameDriver, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.tbNumberSTSCar, 1, 7);
+            this.tableLayoutPanel2.Controls.Add(this.cbYearCreated, 1, 6);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 28);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 8;
@@ -194,7 +205,7 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(5, 215);
+            this.label18.Location = new System.Drawing.Point(5, 216);
             this.label18.Margin = new System.Windows.Forms.Padding(5);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(94, 20);
@@ -208,14 +219,6 @@
             this.tbSurnameDriver.Name = "tbSurnameDriver";
             this.tbSurnameDriver.Size = new System.Drawing.Size(190, 20);
             this.tbSurnameDriver.TabIndex = 2;
-            // 
-            // tbYearCar
-            // 
-            this.tbYearCar.Location = new System.Drawing.Point(186, 185);
-            this.tbYearCar.Margin = new System.Windows.Forms.Padding(5);
-            this.tbYearCar.Name = "tbYearCar";
-            this.tbYearCar.Size = new System.Drawing.Size(190, 20);
-            this.tbYearCar.TabIndex = 8;
             // 
             // tbModelCar
             // 
@@ -237,6 +240,7 @@
             // 
             this.tbPhoneNumber.Location = new System.Drawing.Point(186, 95);
             this.tbPhoneNumber.Margin = new System.Windows.Forms.Padding(5);
+            this.tbPhoneNumber.MaxLength = 11;
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(190, 20);
             this.tbPhoneNumber.TabIndex = 5;
@@ -259,11 +263,23 @@
             // 
             // tbNumberSTSCar
             // 
-            this.tbNumberSTSCar.Location = new System.Drawing.Point(186, 215);
+            this.tbNumberSTSCar.Location = new System.Drawing.Point(186, 216);
             this.tbNumberSTSCar.Margin = new System.Windows.Forms.Padding(5);
+            this.tbNumberSTSCar.MaxLength = 10;
             this.tbNumberSTSCar.Name = "tbNumberSTSCar";
             this.tbNumberSTSCar.Size = new System.Drawing.Size(190, 20);
             this.tbNumberSTSCar.TabIndex = 9;
+            this.tbNumberSTSCar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumberSTSCar_KeyPress);
+            // 
+            // cbYearCreated
+            // 
+            this.cbYearCreated.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbYearCreated.FormattingEnabled = true;
+            this.cbYearCreated.Location = new System.Drawing.Point(186, 185);
+            this.cbYearCreated.Margin = new System.Windows.Forms.Padding(5);
+            this.cbYearCreated.Name = "cbYearCreated";
+            this.cbYearCreated.Size = new System.Drawing.Size(190, 21);
+            this.cbYearCreated.TabIndex = 35;
             // 
             // tableLayoutPanel3
             // 
@@ -367,20 +383,57 @@
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.SeaShell;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripBtSave,
+            this.toolStripBtPrint,
+            this.toolStripSeparator2,
+            this.toolStripSeparator3,
             this.toolStripBtAddRepair,
             this.toolStripBtFinishRepair,
             this.toolStripBtDeleteRepair,
             this.toolStripSeparator1,
-            this.toolStripSeparator2,
-            this.toolStripBtPrint,
-            this.toolStripSeparator3,
-            this.toolStripSeparator4});
+            this.toolStripSeparator4,
+            this.toolStripLabel1,
+            this.toolStripBtExtension,
+            this.toolStripComboBoxQuantityDays,
+            this.toolStripSeparator5,
+            this.toolStripSeparator6});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1096, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1117, 27);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripBtSave
+            // 
+            this.toolStripBtSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtSave.Image = global::ServiceStationManager.Properties.Resources.disk;
+            this.toolStripBtSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtSave.Name = "toolStripBtSave";
+            this.toolStripBtSave.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBtSave.Text = "Сохранить информацию о клиенте";
+            this.toolStripBtSave.Click += new System.EventHandler(this.toolStripBtSave_Click);
+            // 
+            // toolStripBtPrint
+            // 
+            this.toolStripBtPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtPrint.Image = global::ServiceStationManager.Properties.Resources.printer;
+            this.toolStripBtPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtPrint.Name = "toolStripBtPrint";
+            this.toolStripBtPrint.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBtPrint.Text = "Печатать счёт";
+            this.toolStripBtPrint.Click += new System.EventHandler(this.toolStripBtPrint_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripBtAddRepair
             // 
@@ -388,7 +441,7 @@
             this.toolStripBtAddRepair.Image = global::ServiceStationManager.Properties.Resources.cog_add;
             this.toolStripBtAddRepair.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtAddRepair.Name = "toolStripBtAddRepair";
-            this.toolStripBtAddRepair.Size = new System.Drawing.Size(23, 22);
+            this.toolStripBtAddRepair.Size = new System.Drawing.Size(24, 24);
             this.toolStripBtAddRepair.Text = "Добавить ремонтную работу";
             this.toolStripBtAddRepair.Click += new System.EventHandler(this.toolStripBtAddRepair_Click);
             // 
@@ -398,7 +451,7 @@
             this.toolStripBtFinishRepair.Image = global::ServiceStationManager.Properties.Resources.tick;
             this.toolStripBtFinishRepair.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtFinishRepair.Name = "toolStripBtFinishRepair";
-            this.toolStripBtFinishRepair.Size = new System.Drawing.Size(23, 22);
+            this.toolStripBtFinishRepair.Size = new System.Drawing.Size(24, 24);
             this.toolStripBtFinishRepair.Text = "Закончить выбранную ремонтную работу";
             this.toolStripBtFinishRepair.Click += new System.EventHandler(this.toolStripBtFinishRepair_Click);
             // 
@@ -408,43 +461,103 @@
             this.toolStripBtDeleteRepair.Image = global::ServiceStationManager.Properties.Resources.cog_delete;
             this.toolStripBtDeleteRepair.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtDeleteRepair.Name = "toolStripBtDeleteRepair";
-            this.toolStripBtDeleteRepair.Size = new System.Drawing.Size(23, 22);
+            this.toolStripBtDeleteRepair.Size = new System.Drawing.Size(24, 24);
             this.toolStripBtDeleteRepair.Text = "Удалить ремонтную работу";
             this.toolStripBtDeleteRepair.Click += new System.EventHandler(this.toolStripBtDeleteRepair_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripBtPrint
-            // 
-            this.toolStripBtPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBtPrint.Image = global::ServiceStationManager.Properties.Resources.printer;
-            this.toolStripBtPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtPrint.Name = "toolStripBtPrint";
-            this.toolStripBtPrint.Size = new System.Drawing.Size(23, 22);
-            this.toolStripBtPrint.Text = "Печатать счёт";
-            this.toolStripBtPrint.Click += new System.EventHandler(this.toolStripBtPrint_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(104, 24);
+            this.toolStripLabel1.Text = "Продление работ";
+            // 
+            // toolStripBtExtension
+            // 
+            this.toolStripBtExtension.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtExtension.Image = global::ServiceStationManager.Properties.Resources.date_next;
+            this.toolStripBtExtension.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtExtension.Name = "toolStripBtExtension";
+            this.toolStripBtExtension.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBtExtension.Text = "Продление работ";
+            this.toolStripBtExtension.Click += new System.EventHandler(this.toolStripBtExtension_Click);
+            // 
+            // toolStripComboBoxQuantityDays
+            // 
+            this.toolStripComboBoxQuantityDays.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"});
+            this.toolStripComboBoxQuantityDays.MaxLength = 2;
+            this.toolStripComboBoxQuantityDays.Name = "toolStripComboBoxQuantityDays";
+            this.toolStripComboBoxQuantityDays.Size = new System.Drawing.Size(136, 27);
+            this.toolStripComboBoxQuantityDays.Text = "Количество дней";
+            this.toolStripComboBoxQuantityDays.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripComboBoxQuantityDays_KeyPress);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
             // 
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelInfoClient,
+            this.toolStripStatusLabel2,
+            this.toolStripProgressBarStatusRepairs});
+            this.statusStrip.Location = new System.Drawing.Point(0, 704);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(1117, 22);
+            this.statusStrip.SizingGrip = false;
+            this.statusStrip.TabIndex = 6;
+            this.statusStrip.Text = "statusStrip";
+            // 
+            // toolStripStatusLabelInfoClient
+            // 
+            this.toolStripStatusLabelInfoClient.ActiveLinkColor = System.Drawing.Color.Transparent;
+            this.toolStripStatusLabelInfoClient.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripStatusLabelInfoClient.Name = "toolStripStatusLabelInfoClient";
+            this.toolStripStatusLabelInfoClient.Size = new System.Drawing.Size(123, 17);
+            this.toolStripStatusLabelInfoClient.Text = "Всего дней работы: 1";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.ActiveLinkColor = System.Drawing.Color.Transparent;
+            this.toolStripStatusLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripStatusLabel2.Margin = new System.Windows.Forms.Padding(600, 3, 0, 2);
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(293, 17);
+            this.toolStripStatusLabel2.Text = "Статус выполнения работ для выбранного клиента:";
+            // 
+            // toolStripProgressBarStatusRepairs
+            // 
+            this.toolStripProgressBarStatusRepairs.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripProgressBarStatusRepairs.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.toolStripProgressBarStatusRepairs.Name = "toolStripProgressBarStatusRepairs";
+            this.toolStripProgressBarStatusRepairs.Size = new System.Drawing.Size(75, 22);
             // 
             // UserControlClientsToday
             // 
@@ -452,17 +565,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "UserControlClientsToday";
-            this.Size = new System.Drawing.Size(1096, 658);
+            this.Size = new System.Drawing.Size(1117, 726);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -481,17 +597,13 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox lbRepairsCosts;
-        private System.Windows.Forms.ListBox lbEmployeesRepairs;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.CheckedListBox clbRepairs;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripBtAddRepair;
         private System.Windows.Forms.ToolStripButton toolStripBtPrint;
-        private System.Windows.Forms.Label lbRepairsTotalCost;
         public System.Windows.Forms.TextBox tbSurnameDriver;
-        public System.Windows.Forms.TextBox tbYearCar;
         public System.Windows.Forms.TextBox tbModelCar;
         public System.Windows.Forms.TextBox tbBrandCar;
         public System.Windows.Forms.TextBox tbPhoneNumber;
@@ -505,5 +617,19 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton toolStripBtSave;
+        public System.Windows.Forms.ComboBox cbYearCreated;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        public System.Windows.Forms.StatusStrip statusStrip;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelInfoClient;
+        private System.Windows.Forms.ToolStripButton toolStripBtExtension;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxQuantityDays;
+        public System.Windows.Forms.ListBox lbRepairsCosts;
+        public System.Windows.Forms.ListBox lbEmployeesRepairs;
+        public System.Windows.Forms.Label lbRepairsTotalCost;
+        public System.Windows.Forms.ToolStripProgressBar toolStripProgressBarStatusRepairs;
     }
 }

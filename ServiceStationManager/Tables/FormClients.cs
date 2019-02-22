@@ -13,21 +13,11 @@ namespace ServiceStationManager
     public partial class FormClients : Form
     {
         ClassDB db;
-        private string loginDB;
-        private string passDB;
-        private string ipDB;
-        private string portDB;
-
-        public FormClients(string loginDB, string passDB, string ipDB, string portDB)
+        public FormClients(ClassDB db)
         {
             InitializeComponent();
 
-            this.loginDB = loginDB;
-            this.passDB = passDB;
-            this.ipDB = ipDB;
-            this.portDB = portDB;
-
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
 
             dgvClients.ColumnCount = 6;
             dgvClients.Columns[0].HeaderCell.Value = "ID Клиента";
@@ -41,7 +31,9 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            if (db.Delete("clients", "id_client", dgvClients) == 0)
+            int id = Convert.ToInt32(dgvClients.CurrentRow.Cells[0].Value);
+
+            if (db.Delete("clients", "id_client", id) == 0)
             {
                 MessageBox.Show("Невозможно удалить клиента, так как информация о работах с его машиной ещё числится в БД", "Ошибка");
             }
@@ -61,13 +53,13 @@ namespace ServiceStationManager
         private void dgvClients_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             string currentRow = dgvClients.CurrentRow.Cells[0].Value.ToString();
-            FormAboutCar fac = new FormAboutCar(currentRow, loginDB, passDB, ipDB, portDB);
+            FormAboutCar fac = new FormAboutCar(db, currentRow);
             fac.ShowDialog();
         }
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            FormAddClient fAdd = new FormAddClient(loginDB, passDB, ipDB, portDB);
+            FormAddClient fAdd = new FormAddClient(db);
             fAdd.ShowDialog();
             dgvClients.Rows.Clear();
             db.LoadTables("clients", dgvClients);

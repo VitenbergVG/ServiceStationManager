@@ -152,6 +152,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormAddRepairForCurrentClient";
             this.Text = "Добавить ремонтную работу";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddRepairForCurrentClient_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

@@ -15,25 +15,16 @@ namespace ServiceStationManager
     {
         ClassDB db;
 
-        private string loginDB;
-        private string passDB;
-        private string portDB;
-        private string ipDB;
-
         List<DateTime> dates;
         List<int> idEmployees;
         List<string> surnameEmployees;
 
-        public FormWorkHours(string loginDB, string passDB, string ipDB, string portDB)
+        public FormWorkHours(ClassDB db)
         {
             InitializeComponent();
 
-            this.loginDB = loginDB;
-            this.passDB = passDB;
-            this.ipDB = ipDB;
-            this.portDB = portDB;
+            this.db = db;
 
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
             RefreshTable();
         }
 
@@ -45,23 +36,28 @@ namespace ServiceStationManager
 
             DateTime today = DateTime.Today;
 
-            dates.Add(today);
+            dgvWorkHours.ColumnCount = 21;
 
-            dgvWorkHours.ColumnCount = 14;
-            dgvWorkHours.Columns[0].HeaderCell.Value = today.ToShortDateString();
-
-            for (int i = 1; i < 14; i++)
+            for (int i = -7; i < 14; i++)
             {
                 dates.Add(today.AddDays(i));
+            }
+
+            for (int i = 0; i < 21; i++)
+            {
                 dgvWorkHours.Columns[i].HeaderCell.Value = dates[i].ToShortDateString();
             }
 
             db.WorkHoursNameEmployees(dgvWorkHours, idEmployees, surnameEmployees, dates);
+
+            dgvWorkHours.FirstDisplayedCell = dgvWorkHours.Rows[0].Cells[7];
+            dgvWorkHours.CurrentCell = dgvWorkHours.Rows[0].Cells[7];
+            dgvWorkHours.Columns[7].DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
         }
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            FormAddWorkHours fawh = new FormAddWorkHours(loginDB, passDB, ipDB, portDB, dates, surnameEmployees, idEmployees);
+            FormAddWorkHours fawh = new FormAddWorkHours(db, dates, surnameEmployees, idEmployees);
             fawh.ShowDialog();
             dgvWorkHours.Rows.Clear();
             RefreshTable();

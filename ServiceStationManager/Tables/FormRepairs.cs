@@ -15,21 +15,11 @@ namespace ServiceStationManager
     {
         ClassDB db;
 
-        private string loginDB;
-        private string passDB;
-        private string portDB;
-        private string ipDB;
-
-        public FormRepairs(string loginDB, string passDB, string ipDB, string portDB)
+        public FormRepairs(ClassDB db)
         {
             InitializeComponent();
 
-            this.loginDB = loginDB;
-            this.passDB = passDB;
-            this.ipDB = ipDB;
-            this.portDB = portDB;
-
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
 
             dataGridView1.ColumnCount = 5;
             dataGridView1.Columns[0].HeaderCell.Value = "ID работы";
@@ -43,7 +33,7 @@ namespace ServiceStationManager
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            FormAddRepair fAdd = new FormAddRepair(loginDB, passDB, ipDB, portDB);
+            FormAddRepair fAdd = new FormAddRepair(db);
             fAdd.ShowDialog();
             dataGridView1.Rows.Clear();
             db.LoadTables("repairs", dataGridView1);
@@ -51,7 +41,9 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            db.Delete("repairs", "id_repair", dataGridView1);
+            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+
+            db.Delete("repairs", "id_repair", id);
             dataGridView1.Rows.Clear();
             db.LoadTables("repairs", dataGridView1);
         }

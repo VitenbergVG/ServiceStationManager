@@ -29,48 +29,64 @@ namespace ServiceStationManager
 
         private void btEnter_Click(object sender, EventArgs e)
         {
-            db = new ClassDB(tbIP.Text, tbPort.Text, tbLoginDB.Text, tbPassDB.Text);
-            try
-            {
-                MySqlConnection testConnect = db.conn;
-                testConnect.Open();
-                testConnect.Close();
-                error = false;
-            }
-            catch
+            if (tbIP.Text == "" || tbLogin.Text == "" || tbLoginDB.Text == "" || tbPass.Text == "" || tbPassDB.Text == "" || tbPort.Text == "")
             {
                 MessageBox.Show("Неверно указаны данные для подключения к БД", "Ошибка");
                 error = true;
             }
-
-            if (!error)
+            else
             {
-                switch (tbLogin.Text)
+                db = new ClassDB(tbIP.Text, tbPort.Text, tbLoginDB.Text, tbPassDB.Text);
+                try
                 {
-                    case "admin":
-                        if (tbPass.Text == "admin")
-                        {
-                            statusLogin = ADMIN;
-                            FormMain fmAdmin = new FormMain(statusLogin, tbLoginDB.Text, tbPassDB.Text, tbIP.Text, tbPort.Text);
-                            fmAdmin.ShowDialog();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Введены неверные данные", "Ошибка");
-                        }
-                        break;
-
-                    case "user":
-                        statusLogin = USER;
-                        FormMain fmUser = new FormMain(statusLogin, tbLoginDB.Text, tbPassDB.Text, tbIP.Text, tbPort.Text);
-
-                        fmUser.ShowDialog();
-                        break;
-
-                    default:
-                        MessageBox.Show("Введены неверные данные");
-                        break;
+                    MySqlConnection testConnect = db.conn;
+                    testConnect.Open();
+                    testConnect.Close();
+                    error = false;
                 }
+                catch
+                {
+                    MessageBox.Show("Неверно указаны данные для подключения к БД", "Ошибка");
+                    error = true;
+                }
+
+                if (!error)
+                {
+                    switch (tbLogin.Text)
+                    {
+                        case "admin":
+                            if (tbPass.Text == "admin")
+                            {
+                                statusLogin = ADMIN;
+                                FormMain fmAdmin = new FormMain(db, statusLogin);
+                                fmAdmin.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Введены неверные данные", "Ошибка");
+                            }
+                            break;
+
+                        case "user":
+                            statusLogin = USER;
+                            FormMain fmUser = new FormMain(db, statusLogin);
+
+                            fmUser.ShowDialog();
+                            break;
+
+                        default:
+                            MessageBox.Show("Введены неверные данные");
+                            break;
+                    }
+                }
+            }
+        }
+
+        private void tbPort_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Delete))
+            {
+                e.Handled = true;
             }
         }
     }

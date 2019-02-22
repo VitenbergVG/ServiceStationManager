@@ -14,10 +14,10 @@ namespace ServiceStationManager.Add
     {
         ClassDB db;
 
-        public FormAddEmployee(string loginDB, string passDB, string ipDB, string portDB)
+        public FormAddEmployee(ClassDB db)
         {
             InitializeComponent();
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
             db.SearchPosition(cbPosition);
         }
 

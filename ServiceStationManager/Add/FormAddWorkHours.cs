@@ -19,22 +19,24 @@ namespace ServiceStationManager.Add
         List<int> globalidEmployees;
         List<DateTime> globalDates;
 
-        public FormAddWorkHours(string loginDB, string passDB, string ipDB, string portDB, 
-            List<DateTime> dates, List<string> surnameEmployees, List<int> idEmployees)
+        public FormAddWorkHours(ClassDB db, List<DateTime> dates, 
+            List<string> surnameEmployees, List<int> idEmployees)
         {
             InitializeComponent();
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
 
             for (int i = 0; i < dates.Count; i++)
             {
                 cbDateOfWeek.Items.Add(dates[i].ToShortDateString());
                 cbDateStart.Items.Add(dates[i].ToShortDateString());
+                cbDateMoreEmployees.Items.Add(dates[i].ToShortDateString());
             }
 
             for (int i = 0; i < surnameEmployees.Count; i++)
             {
                 cbSurnameEmployee.Items.Add(surnameEmployees[i]);
                 cbSurnameEmployeeRegularity.Items.Add(surnameEmployees[i]);
+                clbEmployees.Items.Add(surnameEmployees[i]);
             }
 
             globalidEmployees = idEmployees;
@@ -49,17 +51,14 @@ namespace ServiceStationManager.Add
             }
             else
             {
-                string factQuery;
-                factQuery = "(`employees_id_employee`, `dates_of_month`) VALUES('" +
-                           currentIdEmployee + "', '" + currentDate + "');";
-                db.Add("work_hours", factQuery);
+                db.AddWorkHour(currentIdEmployee, currentDate);
                 Hide();
             }
         }
 
         private void btAddRegularity_Click(object sender, EventArgs e)
         {
-            if (cbSurnameEmployee.Text == "" || cbDateOfWeek.Text == "")
+            if (cbSurnameEmployeeRegularity.Text == "" || cbRegularity.Text == "" || cbDateStart.Text == "")
             {
                 MessageBox.Show("Заполните все поля!", "Ошибка");
             }
@@ -157,6 +156,24 @@ namespace ServiceStationManager.Add
             currentDate = globalDates[cbDateStart.SelectedIndex].ToString("yyyy-MM-dd");
         }
 
+        private void btAddMoreEmployees_Click(object sender, EventArgs e)
+        {
+            if (cbDateMoreEmployees.Text == "" || clbEmployees.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Добавьте смену хотя-бы одному сотрунику", "Ошибка");
+            }
+            else
+            {
+                DateTime dateWorkHours = Convert.ToDateTime(cbDateMoreEmployees.Text);
 
+                for (int i = 0; i < clbEmployees.Items.Count; i++)
+                {
+                    if (clbEmployees.GetItemChecked(i))
+                        db.AddWorkHour(globalidEmployees[i], dateWorkHours.ToString("yyyy-MM-dd"));
+                }
+
+                Hide();
+            }
+        }
     }
 }

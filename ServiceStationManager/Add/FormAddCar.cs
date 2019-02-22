@@ -14,11 +14,11 @@ namespace ServiceStationManager.Add
     {
         ClassDB db;
 
-        public FormAddCar(string loginDB, string passDB, string ipDB, string portDB)
+        public FormAddCar(ClassDB db)
         {
             InitializeComponent();
 
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
 
             checkBoxIsDateEmpty.Checked = true;
 
@@ -58,7 +58,7 @@ namespace ServiceStationManager.Add
 
         private void tbNumSTS_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Delete))
+            if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back && (e.KeyChar != (char)Keys.Delete)))
             {
                 e.Handled = true;
             }

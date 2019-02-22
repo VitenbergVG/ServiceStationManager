@@ -62,7 +62,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(5, 5);
-            this.label1.Margin = new System.Windows.Forms.Padding(5);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(151, 16);
             this.label1.TabIndex = 1;
@@ -120,7 +120,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(5, 31);
-            this.label2.Margin = new System.Windows.Forms.Padding(5);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 16);
             this.label2.TabIndex = 5;
@@ -132,14 +132,14 @@
             this.tbIP.Name = "tbIP";
             this.tbIP.Size = new System.Drawing.Size(155, 20);
             this.tbIP.TabIndex = 4;
-            this.tbIP.Text = "192.168.0.2";
+            this.tbIP.Text = "localhost";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(5, 83);
-            this.label4.Margin = new System.Windows.Forms.Padding(5);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 16);
             this.label4.TabIndex = 7;
@@ -150,7 +150,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(5, 109);
-            this.label5.Margin = new System.Windows.Forms.Padding(5);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(115, 16);
             this.label5.TabIndex = 8;
@@ -159,10 +159,12 @@
             // tbPort
             // 
             this.tbPort.Location = new System.Drawing.Point(164, 81);
+            this.tbPort.MaxLength = 10;
             this.tbPort.Name = "tbPort";
             this.tbPort.Size = new System.Drawing.Size(155, 20);
             this.tbPort.TabIndex = 9;
             this.tbPort.Text = "3306";
+            this.tbPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPort_KeyPress);
             // 
             // tbLogin
             // 
@@ -177,7 +179,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(5, 57);
-            this.label3.Margin = new System.Windows.Forms.Padding(5);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 16);
             this.label3.TabIndex = 6;
@@ -188,7 +190,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.Location = new System.Drawing.Point(6, 136);
-            this.label6.Margin = new System.Windows.Forms.Padding(6);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 16);
             this.label6.TabIndex = 11;
@@ -198,7 +200,7 @@
             // 
             this.tbPass.Location = new System.Drawing.Point(164, 133);
             this.tbPass.Name = "tbPass";
-            this.tbPass.Size = new System.Drawing.Size(158, 20);
+            this.tbPass.Size = new System.Drawing.Size(155, 20);
             this.tbPass.TabIndex = 12;
             this.tbPass.Text = "admin";
             this.tbPass.UseSystemPasswordChar = true;

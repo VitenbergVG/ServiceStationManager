@@ -15,10 +15,10 @@ namespace ServiceStationManager
         ClassDB db;
         public string currentRow;
 
-        public FormPicClient(string loginDB, string passDB, string ipDB, string portDB)
+        public FormPicClient(ClassDB db)
         {
             InitializeComponent();
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
             dataGridView1.ColumnCount = 6;
             dataGridView1.Columns[0].HeaderCell.Value = "ID Клиента";
             dataGridView1.Columns[1].HeaderCell.Value = "Фамилия";
@@ -39,6 +39,15 @@ namespace ServiceStationManager
         {
             dataGridView1.Rows.Clear();
             db.SearchInClients(tbSearch.Text, dataGridView1);
+        }
+
+        private void FormPicClient_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (currentRow == null)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Пожалуйста, выберите клиента", "Предпреждение");
+            }
         }
     }
 }

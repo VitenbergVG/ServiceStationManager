@@ -15,19 +15,11 @@ namespace ServiceStationManager
     {
         ClassDB db;
 
-        private string loginDB;
-        private string passDB;
-        private string ipDB;
-        private string portDB;
-
-        public FormCars(string loginDB, string passDB, string ipDB, string portDB)
+        public FormCars(ClassDB db)
         {
             InitializeComponent();
 
-            this.loginDB = loginDB;
-            this.passDB = passDB;
-            this.ipDB = ipDB;
-            this.portDB = portDB;
+            this.db = db;
 
             dgvCars.ColumnCount = 5;
             dgvCars.Columns[0].HeaderCell.Value = "СТС";
@@ -35,16 +27,14 @@ namespace ServiceStationManager
             dgvCars.Columns[2].HeaderCell.Value = "Модель";
             dgvCars.Columns[3].HeaderCell.Value = "Год выпуска";
             dgvCars.Columns[4].HeaderCell.Value = "Дата последнего ТО";
-
-            //dgvCars.Columns[4].DefaultCellStyle.Format = "yyyy-MM-dd";
-
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
             db.LoadTables("cars", dgvCars);
         }
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            if (db.Delete("cars", "number_sts", dgvCars) == 0)
+            int id = Convert.ToInt32(dgvCars.CurrentRow.Cells[0].Value);
+
+            if (db.Delete("cars", "number_sts", id) == 0)
             {
                 MessageBox.Show("Невозможно удалить автомобиль, так как информация о его владельце ещё числится в БД", "Ошибка");
             }
@@ -57,7 +47,7 @@ namespace ServiceStationManager
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            FormAddCar fAdd = new FormAddCar(loginDB, passDB, ipDB, portDB);
+            FormAddCar fAdd = new FormAddCar(db);
             fAdd.ShowDialog();
             dgvCars.Rows.Clear();
             db.LoadTables("cars", dgvCars);

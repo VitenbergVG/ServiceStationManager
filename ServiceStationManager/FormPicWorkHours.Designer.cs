@@ -30,8 +30,8 @@
         {
             this.btSearch = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvWorkHours = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWorkHours)).BeginInit();
             this.SuspendLayout();
             // 
             // btSearch
@@ -53,27 +53,32 @@
             this.tbSearch.Size = new System.Drawing.Size(490, 20);
             this.tbSearch.TabIndex = 12;
             // 
-            // dataGridView1
+            // dgvWorkHours
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 61);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 377);
-            this.dataGridView1.TabIndex = 11;
-            this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
+            this.dgvWorkHours.AllowUserToAddRows = false;
+            this.dgvWorkHours.AllowUserToDeleteRows = false;
+            this.dgvWorkHours.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvWorkHours.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvWorkHours.Location = new System.Drawing.Point(12, 61);
+            this.dgvWorkHours.Name = "dgvWorkHours";
+            this.dgvWorkHours.ReadOnly = true;
+            this.dgvWorkHours.Size = new System.Drawing.Size(776, 377);
+            this.dgvWorkHours.TabIndex = 11;
+            this.dgvWorkHours.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             // 
             // FormPicWorkHours
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btSearch);
             this.Controls.Add(this.tbSearch);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvWorkHours);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormPicWorkHours";
             this.Text = "Кликните дважды по нужной рабочей смене";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWorkHours)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,6 +88,6 @@
 
         private System.Windows.Forms.Button btSearch;
         private System.Windows.Forms.TextBox tbSearch;
-        public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.DataGridView dgvWorkHours;
     }
 }

@@ -14,11 +14,11 @@ namespace ServiceStationManager.Add
     {
         ClassDB db;
 
-        public FormAddRepair(string loginDB, string passDB, string ipDB, string portDB)
+        public FormAddRepair(ClassDB db)
         {
             InitializeComponent();
 
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
             db.SearchPosition(cbPosition);
             db.SearchCategoriesRepairs(cbCategory);
             textBox1.Text = (db.LastRepair() + 1).ToString();

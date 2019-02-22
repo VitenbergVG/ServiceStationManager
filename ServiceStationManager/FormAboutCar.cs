@@ -13,11 +13,11 @@ namespace ServiceStationManager
     public partial class FormAboutCar : Form
     {
         ClassDB db;
-        public FormAboutCar(string curRow, string loginDB, string passDB, string ipDB, string portDB)
+        public FormAboutCar(ClassDB db, string curRow)
         {
             InitializeComponent();
 
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
 
             dgvAboutCar.ColumnCount = 3;
             dgvAboutCar.Columns[0].HeaderCell.Value = "ID клиента";

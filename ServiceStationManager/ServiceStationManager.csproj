@@ -58,7 +58,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.14.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -219,10 +219,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControlClientsToday.cs">
+    <Compile Include="ClientsToday\UserControlClientsToday.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlClientsToday.Designer.cs">
+    <Compile Include="ClientsToday\UserControlClientsToday.Designer.cs">
       <DependentUpon>UserControlClientsToday.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Add\FormAddAction.resx">
@@ -304,7 +304,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControlClientsToday.resx">
+    <EmbeddedResource Include="ClientsToday\UserControlClientsToday.resx">
       <DependentUpon>UserControlClientsToday.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -356,6 +356,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disk_multiple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\date_next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\status_away.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,21 +15,11 @@ namespace ServiceStationManager
     {
         ClassDB db;
 
-        private string loginDB;
-        private string passDB;
-        private string ipDB;
-        private string portDB;
-
-        public FormEmployees(string loginDB, string passDB, string ipDB, string portDB)
+        public FormEmployees(ClassDB db)
         {
             InitializeComponent();
 
-            this.loginDB = loginDB;
-            this.passDB = passDB;
-            this.ipDB = ipDB;
-            this.portDB = portDB;
-
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
 
             dgvEmployees.ColumnCount = 6;
             dgvEmployees.Columns[0].HeaderCell.Value = "ID сотрудника";
@@ -43,7 +33,7 @@ namespace ServiceStationManager
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            FormAddEmployee fAdd = new FormAddEmployee(loginDB, passDB, ipDB, portDB);
+            FormAddEmployee fAdd = new FormAddEmployee(db);
             fAdd.ShowDialog();
             dgvEmployees.Rows.Clear();
             db.LoadTables("employees", dgvEmployees);
@@ -51,7 +41,9 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            if (db.Delete("employees", "id_employee", dgvEmployees) == 0)
+            int id = Convert.ToInt32(dgvEmployees.CurrentRow.Cells[0].Value);
+
+            if (db.Delete("employees", "id_employee", id) == 0)
             {
                 MessageBox.Show("Невозможно удалить сотрудника, так как информация о его расписании или работах ещё числится в БД", "Ошибка");
             }

@@ -15,25 +15,15 @@ namespace ServiceStationManager
     {
         ClassDB db;
 
-        private string loginDB;
-        private string passDB;
-        private string portDB;
-        private string ipDB;
-
         List<DateTime> dates;
         List<int> idEmployees;
         List<string> surnameEmployees;
 
-        public FormWorkHoursRepairs(string loginDB, string passDB, string ipDB, string portDB)
+        public FormWorkHoursRepairs(ClassDB db)
         {
             InitializeComponent();
 
-            this.loginDB = loginDB;
-            this.passDB = passDB;
-            this.ipDB = ipDB;
-            this.portDB = portDB;
-
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
 
             RefreshTable();
         }
@@ -41,31 +31,36 @@ namespace ServiceStationManager
 
         private void RefreshTable()
         {
+            dgvWorkHoursRepairs.Rows.Clear();
             dates = new List<DateTime>();//Список дат
             idEmployees = new List<int>();//Список id сотрудников
             surnameEmployees = new List<string>();//Список фамилий сотрудников
 
             DateTime today = DateTime.Today;
 
-            dates.Add(today);
+            dgvWorkHoursRepairs.ColumnCount = 21;
 
-            dgvWorkHoursRepairs.ColumnCount = 14;
-            dgvWorkHoursRepairs.Columns[0].HeaderCell.Value = today.ToShortDateString();
-
-            for (int i = 1; i < 14; i++)
+            for (int i = -7; i < 14; i++)
             {
                 dates.Add(today.AddDays(i));
+            }
+
+            for (int i = 0; i < 21; i++)
+            {
                 dgvWorkHoursRepairs.Columns[i].HeaderCell.Value = dates[i].ToShortDateString();
             }
 
             db.WorkHoursRepairsNameEmployees(dgvWorkHoursRepairs, idEmployees, surnameEmployees, dates);
+
+            dgvWorkHoursRepairs.FirstDisplayedCell = dgvWorkHoursRepairs.Rows[0].Cells[7];
+            dgvWorkHoursRepairs.CurrentCell = dgvWorkHoursRepairs.Rows[0].Cells[7];
+            dgvWorkHoursRepairs.Columns[7].DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
         }
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            FormAddWorkHoursRepair fawh = new FormAddWorkHoursRepair(loginDB, passDB, ipDB, portDB);
+            FormAddWorkHoursRepair fawh = new FormAddWorkHoursRepair(db);
             fawh.ShowDialog();
-            dgvWorkHoursRepairs.Rows.Clear();
             RefreshTable();
         }
 
@@ -75,8 +70,9 @@ namespace ServiceStationManager
             DateTime date = Convert.ToDateTime(dgvWorkHoursRepairs.Columns[dgvWorkHoursRepairs.CurrentCell.ColumnIndex].HeaderText.ToString());
             string strDate = date.ToString("yyyy-MM-dd");
 
-            FormAboutCurrentRepair facr = new FormAboutCurrentRepair(loginDB, passDB, ipDB, portDB, surnameEmployee, strDate);
+            FormAboutCurrentRepair facr = new FormAboutCurrentRepair(db, surnameEmployee, strDate);
             facr.ShowDialog();
+            RefreshTable();
         }
 
         private void btDelete_Click(object sender, EventArgs e)

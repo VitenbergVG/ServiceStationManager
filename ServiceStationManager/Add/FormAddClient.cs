@@ -14,10 +14,10 @@ namespace ServiceStationManager
     {
         ClassDB db;
 
-        public FormAddClient(string loginDB, string passDB, string ipDB, string portDB)
+        public FormAddClient(ClassDB db)
         {
             InitializeComponent();
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
             db.SearchSTSCars(cbNumSTS);
         }
 

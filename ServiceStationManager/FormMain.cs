@@ -19,26 +19,16 @@ namespace ServiceStationManager
 
         ClassDB db;
 
-        private string loginDB;
-        private string passDB;
-        private string portDB;
-        private string ipDB;
-
         //Клиенты сегодня
         int i = 1;
 
-        public FormMain(int statusLogin, string loginDB, string passDB, string ipDB, string portDB)
+        public FormMain(ClassDB db, int statusLogin)
         {
             InitializeComponent();
 
             toolStripBtDeleteClient.Enabled = false;
-
-            this.loginDB = loginDB;
-            this.passDB = passDB;
-            this.ipDB = ipDB;
-            this.portDB = portDB;
-
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            toolStripBtSave.Enabled = false;
+            this.db = db;
 
             if (statusLogin == USER)
             {
@@ -56,49 +46,49 @@ namespace ServiceStationManager
 
         private void списокКлиентовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormClients fclients = new FormClients(loginDB, passDB, ipDB, portDB);
+            FormClients fclients = new FormClients(db);
             fclients.ShowDialog();
         }
 
         private void списокАвтомобилейToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCars fcars = new FormCars(loginDB, passDB, ipDB, portDB);
+            FormCars fcars = new FormCars(db);
             fcars.ShowDialog();
         }
 
         private void списокСотрудниковToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormEmployees fe = new FormEmployees(loginDB, passDB, ipDB, portDB);
+            FormEmployees fe = new FormEmployees(db);
             fe.ShowDialog();
         }
 
         private void заявкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormRequests fr = new FormRequests(loginDB, passDB, ipDB, portDB);
+            FormRequests fr = new FormRequests(db, tabControl1);
             fr.ShowDialog();
         }
 
         private void списокАкцийToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormActions fa = new FormActions(loginDB, passDB, ipDB, portDB);
+            FormActions fa = new FormActions(db);
             fa.ShowDialog();
         }
 
         private void видыРемонтныхРаботToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormRepairs fr = new FormRepairs(loginDB, passDB, ipDB, portDB);
+            FormRepairs fr = new FormRepairs(db);
             fr.ShowDialog();
         }
 
         private void расписаниеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormWorkHours fwh = new FormWorkHours(loginDB, passDB, ipDB, portDB);
+            FormWorkHours fwh = new FormWorkHours(db);
             fwh.ShowDialog();
         }
 
         private void расписаниеРаботToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormWorkHoursRepairs fwhr = new FormWorkHoursRepairs(loginDB, passDB, ipDB, portDB);
+            FormWorkHoursRepairs fwhr = new FormWorkHoursRepairs(db);
             fwhr.ShowDialog();
         }
 
@@ -109,17 +99,22 @@ namespace ServiceStationManager
         }
 
         //Для неизвестного клиента
-        private void CreateTab(UserControlClientsToday ucct)
+        private void CreateTab()
         {
+            toolStripBtSave.Enabled = true;
             TabPage newTabPage = new TabPage("Клиент" + i++);
             tabControl1.TabPages.Add(newTabPage);
+
+            UserControlClientsToday ucct = new UserControlClientsToday(db, newTabPage);
+            ucct.Dock = DockStyle.Fill;
+
             newTabPage.Controls.Add(ucct);
             tabControl1.SelectedTab = newTabPage;
 
             toolStripBtSave.Click += (sender, args) =>
             {
                 if (ucct.tbSurnameDriver.Text == "" || ucct.tbNameDriver.Text == "" || ucct.tbPatronimycDriver.Text == ""
-                || ucct.tbBrandCar.Text == "" || ucct.tbModelCar.Text == "" || ucct.tbYearCar.Text == ""
+                || ucct.tbBrandCar.Text == "" || ucct.tbModelCar.Text == "" || ucct.cbYearCreated.Text == ""
                 || ucct.tbNumberSTSCar.Text == "")
                 {
                     MessageBox.Show("Пожалуйста, заполните все поля");
@@ -127,7 +122,7 @@ namespace ServiceStationManager
                 }
 
                 db.UpdateOrInsertClient(ucct.idClient.ToString(), ucct.tbSurnameDriver.Text, ucct.tbNameDriver.Text, ucct.tbPatronimycDriver.Text,
-                    ucct.tbPhoneNumber.Text, ucct.tbBrandCar.Text, ucct.tbModelCar.Text, ucct.tbYearCar.Text,
+                    ucct.tbPhoneNumber.Text, ucct.tbBrandCar.Text, ucct.tbModelCar.Text, ucct.cbYearCreated.Text,
                     ucct.tbNumberSTSCar.Text);
                 newTabPage.Text = ucct.tbNameDriver.Text + "/" + ucct.tbModelCar.Text;
                 MessageBox.Show("Изменения сохранены");
@@ -135,29 +130,35 @@ namespace ServiceStationManager
         }
 
         //Для клиента из БД
-        private void CreateTab(string currentClient, UserControlClientsToday ucct)
+        private void CreateTab(string currentClient)
         {
-            //db.ShowPickedClient(currentClient, "id_client", ucct.tbIdDriver);
+            toolStripBtSave.Enabled = true;
+            TabPage newTabPage = new TabPage();
+            tabControl1.TabPages.Add(newTabPage);
+
+            UserControlClientsToday ucct = new UserControlClientsToday(db, newTabPage);
+            ucct.Dock = DockStyle.Fill;
+
             ucct.idClient = Convert.ToInt32(currentClient);
             db.ShowPickedClient(currentClient, "surname", ucct.tbSurnameDriver);
             db.ShowPickedClient(currentClient, "name", ucct.tbNameDriver);
             db.ShowPickedClient(currentClient, "patronimyc", ucct.tbPatronimycDriver);
             db.ShowPickedClient(currentClient, "phone_number", ucct.tbPhoneNumber);
 
-            db.ShowPickedCar(currentClient, "number_sts", ucct.tbNumberSTSCar);
-            db.ShowPickedCar(currentClient, "brand", ucct.tbBrandCar);
-            db.ShowPickedCar(currentClient, "model", ucct.tbModelCar);
-            db.ShowPickedCar(currentClient, "year_created", ucct.tbYearCar);
-
-            TabPage newTabPage = new TabPage(ucct.tbNameDriver.Text + "/" + ucct.tbModelCar.Text);
-            tabControl1.TabPages.Add(newTabPage);
+            ucct.tbNumberSTSCar.Text = db.ShowPickedCar(currentClient, "number_sts");
+            ucct.tbBrandCar.Text = db.ShowPickedCar(currentClient, "brand");
+            ucct.tbModelCar.Text = db.ShowPickedCar(currentClient, "model");
+            ucct.cbYearCreated.Text = db.ShowPickedCar(currentClient, "year_created");
             newTabPage.Controls.Add(ucct);
+
+            newTabPage.Text = ucct.tbNameDriver.Text + "/" + ucct.tbModelCar.Text;
+
             tabControl1.SelectedTab = newTabPage;
 
             toolStripBtSave.Click += (sender, args) =>
             {
                 if (ucct.tbSurnameDriver.Text == "" || ucct.tbNameDriver.Text == "" || ucct.tbPatronimycDriver.Text == ""
-                || ucct.tbBrandCar.Text == "" || ucct.tbModelCar.Text == "" || ucct.tbYearCar.Text == ""
+                || ucct.tbBrandCar.Text == "" || ucct.tbModelCar.Text == "" || ucct.cbYearCreated.Text == ""
                 || ucct.tbNumberSTSCar.Text == "")
                 {
                     MessageBox.Show("Пожалуйста, заполните все поля");
@@ -165,7 +166,51 @@ namespace ServiceStationManager
                 }
 
                 db.UpdateOrInsertClient(ucct.idClient.ToString(), ucct.tbSurnameDriver.Text, ucct.tbNameDriver.Text, ucct.tbPatronimycDriver.Text,
-                    ucct.tbPhoneNumber.Text, ucct.tbBrandCar.Text, ucct.tbModelCar.Text, ucct.tbYearCar.Text,
+                    ucct.tbPhoneNumber.Text, ucct.tbBrandCar.Text, ucct.tbModelCar.Text, ucct.cbYearCreated.Text,
+                    ucct.tbNumberSTSCar.Text);
+                newTabPage.Text = ucct.tbNameDriver.Text + "/" + ucct.tbModelCar.Text;
+                MessageBox.Show("Изменения сохранены");
+            };
+        }
+
+        //Для продленного клиента
+        private void CreateTab(string currentClient, List<int> idRepairs, int quantityDays)
+        {
+            toolStripBtSave.Enabled = true;
+            TabPage newTabPage = new TabPage();
+            tabControl1.TabPages.Add(newTabPage);
+
+            UserControlClientsToday ucct = new UserControlClientsToday(db, newTabPage, idRepairs, quantityDays);
+            ucct.Dock = DockStyle.Fill;
+
+            ucct.idClient = Convert.ToInt32(currentClient);
+            db.ShowPickedClient(currentClient, "surname", ucct.tbSurnameDriver);
+            db.ShowPickedClient(currentClient, "name", ucct.tbNameDriver);
+            db.ShowPickedClient(currentClient, "patronimyc", ucct.tbPatronimycDriver);
+            db.ShowPickedClient(currentClient, "phone_number", ucct.tbPhoneNumber);
+
+            ucct.tbNumberSTSCar.Text = db.ShowPickedCar(currentClient, "number_sts");
+            ucct.tbBrandCar.Text = db.ShowPickedCar(currentClient, "brand");
+            ucct.tbModelCar.Text = db.ShowPickedCar(currentClient, "model");
+            ucct.cbYearCreated.Text = db.ShowPickedCar(currentClient, "year_created");
+            newTabPage.Controls.Add(ucct);
+
+            newTabPage.Text = ucct.tbNameDriver.Text + "/" + ucct.tbModelCar.Text;
+
+            tabControl1.SelectedTab = newTabPage;
+
+            toolStripBtSave.Click += (sender, args) =>
+            {
+                if (ucct.tbSurnameDriver.Text == "" || ucct.tbNameDriver.Text == "" || ucct.tbPatronimycDriver.Text == ""
+                || ucct.tbBrandCar.Text == "" || ucct.tbModelCar.Text == "" || ucct.cbYearCreated.Text == ""
+                || ucct.tbNumberSTSCar.Text == "")
+                {
+                    MessageBox.Show("Пожалуйста, заполните все поля");
+                    return;
+                }
+
+                db.UpdateOrInsertClient(ucct.idClient.ToString(), ucct.tbSurnameDriver.Text, ucct.tbNameDriver.Text, ucct.tbPatronimycDriver.Text,
+                    ucct.tbPhoneNumber.Text, ucct.tbBrandCar.Text, ucct.tbModelCar.Text, ucct.cbYearCreated.Text,
                     ucct.tbNumberSTSCar.Text);
                 newTabPage.Text = ucct.tbNameDriver.Text + "/" + ucct.tbModelCar.Text;
                 MessageBox.Show("Изменения сохранены");
@@ -174,26 +219,23 @@ namespace ServiceStationManager
 
         private void toolStripBtNewClient_Click(object sender, EventArgs e)
         {
-            UserControlClientsToday ucct = new UserControlClientsToday(loginDB, passDB, ipDB, portDB);
-            ucct.Dock = DockStyle.Fill;
-
             DialogResult dialogResult = MessageBox.Show("Добавить клиента из уже существующих?", "Новый клиент", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                FormPicClient fpc = new FormPicClient(loginDB, passDB, ipDB, portDB);
+                FormPicClient fpc = new FormPicClient(db);
                 fpc.ShowDialog();
-                CreateTab(fpc.currentRow, ucct);
+                CreateTab(fpc.currentRow);
             }
             else if (dialogResult == DialogResult.No)
             {
-                CreateTab(ucct);
+                CreateTab();
             }
             toolStripBtDeleteClient.Enabled = true;
         }
 
         private void toolStripBtDeleteClient_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Завершить работу с клиентом?", "Подтверждение", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Завершить работу с клиентом? Все внесённые изменения не сохранятся", "Подтверждение", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 tabControl1.TabPages.RemoveAt(tabControl1.SelectedIndex);
@@ -201,7 +243,23 @@ namespace ServiceStationManager
                 if (tabControl1.TabPages.Count == 0)
                 {
                     toolStripBtDeleteClient.Enabled = false;
+                    toolStripBtSave.Enabled = false;
                 }
+            }
+        }
+
+        private void всеОтложенныеКлиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<int> idExtentionClients = new List<int>();
+            List<int> idExtentionRepairs = new List<int>();
+            List<int> quantityDays = new List<int>();
+
+            db.SearchExtensionClients(idExtentionClients, idExtentionRepairs, quantityDays);
+            //Логика следующего цикла - неправильна надо сделать скорее всего двойной цикл для 
+            //клиентов и отдельно для отложенных работ тк их больше
+            for (int i = 0; i < idExtentionClients.Count; i++)
+            {
+                CreateTab(idExtentionClients[i].ToString(), idExtentionRepairs, quantityDays[i]);
             }
         }
     }

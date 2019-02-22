@@ -32,6 +32,7 @@
             this.btRefresh = new System.Windows.Forms.Button();
             this.btDelete = new System.Windows.Forms.Button();
             this.dgvRequests = new System.Windows.Forms.DataGridView();
+            this.btRequestProcessing = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRequests)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,12 +81,25 @@
             this.dgvRequests.Size = new System.Drawing.Size(776, 426);
             this.dgvRequests.TabIndex = 2;
             // 
+            // btRequestProcessing
+            // 
+            this.btRequestProcessing.BackColor = System.Drawing.Color.SeaShell;
+            this.btRequestProcessing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btRequestProcessing.Location = new System.Drawing.Point(806, 124);
+            this.btRequestProcessing.Name = "btRequestProcessing";
+            this.btRequestProcessing.Size = new System.Drawing.Size(100, 39);
+            this.btRequestProcessing.TabIndex = 4;
+            this.btRequestProcessing.Text = "Обработать заявку";
+            this.btRequestProcessing.UseVisualStyleBackColor = false;
+            this.btRequestProcessing.Click += new System.EventHandler(this.btRequestProcessing_Click);
+            // 
             // FormRequests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(918, 449);
+            this.Controls.Add(this.btRequestProcessing);
             this.Controls.Add(this.btRefresh);
             this.Controls.Add(this.btDelete);
             this.Controls.Add(this.dgvRequests);
@@ -102,5 +116,6 @@
         private System.Windows.Forms.Button btRefresh;
         private System.Windows.Forms.Button btDelete;
         private System.Windows.Forms.DataGridView dgvRequests;
+        private System.Windows.Forms.Button btRequestProcessing;
     }
 }

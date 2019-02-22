@@ -12,14 +12,21 @@ namespace ServiceStationManager.ClientsToday
 {
     public partial class FormAddRepairForCurrentClient : Form
     {
-        //internal object clbRepairs;
         ClassDB db;
         
-        public FormAddRepairForCurrentClient(string loginDB, string passDB, string ipDB, string portDB)
+        public FormAddRepairForCurrentClient(ClassDB db)
         {
             InitializeComponent();
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
             db.SearchCategoriesRepairs(cbCategoryRepairs);
+        }
+
+        public FormAddRepairForCurrentClient(ClassDB db, string categoryRepairs)
+        {
+            InitializeComponent();
+            this.db = db;
+            db.SearchCategoriesRepairs(cbCategoryRepairs);
+            cbCategoryRepairs.Text = categoryRepairs;
         }
 
         private void btAdd_Click(object sender, EventArgs e)
@@ -46,6 +53,12 @@ namespace ServiceStationManager.ClientsToday
         {
             cbEmployee.Items.Clear();
             db.SearchSurnameEmployeesForRepair(cbEmployee, cbNameRepairs.Text.ToString());
+        }
+
+        private void FormAddRepairForCurrentClient_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            StaticData.DataBufferNameRepair = null;
+            StaticData.DataBufferEmployee = null;
         }
     }
 }

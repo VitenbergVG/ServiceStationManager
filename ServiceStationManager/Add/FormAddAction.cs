@@ -14,10 +14,10 @@ namespace ServiceStationManager.Add
     {
         ClassDB db;
 
-        public FormAddAction(string loginDB, string passDB, string ipDB, string portDB)
+        public FormAddAction(ClassDB db)
         {
             InitializeComponent();
-            db = new ClassDB(ipDB, portDB, loginDB, passDB);
+            this.db = db;
         }
 
         private void btAdd_Click(object sender, EventArgs e)
