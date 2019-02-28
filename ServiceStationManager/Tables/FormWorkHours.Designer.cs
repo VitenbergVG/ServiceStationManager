@@ -28,23 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btAdd = new System.Windows.Forms.Button();
             this.dgvWorkHours = new System.Windows.Forms.DataGridView();
-            this.btDelete = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.добавитьРаботуыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьВыбраннуюРаботуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkHours)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btAdd
-            // 
-            this.btAdd.BackColor = System.Drawing.Color.SeaShell;
-            this.btAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAdd.Location = new System.Drawing.Point(993, 12);
-            this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(98, 37);
-            this.btAdd.TabIndex = 6;
-            this.btAdd.Text = "Добавить";
-            this.btAdd.UseVisualStyleBackColor = false;
-            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // dgvWorkHours
             // 
@@ -52,23 +42,38 @@
             this.dgvWorkHours.AllowUserToDeleteRows = false;
             this.dgvWorkHours.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvWorkHours.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvWorkHours.Location = new System.Drawing.Point(12, 12);
+            this.dgvWorkHours.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvWorkHours.Location = new System.Drawing.Point(0, 24);
             this.dgvWorkHours.Name = "dgvWorkHours";
             this.dgvWorkHours.ReadOnly = true;
-            this.dgvWorkHours.Size = new System.Drawing.Size(965, 497);
+            this.dgvWorkHours.Size = new System.Drawing.Size(1103, 495);
             this.dgvWorkHours.TabIndex = 5;
             // 
-            // btDelete
+            // menuStrip1
             // 
-            this.btDelete.BackColor = System.Drawing.Color.SeaShell;
-            this.btDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDelete.Location = new System.Drawing.Point(993, 75);
-            this.btDelete.Name = "btDelete";
-            this.btDelete.Size = new System.Drawing.Size(98, 37);
-            this.btDelete.TabIndex = 7;
-            this.btDelete.Text = "Удалить";
-            this.btDelete.UseVisualStyleBackColor = false;
-            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
+            this.menuStrip1.BackColor = System.Drawing.Color.SeaShell;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьРаботуыToolStripMenuItem,
+            this.удалитьВыбраннуюРаботуToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1103, 24);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // добавитьРаботуыToolStripMenuItem
+            // 
+            this.добавитьРаботуыToolStripMenuItem.Name = "добавитьРаботуыToolStripMenuItem";
+            this.добавитьРаботуыToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
+            this.добавитьРаботуыToolStripMenuItem.Text = "Добавить смену/-ы...";
+            this.добавитьРаботуыToolStripMenuItem.Click += new System.EventHandler(this.btAdd_Click);
+            // 
+            // удалитьВыбраннуюРаботуToolStripMenuItem
+            // 
+            this.удалитьВыбраннуюРаботуToolStripMenuItem.Name = "удалитьВыбраннуюРаботуToolStripMenuItem";
+            this.удалитьВыбраннуюРаботуToolStripMenuItem.Size = new System.Drawing.Size(168, 20);
+            this.удалитьВыбраннуюРаботуToolStripMenuItem.Text = "Удалить выбранную смену";
+            this.удалитьВыбраннуюРаботуToolStripMenuItem.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // FormWorkHours
             // 
@@ -76,21 +81,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(1103, 519);
-            this.Controls.Add(this.btDelete);
-            this.Controls.Add(this.btAdd);
             this.Controls.Add(this.dgvWorkHours);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormWorkHours";
             this.Text = "График работы сотрудников";
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkHours)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btAdd;
         public System.Windows.Forms.DataGridView dgvWorkHours;
-        private System.Windows.Forms.Button btDelete;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem добавитьРаботуыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьВыбраннуюРаботуToolStripMenuItem;
     }
 }

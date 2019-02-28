@@ -56,7 +56,7 @@ namespace ServiceStationManager
         private void btSearch_Click(object sender, EventArgs e)
         {
             dgvCars.Rows.Clear();
-            db.SearchInCars(tbSearch.Text, dgvCars);
+            db.SearchInCars(toolStripTBSearch.Text, dgvCars);
         }
     }
 }

@@ -37,9 +37,10 @@
             this.dgvAboutCar.AllowUserToAddRows = false;
             this.dgvAboutCar.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvAboutCar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAboutCar.Location = new System.Drawing.Point(12, 12);
+            this.dgvAboutCar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAboutCar.Location = new System.Drawing.Point(0, 0);
             this.dgvAboutCar.Name = "dgvAboutCar";
-            this.dgvAboutCar.Size = new System.Drawing.Size(413, 59);
+            this.dgvAboutCar.Size = new System.Drawing.Size(439, 86);
             this.dgvAboutCar.TabIndex = 1;
             // 
             // FormAboutCar

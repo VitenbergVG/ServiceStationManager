@@ -28,24 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btAdd = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvWorkHoursRepairs = new System.Windows.Forms.DataGridView();
-            this.btDelete = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.добавитьРаботуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьВыбраннуюСменуСотрудникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkHoursRepairs)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btAdd
-            // 
-            this.btAdd.BackColor = System.Drawing.Color.SeaShell;
-            this.btAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAdd.Location = new System.Drawing.Point(994, 22);
-            this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(98, 37);
-            this.btAdd.TabIndex = 8;
-            this.btAdd.Text = "Добавить";
-            this.btAdd.UseVisualStyleBackColor = false;
-            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // dgvWorkHoursRepairs
             // 
@@ -54,32 +44,47 @@
             this.dgvWorkHoursRepairs.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvWorkHoursRepairs.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvWorkHoursRepairs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvWorkHoursRepairs.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvWorkHoursRepairs.Location = new System.Drawing.Point(12, 12);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWorkHoursRepairs.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvWorkHoursRepairs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvWorkHoursRepairs.Location = new System.Drawing.Point(0, 24);
             this.dgvWorkHoursRepairs.Name = "dgvWorkHoursRepairs";
             this.dgvWorkHoursRepairs.ReadOnly = true;
-            this.dgvWorkHoursRepairs.Size = new System.Drawing.Size(965, 497);
+            this.dgvWorkHoursRepairs.Size = new System.Drawing.Size(1103, 499);
             this.dgvWorkHoursRepairs.TabIndex = 7;
             this.dgvWorkHoursRepairs.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvWorkHoursRepairs_CellMouseDoubleClick);
             // 
-            // btDelete
+            // menuStrip1
             // 
-            this.btDelete.BackColor = System.Drawing.Color.SeaShell;
-            this.btDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDelete.Location = new System.Drawing.Point(994, 82);
-            this.btDelete.Name = "btDelete";
-            this.btDelete.Size = new System.Drawing.Size(98, 37);
-            this.btDelete.TabIndex = 8;
-            this.btDelete.Text = "Удалить";
-            this.btDelete.UseVisualStyleBackColor = false;
-            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
+            this.menuStrip1.BackColor = System.Drawing.Color.SeaShell;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьРаботуToolStripMenuItem,
+            this.удалитьВыбраннуюСменуСотрудникаToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1103, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // добавитьРаботуToolStripMenuItem
+            // 
+            this.добавитьРаботуToolStripMenuItem.Name = "добавитьРаботуToolStripMenuItem";
+            this.добавитьРаботуToolStripMenuItem.Size = new System.Drawing.Size(121, 20);
+            this.добавитьРаботуToolStripMenuItem.Text = "Добавить работу...";
+            this.добавитьРаботуToolStripMenuItem.Click += new System.EventHandler(this.btAdd_Click);
+            // 
+            // удалитьВыбраннуюСменуСотрудникаToolStripMenuItem
+            // 
+            this.удалитьВыбраннуюСменуСотрудникаToolStripMenuItem.Name = "удалитьВыбраннуюСменуСотрудникаToolStripMenuItem";
+            this.удалитьВыбраннуюСменуСотрудникаToolStripMenuItem.Size = new System.Drawing.Size(234, 20);
+            this.удалитьВыбраннуюСменуСотрудникаToolStripMenuItem.Text = "Удалить выбранную смену сотрудника";
+            this.удалитьВыбраннуюСменуСотрудникаToolStripMenuItem.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // FormWorkHoursRepairs
             // 
@@ -87,21 +92,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(1103, 523);
-            this.Controls.Add(this.btDelete);
-            this.Controls.Add(this.btAdd);
             this.Controls.Add(this.dgvWorkHoursRepairs);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormWorkHoursRepairs";
             this.Text = "Расписание ремнотных работ";
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkHoursRepairs)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btAdd;
         public System.Windows.Forms.DataGridView dgvWorkHoursRepairs;
-        private System.Windows.Forms.Button btDelete;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem добавитьРаботуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьВыбраннуюСменуСотрудникаToolStripMenuItem;
     }
 }

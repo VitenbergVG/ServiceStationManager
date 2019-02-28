@@ -28,35 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btDelete = new System.Windows.Forms.Button();
-            this.btAdd = new System.Windows.Forms.Button();
             this.dgvEmployees = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.добавитьСотрудникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьВыбранногоСотрудникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btDelete
-            // 
-            this.btDelete.BackColor = System.Drawing.Color.SeaShell;
-            this.btDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDelete.Location = new System.Drawing.Point(842, 65);
-            this.btDelete.Name = "btDelete";
-            this.btDelete.Size = new System.Drawing.Size(98, 37);
-            this.btDelete.TabIndex = 9;
-            this.btDelete.Text = "Удалить";
-            this.btDelete.UseVisualStyleBackColor = false;
-            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
-            // 
-            // btAdd
-            // 
-            this.btAdd.BackColor = System.Drawing.Color.SeaShell;
-            this.btAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAdd.Location = new System.Drawing.Point(842, 12);
-            this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(98, 37);
-            this.btAdd.TabIndex = 8;
-            this.btAdd.Text = "Добавить";
-            this.btAdd.UseVisualStyleBackColor = false;
-            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // dgvEmployees
             // 
@@ -64,11 +42,38 @@
             this.dgvEmployees.AllowUserToDeleteRows = false;
             this.dgvEmployees.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployees.Location = new System.Drawing.Point(12, 12);
+            this.dgvEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvEmployees.Location = new System.Drawing.Point(0, 24);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.ReadOnly = true;
-            this.dgvEmployees.Size = new System.Drawing.Size(799, 581);
+            this.dgvEmployees.Size = new System.Drawing.Size(959, 581);
             this.dgvEmployees.TabIndex = 7;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.SeaShell;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьСотрудникаToolStripMenuItem,
+            this.удалитьВыбранногоСотрудникаToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(959, 24);
+            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // добавитьСотрудникаToolStripMenuItem
+            // 
+            this.добавитьСотрудникаToolStripMenuItem.Name = "добавитьСотрудникаToolStripMenuItem";
+            this.добавитьСотрудникаToolStripMenuItem.Size = new System.Drawing.Size(146, 20);
+            this.добавитьСотрудникаToolStripMenuItem.Text = "Добавить сотрудника...";
+            this.добавитьСотрудникаToolStripMenuItem.Click += new System.EventHandler(this.btAdd_Click);
+            // 
+            // удалитьВыбранногоСотрудникаToolStripMenuItem
+            // 
+            this.удалитьВыбранногоСотрудникаToolStripMenuItem.Name = "удалитьВыбранногоСотрудникаToolStripMenuItem";
+            this.удалитьВыбранногоСотрудникаToolStripMenuItem.Size = new System.Drawing.Size(200, 20);
+            this.удалитьВыбранногоСотрудникаToolStripMenuItem.Text = "Удалить выбранного сотрудника";
+            this.удалитьВыбранногоСотрудникаToolStripMenuItem.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // FormEmployees
             // 
@@ -76,21 +81,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(959, 605);
-            this.Controls.Add(this.btDelete);
-            this.Controls.Add(this.btAdd);
             this.Controls.Add(this.dgvEmployees);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormEmployees";
             this.Text = "Сотрудники";
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btDelete;
-        private System.Windows.Forms.Button btAdd;
         public System.Windows.Forms.DataGridView dgvEmployees;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem добавитьСотрудникаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьВыбранногоСотрудникаToolStripMenuItem;
     }
 }

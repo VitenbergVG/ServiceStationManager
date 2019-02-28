@@ -28,56 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btSearch = new System.Windows.Forms.Button();
-            this.tbSearch = new System.Windows.Forms.TextBox();
-            this.btDelete = new System.Windows.Forms.Button();
-            this.btAdd = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCars));
             this.dgvCars = new System.Windows.Forms.DataGridView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTBSearch = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btSearch
-            // 
-            this.btSearch.BackColor = System.Drawing.Color.SeaShell;
-            this.btSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btSearch.Location = new System.Drawing.Point(518, 3);
-            this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(98, 37);
-            this.btSearch.TabIndex = 15;
-            this.btSearch.Text = "Поиск";
-            this.btSearch.UseVisualStyleBackColor = false;
-            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
-            // 
-            // tbSearch
-            // 
-            this.tbSearch.Location = new System.Drawing.Point(12, 12);
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(490, 20);
-            this.tbSearch.TabIndex = 14;
-            // 
-            // btDelete
-            // 
-            this.btDelete.BackColor = System.Drawing.Color.SeaShell;
-            this.btDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDelete.Location = new System.Drawing.Point(829, 74);
-            this.btDelete.Name = "btDelete";
-            this.btDelete.Size = new System.Drawing.Size(98, 37);
-            this.btDelete.TabIndex = 13;
-            this.btDelete.Text = "Удалить";
-            this.btDelete.UseVisualStyleBackColor = false;
-            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
-            // 
-            // btAdd
-            // 
-            this.btAdd.BackColor = System.Drawing.Color.SeaShell;
-            this.btAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAdd.Location = new System.Drawing.Point(829, 12);
-            this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(98, 37);
-            this.btAdd.TabIndex = 12;
-            this.btAdd.Text = "Добавить";
-            this.btAdd.UseVisualStyleBackColor = false;
-            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // dgvCars
             // 
@@ -86,11 +48,74 @@
             this.dgvCars.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvCars.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCars.Location = new System.Drawing.Point(12, 46);
+            this.dgvCars.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvCars.Location = new System.Drawing.Point(0, 25);
+            this.dgvCars.Margin = new System.Windows.Forms.Padding(0);
             this.dgvCars.Name = "dgvCars";
             this.dgvCars.ReadOnly = true;
-            this.dgvCars.Size = new System.Drawing.Size(799, 528);
+            this.dgvCars.Size = new System.Drawing.Size(944, 560);
             this.dgvCars.TabIndex = 11;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.BackColor = System.Drawing.Color.SeaShell;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripSeparator2,
+            this.toolStripSeparator1,
+            this.toolStripTBSearch,
+            this.toolStripButton3});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(944, 25);
+            this.toolStrip1.TabIndex = 16;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(142, 22);
+            this.toolStripButton1.Text = "Добавить автомобиль...";
+            this.toolStripButton1.Click += new System.EventHandler(this.btAdd_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(193, 22);
+            this.toolStripButton2.Text = "Удалить выбранный автомобиль";
+            this.toolStripButton2.Click += new System.EventHandler(this.btDelete_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripTBSearch
+            // 
+            this.toolStripTBSearch.Name = "toolStripTBSearch";
+            this.toolStripTBSearch.Size = new System.Drawing.Size(300, 25);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(46, 22);
+            this.toolStripButton3.Text = "Поиск";
+            this.toolStripButton3.Click += new System.EventHandler(this.btSearch_Click);
             // 
             // FormCars
             // 
@@ -98,26 +123,27 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(944, 585);
-            this.Controls.Add(this.btSearch);
-            this.Controls.Add(this.tbSearch);
-            this.Controls.Add(this.btDelete);
-            this.Controls.Add(this.btAdd);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dgvCars);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormCars";
             this.Text = "Автомобили клиентов";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btSearch;
-        private System.Windows.Forms.TextBox tbSearch;
-        private System.Windows.Forms.Button btDelete;
-        private System.Windows.Forms.Button btAdd;
         public System.Windows.Forms.DataGridView dgvCars;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTBSearch;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }

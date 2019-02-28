@@ -47,7 +47,7 @@ namespace ServiceStationManager
         private void btSearch_Click(object sender, EventArgs e)
         {
             dgvClients.Rows.Clear();
-            db.SearchInClients(tbSearch.Text, dgvClients);
+            db.SearchInClients(toolStripTBSearch.Text, dgvClients);
         }
 
         private void dgvClients_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

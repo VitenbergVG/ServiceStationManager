@@ -28,35 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btDelete = new System.Windows.Forms.Button();
-            this.btAdd = new System.Windows.Forms.Button();
             this.dgvActions = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.добавитьАкциюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьВыделеннуюАкциюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActions)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btDelete
-            // 
-            this.btDelete.BackColor = System.Drawing.Color.SeaShell;
-            this.btDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDelete.Location = new System.Drawing.Point(1151, 64);
-            this.btDelete.Name = "btDelete";
-            this.btDelete.Size = new System.Drawing.Size(98, 37);
-            this.btDelete.TabIndex = 5;
-            this.btDelete.Text = "Удалить";
-            this.btDelete.UseVisualStyleBackColor = false;
-            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
-            // 
-            // btAdd
-            // 
-            this.btAdd.BackColor = System.Drawing.Color.SeaShell;
-            this.btAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAdd.Location = new System.Drawing.Point(1151, 12);
-            this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(98, 37);
-            this.btAdd.TabIndex = 6;
-            this.btAdd.Text = "Добавить";
-            this.btAdd.UseVisualStyleBackColor = false;
-            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // dgvActions
             // 
@@ -65,11 +43,38 @@
             this.dgvActions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvActions.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvActions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvActions.Location = new System.Drawing.Point(12, 12);
+            this.dgvActions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvActions.Location = new System.Drawing.Point(0, 24);
             this.dgvActions.Name = "dgvActions";
             this.dgvActions.ReadOnly = true;
-            this.dgvActions.Size = new System.Drawing.Size(1120, 466);
+            this.dgvActions.Size = new System.Drawing.Size(1258, 472);
             this.dgvActions.TabIndex = 4;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.SeaShell;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьАкциюToolStripMenuItem,
+            this.удалитьВыделеннуюАкциюToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1258, 24);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // добавитьАкциюToolStripMenuItem
+            // 
+            this.добавитьАкциюToolStripMenuItem.Name = "добавитьАкциюToolStripMenuItem";
+            this.добавитьАкциюToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.добавитьАкциюToolStripMenuItem.Text = "Добавить акцию...";
+            this.добавитьАкциюToolStripMenuItem.Click += new System.EventHandler(this.btAdd_Click);
+            // 
+            // удалитьВыделеннуюАкциюToolStripMenuItem
+            // 
+            this.удалитьВыделеннуюАкциюToolStripMenuItem.Name = "удалитьВыделеннуюАкциюToolStripMenuItem";
+            this.удалитьВыделеннуюАкциюToolStripMenuItem.Size = new System.Drawing.Size(175, 20);
+            this.удалитьВыделеннуюАкциюToolStripMenuItem.Text = "Удалить выделенную акцию";
+            this.удалитьВыделеннуюАкциюToolStripMenuItem.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // FormActions
             // 
@@ -77,21 +82,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(1258, 496);
-            this.Controls.Add(this.btDelete);
-            this.Controls.Add(this.btAdd);
             this.Controls.Add(this.dgvActions);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormActions";
             this.Text = "Акции";
             ((System.ComponentModel.ISupportInitialize)(this.dgvActions)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btDelete;
-        private System.Windows.Forms.Button btAdd;
         public System.Windows.Forms.DataGridView dgvActions;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem добавитьАкциюToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьВыделеннуюАкциюToolStripMenuItem;
     }
 }

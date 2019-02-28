@@ -18,18 +18,34 @@ namespace ServiceStationManager
         {
             InitializeComponent();
             listHelpImages.Add(Properties.Resources.Help1);
-            listHelpImages.Add(Properties.Resources.disk_multiple);
-            listHelpImages.Add(Properties.Resources.help);
         }
 
         private void btNext_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = listHelpImages[currentIndex++];
+            if (currentIndex != listHelpImages.Count - 1)
+            {
+                pictureBox1.Image = listHelpImages[currentIndex++];
+            }
+            else
+            {
+                currentIndex = 0;
+                pictureBox1.Image = listHelpImages[currentIndex];
+            }
+
         }
 
         private void btPrev_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = listHelpImages[currentIndex--];
+            if (currentIndex != 0)
+            {
+                pictureBox1.Image = listHelpImages[currentIndex--];
+            }
+            else
+            {
+                currentIndex = listHelpImages.Count - 1;
+                pictureBox1.Image = listHelpImages[currentIndex];
+
+            }
         }
     }
 }
