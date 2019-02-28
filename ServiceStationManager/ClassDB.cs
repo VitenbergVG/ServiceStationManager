@@ -627,12 +627,12 @@ namespace ServiceStationManager
         }
 
         //Добавить или редактировать информацию о клиеенте и его автомобиле
-        public void UpdateOrInsertClient(string idClient, string surname, string name, string patronimyc,
+        public void UpdateOrInsertClient(int idClient, string surname, string name, string patronimyc,
             string phoneNumber, string brand, string model, string yearCreated, string numSTS)
         {
             conn.Open();
 
-            if (Convert.ToInt32(idClient) != -1)
+            if (idClient != -1)
             {
                 MySqlCommand command = new MySqlCommand("INSERT INTO cars SET number_sts = '" + numSTS + "', " +
                     "brand = '" + brand + "', model = '" + model + "', year_created = '" + yearCreated + "' " +
@@ -654,11 +654,17 @@ namespace ServiceStationManager
                     "ON DUPLICATE KEY UPDATE number_sts = '" + numSTS + "', " +
                     "brand = '" + brand + "', model = '" + model + "', year_created = '" + yearCreated + "';" +
                     "INSERT INTO clients (surname, name, patronimyc, phone_number, cars_number_sts) " +
-                    "VALUES('" + surname + "', '" + name + "', '" + patronimyc + "', '" + phoneNumber + "', '" + numSTS + "');", conn);
+                    "VALUES('" + surname + "', '" + name + "', '" + patronimyc + "', '" + phoneNumber + 
+                    "', '" + numSTS + "');" +
+                    "SELECT last_insert_id();", conn);
                 MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    idClient = Convert.ToInt32(reader[0].ToString());
+                }
                 reader.Close();
             }
-
             conn.Close();
         }
 
@@ -861,7 +867,7 @@ namespace ServiceStationManager
         {
             conn.Open();
             MySqlCommand command = new MySqlCommand("SELECT current_repairs_id_current_repair, repairs.name, " +
-                "employees.surname, employees.id_employee, work_hours.dates_of_month, quantity_days " +
+                "employees.surname, employees.id_employee, repairs.cost, work_hours.dates_of_month, quantity_days " +
                 "FROM sto_db.extention_repairs " +
                 "JOIN current_repairs ON extention_repairs.current_repairs_id_current_repair = " +
                 "current_repairs.id_current_repair " +
@@ -871,16 +877,74 @@ namespace ServiceStationManager
                 "WHERE id_extention_repairs = '" + idExtensionRepair + "'; ", conn);
             MySqlDataReader reader = command.ExecuteReader();
 
+            
             while (reader.Read())
             {
                 idCurrentRepairs.Add(Convert.ToInt32(reader[0].ToString()));
                 clbRepairs.Items.Add(reader[1].ToString());
                 lbEmployeesRepairs.Items.Add(reader[2].ToString() + "/id: " + reader[3].ToString());
+                lbRepairsCosts.Items.Add(reader[4].ToString());
+
                 //SearchCostRepairs(reader[1].ToString(), lbRepairsCosts);
             }
 
             reader.Close();
             conn.Close();
+        }
+
+        //Поиск данных по продленным работам для их дальнейшего выбора
+        public List<string[]> SearchExtentionWorksForPic(DataGridView dataSource)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT distinct clients.id_client, clients.surname, " +
+            "clients.name, clients.phone_number, cars.brand, cars.model, quantity_days " +
+            "FROM extention_repairs " +
+            "JOIN current_repairs ON extention_repairs.current_repairs_id_current_repair = " +
+            "current_repairs.id_current_repair " +
+            "JOIN clients ON current_repairs.clients_id_client = clients.id_client " +
+            "JOIN cars ON clients.cars_number_sts = cars.number_sts; ", conn);
+            List<string[]> data = new List<string[]>();
+            MySqlDataReader reader = command.ExecuteReader();
+
+            int count = dataSource.ColumnCount;
+            while (reader.Read())
+            {
+                data.Add(new string[count]);
+                for (int i = 0; i < count; i++)
+                {
+                    data[data.Count - 1][i] = reader[i].ToString();
+                }
+            }
+            reader.Close();
+            conn.Close();
+            foreach (string[] s in data)
+            {
+                dataSource.Rows.Add(s);
+            }
+            return data;
+        }
+
+        //Получение списка всех продленных работ по конкретному клиенту
+        public List<int> GetExtensionWorksForPickClient(int idClient)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT id_extention_repairs FROM extention_repairs " +
+                "JOIN current_repairs ON extention_repairs.current_repairs_id_current_repair = " +
+                "current_repairs.id_current_repair " +
+                "JOIN clients ON current_repairs.clients_id_client = clients.id_client " +
+                "WHERE clients.id_client = '" + idClient + "'; ", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<int> resIdExtensionWorks = new List<int>();
+
+            while (reader.Read())
+            {
+                resIdExtensionWorks.Add(Convert.ToInt32(reader[0].ToString()));
+            }
+
+            reader.Close();
+            conn.Close();
+            return resIdExtensionWorks;
         }
     }
 }

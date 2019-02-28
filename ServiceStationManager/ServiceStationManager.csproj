@@ -145,6 +145,18 @@
     <Compile Include="FormAboutCurrentRepair.Designer.cs">
       <DependentUpon>FormAboutCurrentRepair.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHelp.Designer.cs">
+      <DependentUpon>FormHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPicExtensionClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPicExtensionClients.Designer.cs">
+      <DependentUpon>FormPicExtensionClients.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\FormActions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,8 +270,14 @@
     <EmbeddedResource Include="FormAboutCurrentRepair.resx">
       <DependentUpon>FormAboutCurrentRepair.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormHelp.resx">
+      <DependentUpon>FormHelp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPicClient.resx">
       <DependentUpon>FormPicClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPicExtensionClients.resx">
+      <DependentUpon>FormPicExtensionClients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\FormActions.resx">
       <DependentUpon>FormActions.cs</DependentUpon>
@@ -368,6 +386,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\status_away.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Новый точечный рисунок.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Хелп1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_left.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

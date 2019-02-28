@@ -43,6 +43,7 @@ namespace ServiceStationManager
             }
         }
 
+        //Для отложенных клиентов
         public UserControlClientsToday(ClassDB db, TabPage tabPage, List<int> idExtentionRepairs, int quantityDaysForExtensionWorks)
         {
             InitializeComponent();
@@ -317,7 +318,7 @@ namespace ServiceStationManager
                 return;
             }
 
-            db.UpdateOrInsertClient(idClient.ToString(), tbSurnameDriver.Text, tbNameDriver.Text, tbPatronimycDriver.Text,
+            db.UpdateOrInsertClient(idClient, tbSurnameDriver.Text, tbNameDriver.Text, tbPatronimycDriver.Text,
                 tbPhoneNumber.Text, tbBrandCar.Text, tbModelCar.Text, cbYearCreated.Text,
                 tbNumberSTSCar.Text);
             tabPage.Text = tbNameDriver.Text + "/" + tbModelCar.Text;
@@ -389,6 +390,14 @@ namespace ServiceStationManager
         private void toolStripComboBoxQuantityDays_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back && (e.KeyChar != (char)Keys.Delete)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Delete))
             {
                 e.Handled = true;
             }

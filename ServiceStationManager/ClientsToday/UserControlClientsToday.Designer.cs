@@ -244,6 +244,7 @@
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(190, 20);
             this.tbPhoneNumber.TabIndex = 5;
+            this.tbPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPhoneNumber_KeyPress);
             // 
             // tbPatronimycDriver
             // 

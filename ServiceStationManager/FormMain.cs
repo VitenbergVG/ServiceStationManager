@@ -121,7 +121,7 @@ namespace ServiceStationManager
                     return;
                 }
 
-                db.UpdateOrInsertClient(ucct.idClient.ToString(), ucct.tbSurnameDriver.Text, ucct.tbNameDriver.Text, ucct.tbPatronimycDriver.Text,
+                db.UpdateOrInsertClient(ucct.idClient, ucct.tbSurnameDriver.Text, ucct.tbNameDriver.Text, ucct.tbPatronimycDriver.Text,
                     ucct.tbPhoneNumber.Text, ucct.tbBrandCar.Text, ucct.tbModelCar.Text, ucct.cbYearCreated.Text,
                     ucct.tbNumberSTSCar.Text);
                 newTabPage.Text = ucct.tbNameDriver.Text + "/" + ucct.tbModelCar.Text;
@@ -165,7 +165,7 @@ namespace ServiceStationManager
                     return;
                 }
 
-                db.UpdateOrInsertClient(ucct.idClient.ToString(), ucct.tbSurnameDriver.Text, ucct.tbNameDriver.Text, ucct.tbPatronimycDriver.Text,
+                db.UpdateOrInsertClient(ucct.idClient, ucct.tbSurnameDriver.Text, ucct.tbNameDriver.Text, ucct.tbPatronimycDriver.Text,
                     ucct.tbPhoneNumber.Text, ucct.tbBrandCar.Text, ucct.tbModelCar.Text, ucct.cbYearCreated.Text,
                     ucct.tbNumberSTSCar.Text);
                 newTabPage.Text = ucct.tbNameDriver.Text + "/" + ucct.tbModelCar.Text;
@@ -209,7 +209,7 @@ namespace ServiceStationManager
                     return;
                 }
 
-                db.UpdateOrInsertClient(ucct.idClient.ToString(), ucct.tbSurnameDriver.Text, ucct.tbNameDriver.Text, ucct.tbPatronimycDriver.Text,
+                db.UpdateOrInsertClient(ucct.idClient, ucct.tbSurnameDriver.Text, ucct.tbNameDriver.Text, ucct.tbPatronimycDriver.Text,
                     ucct.tbPhoneNumber.Text, ucct.tbBrandCar.Text, ucct.tbModelCar.Text, ucct.cbYearCreated.Text,
                     ucct.tbNumberSTSCar.Text);
                 newTabPage.Text = ucct.tbNameDriver.Text + "/" + ucct.tbModelCar.Text;
@@ -261,6 +261,31 @@ namespace ServiceStationManager
             {
                 CreateTab(idExtentionClients[i].ToString(), idExtentionRepairs, quantityDays[i]);
             }
+
+            if (tabControl1.TabCount != 0)
+            {
+                toolStripBtDeleteClient.Enabled = true;
+            }
+        }
+
+        private void выбратьКлиентаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPicExtensionClients fpec = new FormPicExtensionClients(db);
+            fpec.ShowDialog();
+            
+            List<int> idExtensionRepairs = db.GetExtensionWorksForPickClient(fpec.currentRow);
+            CreateTab(fpec.currentRow.ToString(), idExtensionRepairs, fpec.quantityDays);
+
+            if (tabControl1.TabCount != 0)
+            {
+                toolStripBtDeleteClient.Enabled = true;
+            }
+        }
+
+        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormHelp fh = new FormHelp();
+            fh.ShowDialog();
         }
     }
 }

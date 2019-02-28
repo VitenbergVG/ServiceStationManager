@@ -41,6 +41,8 @@
             this.списокАкцийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.видыРемонтныхРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripBtNewClient = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtDeleteClient = new System.Windows.Forms.ToolStripButton();
@@ -52,6 +54,9 @@
             this.toolStripBtAddExtentionClients = new System.Windows.Forms.ToolStripSplitButton();
             this.выбратьКлиентаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.всеОтложенныеКлиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBtHelp = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -160,10 +165,26 @@
             // 
             // оПрограммеToolStripMenuItem
             // 
+            this.оПрограммеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.справкаToolStripMenuItem,
+            this.оПрограммеToolStripMenuItem1});
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
-            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.оПрограммеToolStripMenuItem.Text = "Справка";
+            // 
+            // справкаToolStripMenuItem
+            // 
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.справкаToolStripMenuItem.Text = "Помощь";
+            this.справкаToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
+            // 
+            // оПрограммеToolStripMenuItem1
+            // 
+            this.оПрограммеToolStripMenuItem1.Name = "оПрограммеToolStripMenuItem1";
+            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem1.Text = "О программе";
+            this.оПрограммеToolStripMenuItem1.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -178,7 +199,10 @@
             this.toolStripBtSave,
             this.toolStripSeparator3,
             this.toolStripSeparator4,
-            this.toolStripBtAddExtentionClients});
+            this.toolStripBtAddExtentionClients,
+            this.toolStripSeparator5,
+            this.toolStripSeparator6,
+            this.toolStripBtHelp});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1155, 27);
@@ -246,12 +270,14 @@
             this.toolStripBtAddExtentionClients.Name = "toolStripBtAddExtentionClients";
             this.toolStripBtAddExtentionClients.Size = new System.Drawing.Size(36, 24);
             this.toolStripBtAddExtentionClients.Text = "Добавить все продлённые работы";
+            this.toolStripBtAddExtentionClients.ButtonClick += new System.EventHandler(this.выбратьКлиентаToolStripMenuItem_Click);
             // 
             // выбратьКлиентаToolStripMenuItem
             // 
             this.выбратьКлиентаToolStripMenuItem.Name = "выбратьКлиентаToolStripMenuItem";
             this.выбратьКлиентаToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.выбратьКлиентаToolStripMenuItem.Text = "Выбрать клиента";
+            this.выбратьКлиентаToolStripMenuItem.Click += new System.EventHandler(this.выбратьКлиентаToolStripMenuItem_Click);
             // 
             // всеОтложенныеКлиентыToolStripMenuItem
             // 
@@ -259,6 +285,26 @@
             this.всеОтложенныеКлиентыToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.всеОтложенныеКлиентыToolStripMenuItem.Text = "Все продленные клиенты";
             this.всеОтложенныеКлиентыToolStripMenuItem.Click += new System.EventHandler(this.всеОтложенныеКлиентыToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripBtHelp
+            // 
+            this.toolStripBtHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtHelp.Image = global::ServiceStationManager.Properties.Resources.help;
+            this.toolStripBtHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtHelp.Name = "toolStripBtHelp";
+            this.toolStripBtHelp.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBtHelp.Text = "Помощь";
+            this.toolStripBtHelp.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -320,5 +366,10 @@
         private System.Windows.Forms.ToolStripSplitButton toolStripBtAddExtentionClients;
         private System.Windows.Forms.ToolStripMenuItem выбратьКлиентаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem всеОтложенныеКлиентыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripButton toolStripBtHelp;
     }
 }
