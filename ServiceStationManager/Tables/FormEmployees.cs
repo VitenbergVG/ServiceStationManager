@@ -21,13 +21,14 @@ namespace ServiceStationManager
 
             this.db = db;
 
-            dgvEmployees.ColumnCount = 6;
+            dgvEmployees.ColumnCount = 7;
             dgvEmployees.Columns[0].HeaderCell.Value = "ID сотрудника";
             dgvEmployees.Columns[1].HeaderCell.Value = "Фамилия";
             dgvEmployees.Columns[2].HeaderCell.Value = "Имя";
             dgvEmployees.Columns[3].HeaderCell.Value = "Отчество";
             dgvEmployees.Columns[4].HeaderCell.Value = "Мобильный телефон";
             dgvEmployees.Columns[5].HeaderCell.Value = "Должность";
+            dgvEmployees.Columns[6].HeaderCell.Value = "Соредняя оценка";
             db.LoadTables("employees", dgvEmployees);
         }
 
