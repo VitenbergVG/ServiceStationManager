@@ -32,7 +32,7 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvCars.CurrentRow.Cells[0].Value);
+            string id = dgvCars.CurrentRow.Cells[0].Value.ToString();
 
             if (db.Delete("cars", "number_sts", id) == 0)
             {
@@ -57,6 +57,33 @@ namespace ServiceStationManager
         {
             dgvCars.Rows.Clear();
             db.SearchInCars(toolStripTBSearch.Text, dgvCars);
+        }
+
+        private void toolStripBtEdit_Click(object sender, EventArgs e)
+        {
+            string id = dgvCars.CurrentRow.Cells[0].Value.ToString();
+            string brand = dgvCars.CurrentRow.Cells[1].Value.ToString();
+            string model = dgvCars.CurrentRow.Cells[2].Value.ToString();
+            string yearCreated = dgvCars.CurrentRow.Cells[3].Value.ToString();
+            string dateTO = dgvCars.CurrentRow.Cells[4].Value.ToString();
+
+            FormAddCar fac = new FormAddCar(db, id, brand, model, yearCreated, dateTO);
+            fac.ShowDialog();
+            dgvCars.Rows.Clear();
+            db.LoadTables("cars", dgvCars);
+        }
+
+        private void toolStripTBSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btSearch_Click(this, new EventArgs());
+            }
+        }
+
+        private void dgvCars_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgvCars.CurrentCell = dgvCars.Rows[e.RowIndex].Cells[e.ColumnIndex];
         }
     }
 }

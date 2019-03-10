@@ -157,6 +157,12 @@
     <Compile Include="FormPicExtensionClients.Designer.cs">
       <DependentUpon>FormPicExtensionClients.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRequestProcessing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRequestProcessing.Designer.cs">
+      <DependentUpon>FormRequestProcessing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\FormActions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPicExtensionClients.resx">
       <DependentUpon>FormPicExtensionClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRequestProcessing.resx">
+      <DependentUpon>FormRequestProcessing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\FormActions.resx">
       <DependentUpon>FormActions.cs</DependentUpon>

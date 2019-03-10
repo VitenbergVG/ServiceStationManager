@@ -42,7 +42,7 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvEmployees.CurrentRow.Cells[0].Value);
+            string id = dgvEmployees.CurrentRow.Cells[0].Value.ToString();
 
             if (db.Delete("employees", "id_employee", id) == 0)
             {

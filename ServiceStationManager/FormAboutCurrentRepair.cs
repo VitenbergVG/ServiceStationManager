@@ -45,7 +45,7 @@ namespace ServiceStationManager
 
         private void toolStripBtDeleteRepair_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvInfoCurrentRepairs.CurrentRow.Cells[0].Value);
+            string id = dgvInfoCurrentRepairs.CurrentRow.Cells[0].Value.ToString();
             db.Delete("current_repairs", "id_current_repair", id);
             dgvInfoCurrentRepairs.Rows.Clear();
             db.ShowInfoCurrentRepair(surnameEmployee, date, dgvInfoCurrentRepairs);

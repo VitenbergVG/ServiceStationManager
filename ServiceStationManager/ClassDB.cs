@@ -54,7 +54,7 @@ namespace ServiceStationManager
         }
 
         //Удаление элементов
-        public int Delete(string table, string columnID, int id)//Вернет 0 в случае ошибки и 1 в случае если все норм
+        public int Delete(string table, string columnID, string id)//Вернет 0 в случае ошибки и 1 в случае если все норм
         {
             conn.Open();
             MySqlCommand command = new MySqlCommand("DELETE FROM " + table + " WHERE " + columnID + " = '"
@@ -79,6 +79,17 @@ namespace ServiceStationManager
         {
             conn.Open();
             MySqlCommand command = new MySqlCommand("INSERT INTO " + table + query, conn);
+            MySqlDataReader reader = command.ExecuteReader();
+            reader.Close();
+            conn.Close();
+        }
+
+        //Редактирование элементов
+        public void Edit(string table, string columnID, string id, string query)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("UPDATE " + table + " SET " + query + 
+                " WHERE " + columnID + " = '" + id + "';", conn);
             MySqlDataReader reader = command.ExecuteReader();
             reader.Close();
             conn.Close();

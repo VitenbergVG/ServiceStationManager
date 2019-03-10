@@ -31,7 +31,7 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvClients.CurrentRow.Cells[0].Value);
+            string id = dgvClients.CurrentRow.Cells[0].Value.ToString();
 
             if (db.Delete("clients", "id_client", id) == 0)
             {
@@ -63,6 +63,34 @@ namespace ServiceStationManager
             fAdd.ShowDialog();
             dgvClients.Rows.Clear();
             db.LoadTables("clients", dgvClients);
+        }
+
+        private void toolStripBtEdit_Click(object sender, EventArgs e)
+        {
+            string idClient = dgvClients.CurrentRow.Cells[0].Value.ToString();
+            string surname = dgvClients.CurrentRow.Cells[1].Value.ToString();
+            string name = dgvClients.CurrentRow.Cells[2].Value.ToString();
+            string patronimyc = dgvClients.CurrentRow.Cells[3].Value.ToString();
+            string phone = dgvClients.CurrentRow.Cells[4].Value.ToString();
+            string numSTS = dgvClients.CurrentRow.Cells[5].Value.ToString();
+
+            FormAddClient fac = new FormAddClient(db, idClient, surname, name, patronimyc, phone, numSTS);
+            fac.ShowDialog();
+            dgvClients.Rows.Clear();
+            db.LoadTables("clients", dgvClients);
+        }
+
+        private void toolStripTBSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btSearch_Click(this, new EventArgs());
+            }
+        }
+
+        private void dgvClients_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgvClients.CurrentCell = dgvClients.Rows[e.RowIndex].Cells[e.ColumnIndex];
         }
     }
 }

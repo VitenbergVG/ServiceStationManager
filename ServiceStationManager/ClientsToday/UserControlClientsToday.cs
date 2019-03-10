@@ -285,7 +285,7 @@ namespace ServiceStationManager
             if (dialogResult == DialogResult.Yes)
             {
                 int index = clbRepairs.SelectedIndex;
-                db.Delete("current_repairs", "id_current_repair", idCurrentRepairs[clbRepairs.SelectedIndex]);
+                db.Delete("current_repairs", "id_current_repair", idCurrentRepairs[index].ToString());
                 idCurrentRepairs.RemoveAt(index);
                 clbRepairs.Items.RemoveAt(index);
                 lbEmployeesRepairs.Items.RemoveAt(index);

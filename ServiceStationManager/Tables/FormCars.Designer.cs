@@ -28,17 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCars));
             this.dgvCars = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripTBSearch = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtSearch = new System.Windows.Forms.ToolStripButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextDelete = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvCars
@@ -48,6 +54,7 @@
             this.dgvCars.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvCars.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCars.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvCars.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvCars.Location = new System.Drawing.Point(0, 25);
             this.dgvCars.Margin = new System.Windows.Forms.Padding(0);
@@ -55,6 +62,7 @@
             this.dgvCars.ReadOnly = true;
             this.dgvCars.Size = new System.Drawing.Size(944, 560);
             this.dgvCars.TabIndex = 11;
+            this.dgvCars.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvCars_CellMouseDown);
             // 
             // toolStrip1
             // 
@@ -62,10 +70,11 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripButton2,
+            this.toolStripBtEdit,
             this.toolStripSeparator2,
             this.toolStripSeparator1,
             this.toolStripTBSearch,
-            this.toolStripButton3});
+            this.toolStripBtSearch});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(944, 25);
@@ -88,9 +97,19 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(193, 22);
-            this.toolStripButton2.Text = "Удалить выбранный автомобиль";
+            this.toolStripButton2.Size = new System.Drawing.Size(125, 22);
+            this.toolStripButton2.Text = "Удалить автомобиль";
             this.toolStripButton2.Click += new System.EventHandler(this.btDelete_Click);
+            // 
+            // toolStripBtEdit
+            // 
+            this.toolStripBtEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripBtEdit.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBtEdit.Image")));
+            this.toolStripBtEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtEdit.Name = "toolStripBtEdit";
+            this.toolStripBtEdit.Size = new System.Drawing.Size(173, 22);
+            this.toolStripBtEdit.Text = "Редактировать  автомобиль...";
+            this.toolStripBtEdit.Click += new System.EventHandler(this.toolStripBtEdit_Click);
             // 
             // toolStripSeparator2
             // 
@@ -106,16 +125,39 @@
             // 
             this.toolStripTBSearch.Name = "toolStripTBSearch";
             this.toolStripTBSearch.Size = new System.Drawing.Size(300, 25);
+            this.toolStripTBSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTBSearch_KeyPress);
             // 
-            // toolStripButton3
+            // toolStripBtSearch
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(46, 22);
-            this.toolStripButton3.Text = "Поиск";
-            this.toolStripButton3.Click += new System.EventHandler(this.btSearch_Click);
+            this.toolStripBtSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripBtSearch.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBtSearch.Image")));
+            this.toolStripBtSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtSearch.Name = "toolStripBtSearch";
+            this.toolStripBtSearch.Size = new System.Drawing.Size(46, 22);
+            this.toolStripBtSearch.Text = "Поиск";
+            this.toolStripBtSearch.Click += new System.EventHandler(this.btSearch_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextEdit,
+            this.contextDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // contextEdit
+            // 
+            this.contextEdit.Name = "contextEdit";
+            this.contextEdit.Size = new System.Drawing.Size(180, 22);
+            this.contextEdit.Text = "Редактировать...";
+            this.contextEdit.Click += new System.EventHandler(this.toolStripBtEdit_Click);
+            // 
+            // contextDelete
+            // 
+            this.contextDelete.Name = "contextDelete";
+            this.contextDelete.Size = new System.Drawing.Size(180, 22);
+            this.contextDelete.Text = "Удалить";
+            this.contextDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // FormCars
             // 
@@ -131,6 +173,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,6 +187,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripTextBox toolStripTBSearch;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripBtSearch;
+        private System.Windows.Forms.ToolStripButton toolStripBtEdit;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem contextEdit;
+        private System.Windows.Forms.ToolStripMenuItem contextDelete;
     }
 }

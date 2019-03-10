@@ -41,7 +41,7 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
 
             db.Delete("repairs", "id_repair", id);
             dataGridView1.Rows.Clear();
