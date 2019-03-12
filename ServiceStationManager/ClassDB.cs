@@ -88,7 +88,7 @@ namespace ServiceStationManager
         public void Edit(string table, string columnID, string id, string query)
         {
             conn.Open();
-            MySqlCommand command = new MySqlCommand("UPDATE " + table + " SET " + query + 
+            MySqlCommand command = new MySqlCommand("UPDATE " + table + " SET " + query +
                 " WHERE " + columnID + " = '" + id + "';", conn);
             MySqlDataReader reader = command.ExecuteReader();
             reader.Close();
@@ -665,7 +665,7 @@ namespace ServiceStationManager
                     "ON DUPLICATE KEY UPDATE number_sts = '" + numSTS + "', " +
                     "brand = '" + brand + "', model = '" + model + "', year_created = '" + yearCreated + "';" +
                     "INSERT INTO clients (surname, name, patronimyc, phone_number, cars_number_sts) " +
-                    "VALUES('" + surname + "', '" + name + "', '" + patronimyc + "', '" + phoneNumber + 
+                    "VALUES('" + surname + "', '" + name + "', '" + patronimyc + "', '" + phoneNumber +
                     "', '" + numSTS + "');" +
                     "SELECT last_insert_id();", conn);
                 MySqlDataReader reader = command.ExecuteReader();
@@ -888,7 +888,7 @@ namespace ServiceStationManager
                 "WHERE id_extention_repairs = '" + idExtensionRepair + "'; ", conn);
             MySqlDataReader reader = command.ExecuteReader();
 
-            
+
             while (reader.Read())
             {
                 idCurrentRepairs.Add(Convert.ToInt32(reader[0].ToString()));
@@ -957,5 +957,67 @@ namespace ServiceStationManager
             conn.Close();
             return resIdExtensionWorks;
         }
+
+        //Получение списка всех выполненных работ по клиенту
+        public void GetPerformedRepairsForClient(string idClient, DataGridView dataSource)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT clients_id_client, cars_number_sts_car, " +
+                "repairs_id_repair, employees_id_employee, date, time FROM sto_db.performed_repairs " +
+                "WHERE clients_id_client = '" + idClient + "';", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<string[]> data = new List<string[]>();
+
+            int count = dataSource.ColumnCount;
+            while (reader.Read())
+            {
+                data.Add(new string[count]);
+                for (int i = 0; i < count; i++)
+                {
+                    data[data.Count - 1][i] = reader[i].ToString();
+                }
+            }
+            reader.Close();
+            conn.Close();
+            foreach (string[] s in data)
+            {
+                dataSource.Rows.Add(s);
+            }
+
+            reader.Close();
+            conn.Close();
+        }
+
+        //Получение списка всех выполненных работ
+        public void GetPerformedRepairs(DataGridView dataSource)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT clients_id_client, cars_number_sts_car, " +
+                "repairs_id_repair, employees_id_employee, date, time FROM sto_db.performed_repairs;", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<string[]> data = new List<string[]>();
+
+            int count = dataSource.ColumnCount;
+            while (reader.Read())
+            {
+                data.Add(new string[count]);
+                for (int i = 0; i < count; i++)
+                {
+                    data[data.Count - 1][i] = reader[i].ToString();
+                }
+            }
+            reader.Close();
+            conn.Close();
+            foreach (string[] s in data)
+            {
+                dataSource.Rows.Add(s);
+            }
+
+            reader.Close();
+            conn.Close();
+        }
     }
 }
+ 

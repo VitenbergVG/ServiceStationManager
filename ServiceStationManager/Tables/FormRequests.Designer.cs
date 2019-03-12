@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRequests));
             this.btRefresh = new System.Windows.Forms.Button();
             this.btDelete = new System.Windows.Forms.Button();
             this.dgvRequests = new System.Windows.Forms.DataGridView();
@@ -104,6 +105,7 @@
             this.Controls.Add(this.btDelete);
             this.Controls.Add(this.dgvRequests);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRequests";
             this.Text = "Заявки";
             ((System.ComponentModel.ISupportInitialize)(this.dgvRequests)).EndInit();

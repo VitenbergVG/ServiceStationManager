@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddRepair));
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.cbPosition = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbCost = new System.Windows.Forms.TextBox();
             this.btAdd = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.tbIDRepair = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -73,13 +74,13 @@
             this.label5.TabIndex = 67;
             this.label5.Text = "Цена";
             // 
-            // textBox4
+            // tbCost
             // 
-            this.textBox4.Location = new System.Drawing.Point(200, 93);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(279, 20);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
+            this.tbCost.Location = new System.Drawing.Point(200, 93);
+            this.tbCost.Name = "tbCost";
+            this.tbCost.Size = new System.Drawing.Size(279, 20);
+            this.tbCost.TabIndex = 3;
+            this.tbCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // btAdd
             // 
@@ -143,22 +144,22 @@
             this.label1.TabIndex = 61;
             this.label1.Text = "Код работы";
             // 
-            // textBox2
+            // tbName
             // 
-            this.textBox2.Location = new System.Drawing.Point(202, 34);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(279, 20);
-            this.textBox2.TabIndex = 1;
+            this.tbName.Location = new System.Drawing.Point(202, 34);
+            this.tbName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(279, 20);
+            this.tbName.TabIndex = 1;
             // 
-            // textBox1
+            // tbIDRepair
             // 
-            this.textBox1.Location = new System.Drawing.Point(202, 4);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(279, 20);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.tbIDRepair.Location = new System.Drawing.Point(202, 4);
+            this.tbIDRepair.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.tbIDRepair.Name = "tbIDRepair";
+            this.tbIDRepair.Size = new System.Drawing.Size(279, 20);
+            this.tbIDRepair.TabIndex = 6;
+            this.tbIDRepair.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // tableLayoutPanel1
             // 
@@ -167,11 +168,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tbIDRepair, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tbName, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.cbCategory, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox4, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tbCost, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.cbPosition, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 3);
@@ -198,6 +199,7 @@
             this.ClientSize = new System.Drawing.Size(495, 208);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAddRepair";
             this.Text = "Добавить ремонтную работу";
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -211,14 +213,14 @@
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.ComboBox cbPosition;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbCost;
         private System.Windows.Forms.Button btAdd;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.TextBox tbIDRepair;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

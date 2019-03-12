@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAboutCurrentRepair));
             this.dgvInfoCurrentRepairs = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripBtDeleteRepair = new System.Windows.Forms.ToolStripButton();
@@ -81,6 +82,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dgvInfoCurrentRepairs);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAboutCurrentRepair";
             this.Text = "Полная информация о проведённых работах";
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfoCurrentRepairs)).EndInit();

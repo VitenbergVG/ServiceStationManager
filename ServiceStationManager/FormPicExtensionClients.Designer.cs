@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPicExtensionClients));
             this.dgvExtentionWorks = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExtentionWorks)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +55,7 @@
             this.ClientSize = new System.Drawing.Size(761, 387);
             this.Controls.Add(this.dgvExtentionWorks);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPicExtensionClients";
             this.Text = "Кликните два раза по нужному клиенту";
             ((System.ComponentModel.ISupportInitialize)(this.dgvExtentionWorks)).EndInit();

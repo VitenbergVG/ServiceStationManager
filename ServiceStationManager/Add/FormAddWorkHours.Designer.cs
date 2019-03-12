@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddWorkHours));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cbDateOfWeek = new System.Windows.Forms.ComboBox();
@@ -321,6 +322,7 @@
             this.ClientSize = new System.Drawing.Size(583, 304);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAddWorkHours";
             this.Text = "Добавить смену/-ы сотрудникам";
             this.tabControl1.ResumeLayout(false);

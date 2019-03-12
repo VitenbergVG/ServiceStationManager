@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddClient));
             this.cbNumSTS = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btAdd = new System.Windows.Forms.Button();
@@ -197,6 +198,7 @@
             this.ClientSize = new System.Drawing.Size(416, 191);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAddClient";
             this.Text = "Добавить клиента";
             this.tableLayoutPanel1.ResumeLayout(false);

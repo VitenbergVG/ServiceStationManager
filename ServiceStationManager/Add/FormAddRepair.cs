@@ -13,6 +13,7 @@ namespace ServiceStationManager.Add
     public partial class FormAddRepair : Form
     {
         ClassDB db;
+        bool edit = false;
 
         public FormAddRepair(ClassDB db)
         {
@@ -21,22 +22,53 @@ namespace ServiceStationManager.Add
             this.db = db;
             db.SearchPosition(cbPosition);
             db.SearchCategoriesRepairs(cbCategory);
-            textBox1.Text = (db.LastRepair() + 1).ToString();
+            tbIDRepair.Text = (db.LastRepair() + 1).ToString();
+        }
+
+        public FormAddRepair(ClassDB db, string idRepair, string name, string category,
+            string cost, string position)
+        {
+            InitializeComponent();
+
+            this.db = db;
+            edit = true;
+
+            db.SearchPosition(cbPosition);
+            db.SearchCategoriesRepairs(cbCategory);
+
+            tbIDRepair.Enabled = false;
+
+            tbIDRepair.Text = idRepair;
+            tbName.Text = name;
+            cbCategory.Text = category;
+            tbCost.Text = cost;
+            cbPosition.Text = position;
         }
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "" || textBox2.Text == "" || textBox4.Text == "" || cbCategory.Text == "" || cbPosition.Text == "")
+            if (tbIDRepair.Text == "" || tbName.Text == "" || tbCost.Text == "" || cbCategory.Text == "" || cbPosition.Text == "")
             {
                 MessageBox.Show("Заполните все поля!", "Ошибка");
             }
             else
             {
                 string factQuery;
-                factQuery = "(`id_repair`, `name`, `category`, `cost`, `position_position`) VALUES('" +
-                          textBox1.Text + "', '" + textBox2.Text + "', '" + cbCategory.Text + "', '" + textBox4.Text + "', '" + cbPosition.Text + "');";
-                db.Add("repairs", factQuery);
-                this.Hide();
+
+                if (!edit)
+                {
+                    factQuery = "(`id_repair`, `name`, `category`, `cost`, `position_position`) VALUES('" +
+                            tbIDRepair.Text + "', '" + tbName.Text + "', '" + cbCategory.Text + "', '" + tbCost.Text + "', '" + cbPosition.Text + "');";
+                    db.Add("repairs", factQuery);
+                }
+                else
+                {
+                    factQuery = "`name` = '" + tbName.Text + "', `category` = '" + cbCategory.Text + "', " +
+                        "`cost` = '"+ tbCost.Text + "', `position_position` = '"+ cbPosition.Text + "'";
+                    db.Edit("repairs", "id_repair", tbIDRepair.Text, factQuery);
+                }
+
+                Hide();
             }
         }
 

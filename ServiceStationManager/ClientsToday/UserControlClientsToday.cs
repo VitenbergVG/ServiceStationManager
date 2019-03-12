@@ -276,6 +276,15 @@ namespace ServiceStationManager
 
                 toolStripProgressBarStatusRepairs.Maximum = clbRepairs.Items.Count;
                 toolStripProgressBarStatusRepairs.Value = clbRepairs.CheckedItems.Count;
+
+                string factQuery;
+
+                factQuery = "(clients_id_client, cars_number_sts_car, repairs_id_repair, " +
+                    "employees_id_employee, date, time) " +
+                    "VALUES('" + idClient + "', '" + tbNumberSTSCar.Text + "', '" + idRepair + "', '" +
+                    idEmployee + "', '" + DateTime.Today.ToString("yyyy-MM-dd") + "', '" + timeFinishRepair + "');";
+
+                db.Add("performed_repairs", factQuery);
             }
         }
 

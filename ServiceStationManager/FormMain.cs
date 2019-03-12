@@ -1,4 +1,5 @@
 ﻿using ServiceStationManager.ClientsToday;
+using ServiceStationManager.Tables;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -286,6 +287,12 @@ namespace ServiceStationManager
         {
             FormHelp fh = new FormHelp();
             fh.ShowDialog();
+        }
+
+        private void списокВсехРаботToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPerformedRepairs fpr = new FormPerformedRepairs(db);
+            fpr.ShowDialog();
         }
     }
 }

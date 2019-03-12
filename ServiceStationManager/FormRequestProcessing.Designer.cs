@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRequestProcessing));
             this.btRequestProcessing = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -206,6 +207,7 @@
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btRequestProcessing);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRequestProcessing";
             this.Text = "Обработка заявки";
             this.statusStrip1.ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHelp));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btPrev = new System.Windows.Forms.Button();
             this.btNext = new System.Windows.Forms.Button();
@@ -80,6 +81,7 @@
             this.Controls.Add(this.btPrev);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormHelp";
             this.Text = "Помощь";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

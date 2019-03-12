@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddRepairForCurrentClient));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -150,6 +151,7 @@
             this.ClientSize = new System.Drawing.Size(688, 157);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAddRepairForCurrentClient";
             this.Text = "Добавить ремонтную работу";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddRepairForCurrentClient_FormClosed);

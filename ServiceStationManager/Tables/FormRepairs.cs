@@ -47,5 +47,24 @@ namespace ServiceStationManager
             dataGridView1.Rows.Clear();
             db.LoadTables("repairs", dataGridView1);
         }
+
+        private void редактироватьРаботуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string idRepair = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            string name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            string category = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            string cost = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            string position = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+
+            FormAddRepair far = new FormAddRepair(db, idRepair, name, category, cost, position);
+            far.ShowDialog();
+            dataGridView1.Rows.Clear();
+            db.LoadTables("repairs", dataGridView1);
+        }
+
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+        }
     }
 }

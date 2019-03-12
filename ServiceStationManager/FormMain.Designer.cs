@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.информацияОКлиентахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокКлиентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокАвтомобилейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокВсехРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.информацияОСотрудникахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокСотрудниковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.расписаниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,6 +42,7 @@
             this.управлениеСервисомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокАкцийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.видыРемонтныхРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.магазинАвтозапчастейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,7 +86,8 @@
             // 
             this.информацияОКлиентахToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.списокКлиентовToolStripMenuItem,
-            this.списокАвтомобилейToolStripMenuItem});
+            this.списокАвтомобилейToolStripMenuItem,
+            this.списокВсехРаботToolStripMenuItem});
             this.информацияОКлиентахToolStripMenuItem.Name = "информацияОКлиентахToolStripMenuItem";
             this.информацияОКлиентахToolStripMenuItem.Size = new System.Drawing.Size(155, 20);
             this.информацияОКлиентахToolStripMenuItem.Text = "Информация о клиентах";
@@ -101,6 +105,13 @@
             this.списокАвтомобилейToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.списокАвтомобилейToolStripMenuItem.Text = "Список автомобилей";
             this.списокАвтомобилейToolStripMenuItem.Click += new System.EventHandler(this.списокАвтомобилейToolStripMenuItem_Click);
+            // 
+            // списокВсехРаботToolStripMenuItem
+            // 
+            this.списокВсехРаботToolStripMenuItem.Name = "списокВсехРаботToolStripMenuItem";
+            this.списокВсехРаботToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.списокВсехРаботToolStripMenuItem.Text = "Список всех работ";
+            this.списокВсехРаботToolStripMenuItem.Click += new System.EventHandler(this.списокВсехРаботToolStripMenuItem_Click);
             // 
             // информацияОСотрудникахToolStripMenuItem
             // 
@@ -144,7 +155,8 @@
             // 
             this.управлениеСервисомToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.списокАкцийToolStripMenuItem,
-            this.видыРемонтныхРаботToolStripMenuItem});
+            this.видыРемонтныхРаботToolStripMenuItem,
+            this.магазинАвтозапчастейToolStripMenuItem});
             this.управлениеСервисомToolStripMenuItem.Name = "управлениеСервисомToolStripMenuItem";
             this.управлениеСервисомToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
             this.управлениеСервисомToolStripMenuItem.Text = "Управление сервисом";
@@ -163,6 +175,12 @@
             this.видыРемонтныхРаботToolStripMenuItem.Text = "Виды ремонтных работ";
             this.видыРемонтныхРаботToolStripMenuItem.Click += new System.EventHandler(this.видыРемонтныхРаботToolStripMenuItem_Click);
             // 
+            // магазинАвтозапчастейToolStripMenuItem
+            // 
+            this.магазинАвтозапчастейToolStripMenuItem.Name = "магазинАвтозапчастейToolStripMenuItem";
+            this.магазинАвтозапчастейToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.магазинАвтозапчастейToolStripMenuItem.Text = "Магазин автозапчастей";
+            // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -175,14 +193,14 @@
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.справкаToolStripMenuItem.Text = "Помощь";
             this.справкаToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem1
             // 
             this.оПрограммеToolStripMenuItem1.Name = "оПрограммеToolStripMenuItem1";
-            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
             this.оПрограммеToolStripMenuItem1.Text = "О программе";
             this.оПрограммеToolStripMenuItem1.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -326,6 +344,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
@@ -371,5 +390,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton toolStripBtHelp;
+        private System.Windows.Forms.ToolStripMenuItem списокВсехРаботToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem магазинАвтозапчастейToolStripMenuItem;
     }
 }

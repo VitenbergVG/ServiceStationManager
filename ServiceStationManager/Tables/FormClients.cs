@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceStationManager.Tables;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -91,6 +92,13 @@ namespace ServiceStationManager
         private void dgvClients_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             dgvClients.CurrentCell = dgvClients.Rows[e.RowIndex].Cells[e.ColumnIndex];
+        }
+
+        private void просмотрРаботToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string idClient = dgvClients.CurrentRow.Cells[0].Value.ToString();
+            FormShowRepairsForClient fsrfc = new FormShowRepairsForClient(db, idClient);
+            fsrfc.ShowDialog();
         }
     }
 }

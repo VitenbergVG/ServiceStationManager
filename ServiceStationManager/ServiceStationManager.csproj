@@ -60,6 +60,9 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Maintenance-Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.14.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -211,6 +214,12 @@
     <Compile Include="FormPicWorkHours.Designer.cs">
       <DependentUpon>FormPicWorkHours.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\FormPerformedRepairs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\FormPerformedRepairs.Designer.cs">
+      <DependentUpon>FormPerformedRepairs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\FormRepairs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +231,12 @@
     </Compile>
     <Compile Include="Tables\FormRequests.Designer.cs">
       <DependentUpon>FormRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\FormShowRepairsForClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\FormShowRepairsForClient.Designer.cs">
+      <DependentUpon>FormShowRepairsForClient.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\FormWorkHours.cs">
       <SubType>Form</SubType>
@@ -309,11 +324,17 @@
     <EmbeddedResource Include="FormPicWorkHours.resx">
       <DependentUpon>FormPicWorkHours.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tables\FormPerformedRepairs.resx">
+      <DependentUpon>FormPerformedRepairs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\FormRepairs.resx">
       <DependentUpon>FormRepairs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\FormRequests.resx">
       <DependentUpon>FormRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\FormShowRepairsForClient.resx">
+      <DependentUpon>FormShowRepairsForClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\FormWorkHours.resx">
       <DependentUpon>FormWorkHours.cs</DependentUpon>
@@ -413,6 +434,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\arrow_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Maintenance-Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

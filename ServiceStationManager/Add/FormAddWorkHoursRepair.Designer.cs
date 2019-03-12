@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddWorkHoursRepair));
             this.cbNameRepair = new System.Windows.Forms.ComboBox();
             this.cbCategoryRepair = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -352,6 +353,7 @@
             this.ClientSize = new System.Drawing.Size(608, 277);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAddWorkHoursRepair";
             this.Text = "Добавить конкретную ремонтную работу";
             this.tableLayoutPanel1.ResumeLayout(false);

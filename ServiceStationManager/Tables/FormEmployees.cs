@@ -54,5 +54,27 @@ namespace ServiceStationManager
                 db.LoadTables("employees", dgvEmployees);
             }
         }
+
+        private void редактироватьСотрулникаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string idEmployee = dgvEmployees.CurrentRow.Cells[0].Value.ToString();
+            string surname = dgvEmployees.CurrentRow.Cells[1].Value.ToString();
+            string name = dgvEmployees.CurrentRow.Cells[2].Value.ToString();
+            string patronimyc = dgvEmployees.CurrentRow.Cells[3].Value.ToString();
+            string phoneNumber = dgvEmployees.CurrentRow.Cells[4].Value.ToString();
+            string position = dgvEmployees.CurrentRow.Cells[5].Value.ToString();
+            string rating = dgvEmployees.CurrentRow.Cells[6].Value.ToString();
+
+            FormAddEmployee fac = new FormAddEmployee(db, idEmployee, surname, name, patronimyc, 
+                phoneNumber, position, rating);
+            fac.ShowDialog();
+            dgvEmployees.Rows.Clear();
+            db.LoadTables("employees", dgvEmployees);
+        }
+
+        private void dgvEmployees_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgvEmployees.CurrentCell = dgvEmployees.Rows[e.RowIndex].Cells[e.ColumnIndex];
+        }
     }
 }

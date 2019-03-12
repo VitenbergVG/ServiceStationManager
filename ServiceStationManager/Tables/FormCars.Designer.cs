@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCars));
             this.dgvCars = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -39,12 +42,9 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripTBSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripBtSearch = new System.Windows.Forms.ToolStripButton();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextDelete = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvCars
@@ -63,6 +63,28 @@
             this.dgvCars.Size = new System.Drawing.Size(944, 560);
             this.dgvCars.TabIndex = 11;
             this.dgvCars.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvCars_CellMouseDown);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextEdit,
+            this.contextDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(164, 48);
+            // 
+            // contextEdit
+            // 
+            this.contextEdit.Name = "contextEdit";
+            this.contextEdit.Size = new System.Drawing.Size(163, 22);
+            this.contextEdit.Text = "Редактировать...";
+            this.contextEdit.Click += new System.EventHandler(this.toolStripBtEdit_Click);
+            // 
+            // contextDelete
+            // 
+            this.contextDelete.Name = "contextDelete";
+            this.contextDelete.Size = new System.Drawing.Size(163, 22);
+            this.contextDelete.Text = "Удалить";
+            this.contextDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // toolStrip1
             // 
@@ -137,28 +159,6 @@
             this.toolStripBtSearch.Text = "Поиск";
             this.toolStripBtSearch.Click += new System.EventHandler(this.btSearch_Click);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contextEdit,
-            this.contextDelete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
-            // 
-            // contextEdit
-            // 
-            this.contextEdit.Name = "contextEdit";
-            this.contextEdit.Size = new System.Drawing.Size(180, 22);
-            this.contextEdit.Text = "Редактировать...";
-            this.contextEdit.Click += new System.EventHandler(this.toolStripBtEdit_Click);
-            // 
-            // contextDelete
-            // 
-            this.contextDelete.Name = "contextDelete";
-            this.contextDelete.Size = new System.Drawing.Size(180, 22);
-            this.contextDelete.Text = "Удалить";
-            this.contextDelete.Click += new System.EventHandler(this.btDelete_Click);
-            // 
             // FormCars
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,12 +168,13 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dgvCars);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCars";
             this.Text = "Автомобили клиентов";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

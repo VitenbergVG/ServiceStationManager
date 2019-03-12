@@ -13,6 +13,8 @@ namespace ServiceStationManager.Add
     public partial class FormAddEmployee : Form
     {
         ClassDB db;
+        bool edit = false;
+        string idEmployee;
 
         public FormAddEmployee(ClassDB db)
         {
@@ -21,27 +23,49 @@ namespace ServiceStationManager.Add
             db.SearchPosition(cbPosition);
         }
 
+        public FormAddEmployee(ClassDB db, string idEmployee, string surname, string name, string patronimyc,
+            string phoneNumber, string position, string rating)
+        {
+            InitializeComponent();
+            this.db = db;
+            edit = true;
+            db.SearchPosition(cbPosition);
+            tbRating.Enabled = true;
+
+            this.idEmployee = idEmployee;
+            tbSurname.Text = surname;
+            tbName.Text = name;
+            tbPatronimyc.Text = patronimyc;
+            tbPhone.Text = phoneNumber;
+            cbPosition.Text = position;
+        }
+
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "" || cbPosition.Text == "")
+            if (tbSurname.Text == "" || tbName.Text == "" || tbPatronimyc.Text == "" || tbPhone.Text == "" || cbPosition.Text == "")
             {
                 MessageBox.Show("Заполните все поля!", "Ошибка");
             }
             else
             {
                 string factQuery;
-                factQuery = "(`surname`, `name`, `patronimyc`, `phone_number`,`position_position`) VALUES('" +
-                          textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "', '" + cbPosition.Text + "');";
-                db.Add("employees", factQuery);
-                Hide();
-            }
-        }
+                if (!edit)
+                {
+                    factQuery = "(`surname`, `name`, `patronimyc`, `phone_number`,`position_position`, " +
+                        "`rating`) VALUES('" + tbSurname.Text + "', '" + tbName.Text + "', '" +
+                        tbPatronimyc.Text + "', '" +
+                            tbPhone.Text.Replace(" ", "").Replace("(", "").Replace(")", "") + "', '" + cbPosition.Text + "', '" + tbRating.Text + "');";
+                    db.Add("employees", factQuery);
+                }
+                else
+                {
+                    factQuery = "`surname` = '" + tbSurname.Text + "', `name` = '" + tbName.Text + "', `patronimyc` = '" +
+                        tbPatronimyc.Text + "', `phone_number` = '" + tbPhone.Text.Replace(" ", "").Replace("(", "").Replace(")", "")
+                        + "',`position_position` = '" + cbPosition.Text + "', `rating` = '" + tbRating.Text + "'";
+                    db.Edit("employees", "id_employee", idEmployee, factQuery);
+                }
 
-        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Delete))
-            {
-                e.Handled = true;
+                Hide();
             }
         }
     }
