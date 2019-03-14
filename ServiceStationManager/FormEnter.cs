@@ -52,6 +52,7 @@ namespace ServiceStationManager
 
                 if (!error)
                 {
+                    Hide();
                     switch (tbLogin.Text)
                     {
                         case "admin":
@@ -87,6 +88,30 @@ namespace ServiceStationManager
             if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Delete))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            notifyIcon1.Visible = false;
+            Application.Exit();
+        }
+
+        private void помощьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormHelp fh = new FormHelp();
+            fh.ShowDialog();
+        }
+
+        private void запуститьПрограммуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Hide();
+            notifyIcon1.Visible = false;
+
+            FormEnter fe = new FormEnter();
+            if (!fe.Visible)
+            {
+                fe.ShowDialog();
             }
         }
     }

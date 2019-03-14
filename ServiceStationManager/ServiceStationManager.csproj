@@ -232,6 +232,12 @@
     <Compile Include="Tables\FormRequests.Designer.cs">
       <DependentUpon>FormRequests.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\FormShop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\FormShop.Designer.cs">
+      <DependentUpon>FormShop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\FormShowRepairsForClient.cs">
       <SubType>Form</SubType>
     </Compile>
