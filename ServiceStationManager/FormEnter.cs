@@ -114,5 +114,17 @@ namespace ServiceStationManager
                 fe.ShowDialog();
             }
         }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Hide();
+            notifyIcon1.Visible = false;
+
+            FormEnter fe = new FormEnter();
+            if (!fe.Visible)
+            {
+                fe.ShowDialog();
+            }
+        }
     }
 }
