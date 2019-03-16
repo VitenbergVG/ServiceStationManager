@@ -15,6 +15,8 @@ namespace ServiceStationManager
     {
         ClassDB db;
 
+        List<DateTime> allDates;
+        List<int> allYearsUsed;//Все года уже учтеные в дереве
         List<DateTime> dates;
         List<int> idEmployees;
         List<string> surnameEmployees;
@@ -24,6 +26,38 @@ namespace ServiceStationManager
             InitializeComponent();
 
             this.db = db;
+
+            allDates = db.GetDatesOfRepairs();
+            allYearsUsed = new List<int>();
+
+            for (int i = 0; i < allDates.Count(); i++)
+            {
+                //TreeNode yearNode = new TreeNode(allDates[i].Year.ToString());
+                //TreeNode monthNode = new TreeNode(allDates[i].Month.ToString());
+                //TreeNode dayNode = new TreeNode(allDates[i].Day.ToString());
+
+                treeViewDates.Nodes.Add(allDates[i].Year.ToString());
+                
+
+                if (allYearsUsed.Contains(Convert.ToInt32(allDates[i].Year.ToString())))
+                {
+                    treeViewDates.Nodes[treeViewDates.Nodes.Count-1].Nodes.Add(allDates[i].Month.ToString());
+                    //monthNode.Nodes.Add(dayNode);
+                }
+
+                allYearsUsed.Add(Convert.ToInt32(allDates[i].Year.ToString()));
+                //else
+                //{
+                //    treeViewDates.Nodes.Add(yearNode);
+                //    allYearsUsed.Add(Convert.ToInt32(yearNode.Text));
+                //    yearNode.Nodes.Add(monthNode);
+                //    monthNode.Nodes.Add(dayNode);
+                //}
+
+
+            }
+
+            treeViewDates.ExpandAll();
 
             RefreshTable();
         }

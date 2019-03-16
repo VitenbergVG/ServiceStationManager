@@ -1018,6 +1018,26 @@ namespace ServiceStationManager
             reader.Close();
             conn.Close();
         }
+
+        //Получение списка всех неповторяющихся дат для всех проведенных работ
+        public List<DateTime> GetDatesOfRepairs()
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT work_hours.dates_of_month FROM sto_db.current_repairs " +
+                "JOIN work_hours ON current_repairs.work_hours_id_work_hours = work_hours.id_work_hours;", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<DateTime> resDates = new List<DateTime>();
+
+            while (reader.Read())
+            {
+                resDates.Add(Convert.ToDateTime(reader[0].ToString()));
+            }
+
+            reader.Close();
+            conn.Close();
+            return resDates;
+        }
     }
 }
  

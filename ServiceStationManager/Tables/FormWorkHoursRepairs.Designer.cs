@@ -34,8 +34,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.добавитьРаботуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьВыбраннуюСменуСотрудникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.treeViewDates = new System.Windows.Forms.TreeView();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkHoursRepairs)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvWorkHoursRepairs
@@ -54,10 +60,10 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvWorkHoursRepairs.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvWorkHoursRepairs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvWorkHoursRepairs.Location = new System.Drawing.Point(0, 24);
+            this.dgvWorkHoursRepairs.Location = new System.Drawing.Point(0, 0);
             this.dgvWorkHoursRepairs.Name = "dgvWorkHoursRepairs";
             this.dgvWorkHoursRepairs.ReadOnly = true;
-            this.dgvWorkHoursRepairs.Size = new System.Drawing.Size(1103, 499);
+            this.dgvWorkHoursRepairs.Size = new System.Drawing.Size(949, 499);
             this.dgvWorkHoursRepairs.TabIndex = 7;
             this.dgvWorkHoursRepairs.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvWorkHoursRepairs_CellMouseDoubleClick);
             // 
@@ -87,13 +93,39 @@
             this.удалитьВыбраннуюСменуСотрудникаToolStripMenuItem.Text = "Удалить выбранную смену сотрудника";
             this.удалитьВыбраннуюСменуСотрудникаToolStripMenuItem.Click += new System.EventHandler(this.btDelete_Click);
             // 
+            // treeViewDates
+            // 
+            this.treeViewDates.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewDates.Location = new System.Drawing.Point(0, 0);
+            this.treeViewDates.Name = "treeViewDates";
+            this.treeViewDates.Size = new System.Drawing.Size(150, 499);
+            this.treeViewDates.TabIndex = 11;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.treeViewDates);
+            this.splitContainer1.Panel1MinSize = 100;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.dgvWorkHoursRepairs);
+            this.splitContainer1.Size = new System.Drawing.Size(1103, 499);
+            this.splitContainer1.SplitterDistance = 150;
+            this.splitContainer1.TabIndex = 12;
+            // 
             // FormWorkHoursRepairs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(1103, 523);
-            this.Controls.Add(this.dgvWorkHoursRepairs);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -103,6 +135,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkHoursRepairs)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +149,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem добавитьРаботуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьВыбраннуюСменуСотрудникаToolStripMenuItem;
+        private System.Windows.Forms.TreeView treeViewDates;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
