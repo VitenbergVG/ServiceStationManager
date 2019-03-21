@@ -95,7 +95,7 @@ namespace ServiceStationManager
             FormAddRepairForCurrentClient farfcc = new FormAddRepairForCurrentClient(db);
             farfcc.ShowDialog();
 
-            if (StaticData.DataBufferNameRepair != null && StaticData.DataBufferEmployee != null)
+            if (StaticData.DataBufferNameRepair != null && StaticData.DataBufferEmployee != null && StaticData.DataBufferQuantityDays != 0)
             {
                 if (clbRepairs.Items.Contains(StaticData.DataBufferNameRepair))
                 {
@@ -109,6 +109,7 @@ namespace ServiceStationManager
                 //Обновление списка работ после закрытия дочерней формы
                 clbRepairs.Items.Add(StaticData.DataBufferNameRepair);
                 lbEmployeesRepairs.Items.Add(StaticData.DataBufferEmployee);
+                toolStripStatusLabelInfoClient.Text = "Всего дней работы: " + StaticData.DataBufferQuantityDays;
 
                 db.SearchCostRepairs(StaticData.DataBufferNameRepair, lbRepairsCosts);
 
@@ -125,10 +126,10 @@ namespace ServiceStationManager
                 int idEmployee = Convert.ToInt32(strEmployee[strEmployee.Length - 1]);
 
                 string factQuery;
-                factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, `time_start`, `status_repair`) VALUES('" +
+                factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, `time_start`, `quantity_days`, `status_repair`) VALUES('" +
                            db.SearchIdWorkHours(idEmployee, DateTime.Today.ToString("yyyy-MM-dd")) + "', '" +
                            db.SearchIdRepairs(clbRepairs.Items[clbRepairs.Items.Count - 1].ToString()) +
-                           "', '" + idClient + "', '" + timeStartRepair + "', 'Не выполнено');";
+                           "', '" + idClient + "', '" + timeStartRepair + "', '" + StaticData.DataBufferQuantityDays + "', 'Не выполнено');";
                 db.Add("current_repairs", factQuery);
 
                 idCurrentRepairs.Add(db.LastIDCurrentRepairs());//Добавляем ID работы в список Id работ по клиенту
@@ -419,5 +420,6 @@ namespace ServiceStationManager
         //Статическая переменная, выступающая как буфер данных
         public static String DataBufferNameRepair = String.Empty;
         public static String DataBufferEmployee = String.Empty;
+        public static int DataBufferQuantityDays = 0;
     }
 }

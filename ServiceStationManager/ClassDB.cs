@@ -232,7 +232,6 @@ namespace ServiceStationManager
         public void WorkHoursNameEmployees(DataGridView dataSource, List<int> idEmployees, List<string> surnameEmployees, List<DateTime> dates)
         {
             dataSource.Rows.Clear();
-            WorkHoursSettingDays(dates);//Заполнение таблицы дат в БД
             conn.Open();
 
             MySqlCommand command = new MySqlCommand("SELECT distinct surname, id_employee FROM employees", conn);//получение всех неповторяющихся сотрудников(их фамилий и id)
@@ -262,40 +261,6 @@ namespace ServiceStationManager
             reader.Close();
         }
 
-        //Добавление дат на месяц и удаление ненужных дат, смен и работ в эти даты
-        public void WorkHoursSettingDays(List<DateTime> dates)
-        {
-            conn.Open();
-            string values = "";
-
-            for (int i = 0; i < dates.Count() - 1; i++)
-            {
-                values += "('" + dates[i].ToString("yyyy-MM-dd") + "'), ";
-            }
-
-            values += "('" + dates[dates.Count() - 1].ToString("yyyy-MM-dd") + "')";
-
-
-            string valuesDelete = "";
-
-            for (int i = 0; i < dates.Count() - 1; i++)
-            {
-                valuesDelete += "dates_of_month != '" + dates[i].ToString("yyyy-MM-dd") + "' and ";
-            }
-
-            valuesDelete += "dates_of_month != '" + dates[dates.Count() - 1].ToString("yyyy-MM-dd") + "'";
-
-            MySqlCommand command = new MySqlCommand("delete t1 "
-                + "from current_repairs t1 "
-                + "join work_hours on work_hours.id_work_hours = t1.work_hours_id_work_hours and work_hours." + valuesDelete + "; "
-                + "delete from work_hours where " + valuesDelete + ";"
-                + "delete from dates_of_month where " + valuesDelete + ";"
-                + "INSERT IGNORE INTO `sto_db`.dates_of_month (`dates_of_month`) VALUES " + values + ";", conn);//Добавить несколько дат из списка
-            MySqlDataReader reader = command.ExecuteReader();
-            reader.Close();
-            conn.Close();
-        }
-
         //Поиск среди всех дат и сотрудников рабочих смен
         public string Works(int id, string date)
         {
@@ -322,7 +287,6 @@ namespace ServiceStationManager
         public void WorkHoursRepairsNameEmployees(DataGridView dataSource, List<int> idEmployees, List<string> surnameEmployees, List<DateTime> dates)
         {
             dataSource.Rows.Clear();
-            WorkHoursSettingDays(dates);//Заполнение таблицы дат в БД
             conn.Open();
 
             MySqlCommand command = new MySqlCommand("SELECT distinct surname, id_employee FROM employees", conn);//получение всех неповторяющихся сотрудников(их фамилий и id)
@@ -1038,6 +1002,148 @@ namespace ServiceStationManager
             conn.Close();
             return resDates;
         }
+
+        //Получение списка всех неповторяющихся лет для всех проведенных работ
+        public List<int> GetYearsOfRepairs()
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT DISTINCT year(work_hours.dates_of_month) FROM sto_db.current_repairs " +
+                "JOIN work_hours ON current_repairs.work_hours_id_work_hours = work_hours.id_work_hours;", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<int> resYears = new List<int>();
+
+            while (reader.Read())
+            {
+                resYears.Add(Convert.ToInt32(reader[0].ToString()));
+            }
+
+            reader.Close();
+            conn.Close();
+            return resYears;
+        }
+
+        //Получение списка всех неповторяющихся месяцев для всех проведенных работ
+        public List<int> GetMonthsOfRepairs(int year)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT DISTINCT month(work_hours.dates_of_month) FROM sto_db.current_repairs " +
+                "JOIN work_hours ON current_repairs.work_hours_id_work_hours = work_hours.id_work_hours " +
+                "WHERE year(work_hours.dates_of_month) = '" + year + "';", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<int> resYears = new List<int>();
+
+            while (reader.Read())
+            {
+                resYears.Add(Convert.ToInt32(reader[0].ToString()));
+            }
+
+            reader.Close();
+            conn.Close();
+            return resYears;
+        }
+
+        //Получение списка всех неповторяющихся дней для всех проведенных работ
+        public List<int> GetDaysOfRepairs(int year, int month)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT DISTINCT day(work_hours.dates_of_month) FROM sto_db.current_repairs " +
+                "JOIN work_hours ON current_repairs.work_hours_id_work_hours = work_hours.id_work_hours " +
+                "WHERE year(work_hours.dates_of_month) = '" + year + "' AND month(work_hours.dates_of_month) = '" + month + "';", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<int> resYears = new List<int>();
+
+            while (reader.Read())
+            {
+                resYears.Add(Convert.ToInt32(reader[0].ToString()));
+            }
+
+            reader.Close();
+            conn.Close();
+            return resYears;
+        }
+
+        //Получение списка всех неповторяющихся лет для  расписания сотрудников
+        public List<int> GetYearsOfWorkHours()
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT DISTINCT year(dates_of_month) FROM sto_db.work_hours;", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<int> resYears = new List<int>();
+
+            while (reader.Read())
+            {
+                resYears.Add(Convert.ToInt32(reader[0].ToString()));
+            }
+
+            reader.Close();
+            conn.Close();
+            return resYears;
+        }
+
+        //Получение списка всех неповторяющихся месяцев для расписания сотрудников
+        public List<int> GetMonthsOfWorkHours(int year)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT DISTINCT month(dates_of_month) FROM sto_db.work_hours " +
+                "WHERE year(dates_of_month) = '" + year + "';", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<int> resYears = new List<int>();
+
+            while (reader.Read())
+            {
+                resYears.Add(Convert.ToInt32(reader[0].ToString()));
+            }
+
+            reader.Close();
+            conn.Close();
+            return resYears;
+        }
+
+        //Получение списка всех неповторяющихся дней для расписания сотрудников
+        public List<int> GetDaysOfWorkHours(int year, int month)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT DISTINCT day(dates_of_month) FROM sto_db.work_hours " +
+                "WHERE year(dates_of_month) = '" + year + "' AND month(dates_of_month) = '" + month + "';", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<int> resYears = new List<int>();
+
+            while (reader.Read())
+            {
+                resYears.Add(Convert.ToInt32(reader[0].ToString()));
+            }
+
+            reader.Close();
+            conn.Close();
+            return resYears;
+        }
+
+        //Получение списка всех фамилий сотрудников
+        public List<string> GetEmployees(List<int> idEmployees)
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SELECT id_employee, surname, LEFT(name,1), LEFT(patronimyc,1), " +
+                "position_position FROM sto_db.employees;", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<string> resEmployees = new List<string>();
+
+            while (reader.Read())
+            {
+                idEmployees.Add(Convert.ToInt32(reader[0].ToString()));
+                resEmployees.Add(reader[1].ToString() + " " + reader[2].ToString() + "." + reader[3].ToString() + 
+                    ". (" + reader[4].ToString() +")");
+            }
+
+            reader.Close();
+            conn.Close();
+            return resEmployees;
+        }
     }
 }
- 

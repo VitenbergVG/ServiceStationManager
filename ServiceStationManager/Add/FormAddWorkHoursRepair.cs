@@ -41,23 +41,23 @@ namespace ServiceStationManager.Add
                 if (!cbTimeStartIsEmpty.Checked && !cbTimeFinishIsEmpty.Checked)
                 {
                     factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, " +
-                        "`time_start`, `time_finish`, `status_repair`) " +
+                        "`time_start`, `time_finish`, `quantity_days`, `status_repair`) " +
                         "VALUES('" + idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + 
-                        dtpStart.Text + "', '" + dtpFinish.Text + "', '" + cbStatusRepair.Text + "');";
+                        dtpStart.Text + "', '" + dtpFinish.Text + "', '" + nudQuantityDays.Value + "', '" + cbStatusRepair.Text + "');";
                 }
                 else if (cbTimeStartIsEmpty.Checked && !cbTimeFinishIsEmpty.Checked)
                 {
                     factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, " +
-                        "`time_finish`, `status_repair`) " +
+                        "`time_finish`, `quantity_days`, `status_repair`) " +
                         "VALUES('" + idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + 
-                        dtpFinish.Text + "', '" + cbStatusRepair.Text + "');";
+                        dtpFinish.Text + "', '" + nudQuantityDays.Value + "', '" + cbStatusRepair.Text + "');";
                 }
                 else
                 {
                     factQuery = "(`work_hours_id_work_hours`, `repairs_id_repair`, `clients_id_client`, " +
-                        "`time_start`, `status_repair`) " +
+                        "`time_start`, `quantity_days`, `status_repair`) " +
                         "VALUES('" + idWorkHours + "', '" + idRepair + "', '" + idClient + "', '" + 
-                        dtpStart.Text + "', '" + cbStatusRepair.Text + "');";
+                        dtpStart.Text + "', '" + nudQuantityDays.Value + "', '" + cbStatusRepair.Text + "');";
                 }
 
                 db.Add("current_repairs", factQuery);

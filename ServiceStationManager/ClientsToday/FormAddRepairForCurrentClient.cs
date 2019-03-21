@@ -35,6 +35,7 @@ namespace ServiceStationManager.ClientsToday
             {
                 StaticData.DataBufferNameRepair = cbNameRepairs.Text;
                 StaticData.DataBufferEmployee = cbEmployee.Text;
+                StaticData.DataBufferQuantityDays = Convert.ToInt32(nudQuantityDays.Value);
                 Hide();
             }
             else
@@ -59,6 +60,7 @@ namespace ServiceStationManager.ClientsToday
         {
             StaticData.DataBufferNameRepair = null;
             StaticData.DataBufferEmployee = null;
+            StaticData.DataBufferQuantityDays = 0;
         }
     }
 }

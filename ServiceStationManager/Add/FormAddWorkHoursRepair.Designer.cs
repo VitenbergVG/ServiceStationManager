@@ -51,7 +51,10 @@
             this.labelClient = new System.Windows.Forms.Label();
             this.cbStatusRepair = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.nudQuantityDays = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantityDays)).BeginInit();
             this.SuspendLayout();
             // 
             // cbNameRepair
@@ -61,7 +64,7 @@
             this.cbNameRepair.Location = new System.Drawing.Point(162, 69);
             this.cbNameRepair.Name = "cbNameRepair";
             this.cbNameRepair.Size = new System.Drawing.Size(220, 21);
-            this.cbNameRepair.TabIndex = 62;
+            this.cbNameRepair.TabIndex = 3;
             this.cbNameRepair.SelectedIndexChanged += new System.EventHandler(this.cbNameRepair_SelectedIndexChanged);
             // 
             // cbCategoryRepair
@@ -71,7 +74,7 @@
             this.cbCategoryRepair.Location = new System.Drawing.Point(162, 39);
             this.cbCategoryRepair.Name = "cbCategoryRepair";
             this.cbCategoryRepair.Size = new System.Drawing.Size(220, 21);
-            this.cbCategoryRepair.TabIndex = 63;
+            this.cbCategoryRepair.TabIndex = 2;
             this.cbCategoryRepair.SelectedIndexChanged += new System.EventHandler(this.cbCategoryRepair_SelectedIndexChanged);
             // 
             // label5
@@ -168,7 +171,7 @@
             this.btPicWorkHours.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btPicWorkHours.Name = "btPicWorkHours";
             this.btPicWorkHours.Size = new System.Drawing.Size(113, 28);
-            this.btPicWorkHours.TabIndex = 75;
+            this.btPicWorkHours.TabIndex = 1;
             this.btPicWorkHours.Text = "Выбрать смену";
             this.btPicWorkHours.UseVisualStyleBackColor = false;
             this.btPicWorkHours.Click += new System.EventHandler(this.btPicWorkHours_Click);
@@ -181,7 +184,7 @@
             this.btPicClient.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btPicClient.Name = "btPicClient";
             this.btPicClient.Size = new System.Drawing.Size(113, 28);
-            this.btPicClient.TabIndex = 76;
+            this.btPicClient.TabIndex = 4;
             this.btPicClient.Text = "Выбрать клиента";
             this.btPicClient.UseVisualStyleBackColor = false;
             this.btPicClient.Click += new System.EventHandler(this.btPicClient_Click);
@@ -190,11 +193,11 @@
             // 
             this.btAdd.BackColor = System.Drawing.Color.SeaShell;
             this.btAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAdd.Location = new System.Drawing.Point(483, 226);
+            this.btAdd.Location = new System.Drawing.Point(483, 256);
             this.btAdd.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(120, 47);
-            this.btAdd.TabIndex = 74;
+            this.btAdd.TabIndex = 11;
             this.btAdd.Text = "Добавить";
             this.btAdd.UseVisualStyleBackColor = false;
             this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
@@ -220,7 +223,7 @@
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.ShowUpDown = true;
             this.dtpStart.Size = new System.Drawing.Size(113, 20);
-            this.dtpStart.TabIndex = 81;
+            this.dtpStart.TabIndex = 5;
             // 
             // dtpFinish
             // 
@@ -230,7 +233,7 @@
             this.dtpFinish.Name = "dtpFinish";
             this.dtpFinish.ShowUpDown = true;
             this.dtpFinish.Size = new System.Drawing.Size(113, 20);
-            this.dtpFinish.TabIndex = 81;
+            this.dtpFinish.TabIndex = 7;
             // 
             // cbTimeStartIsEmpty
             // 
@@ -239,7 +242,7 @@
             this.cbTimeStartIsEmpty.Location = new System.Drawing.Point(388, 135);
             this.cbTimeStartIsEmpty.Name = "cbTimeStartIsEmpty";
             this.cbTimeStartIsEmpty.Size = new System.Drawing.Size(87, 17);
-            this.cbTimeStartIsEmpty.TabIndex = 82;
+            this.cbTimeStartIsEmpty.TabIndex = 6;
             this.cbTimeStartIsEmpty.Text = "Неизвестно";
             this.cbTimeStartIsEmpty.UseVisualStyleBackColor = false;
             this.cbTimeStartIsEmpty.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -251,7 +254,7 @@
             this.cbTimeFinishIsEmpty.Location = new System.Drawing.Point(388, 165);
             this.cbTimeFinishIsEmpty.Name = "cbTimeFinishIsEmpty";
             this.cbTimeFinishIsEmpty.Size = new System.Drawing.Size(87, 17);
-            this.cbTimeFinishIsEmpty.TabIndex = 83;
+            this.cbTimeFinishIsEmpty.TabIndex = 8;
             this.cbTimeFinishIsEmpty.Text = "Неизвестно";
             this.cbTimeFinishIsEmpty.UseVisualStyleBackColor = false;
             this.cbTimeFinishIsEmpty.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
@@ -282,13 +285,15 @@
             this.tableLayoutPanel1.Controls.Add(this.label6, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.labelWorkHours, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelClient, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.cbStatusRepair, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.btAdd, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.btAdd, 3, 8);
+            this.tableLayoutPanel1.Controls.Add(this.label9, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.cbStatusRepair, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.nudQuantityDays, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -296,8 +301,9 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(608, 277);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(608, 307);
             this.tableLayoutPanel1.TabIndex = 84;
             // 
             // labelWorkHours
@@ -328,29 +334,63 @@
             "Не выполнено",
             "Продлено",
             "Выполнено"});
-            this.cbStatusRepair.Location = new System.Drawing.Point(162, 195);
+            this.cbStatusRepair.Location = new System.Drawing.Point(162, 225);
             this.cbStatusRepair.Name = "cbStatusRepair";
             this.cbStatusRepair.Size = new System.Drawing.Size(220, 21);
-            this.cbStatusRepair.TabIndex = 62;
+            this.cbStatusRepair.TabIndex = 10;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(5, 197);
+            this.label9.Location = new System.Drawing.Point(5, 227);
             this.label9.Margin = new System.Windows.Forms.Padding(5);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(122, 20);
             this.label9.TabIndex = 72;
             this.label9.Text = "Статус работы";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(5, 197);
+            this.label10.Margin = new System.Windows.Forms.Padding(5);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(142, 20);
+            this.label10.TabIndex = 72;
+            this.label10.Text = "Количество дней";
+            // 
+            // nudQuantityDays
+            // 
+            this.nudQuantityDays.Location = new System.Drawing.Point(162, 195);
+            this.nudQuantityDays.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nudQuantityDays.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudQuantityDays.Name = "nudQuantityDays";
+            this.nudQuantityDays.Size = new System.Drawing.Size(113, 20);
+            this.nudQuantityDays.TabIndex = 9;
+            this.nudQuantityDays.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // FormAddWorkHoursRepair
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
-            this.ClientSize = new System.Drawing.Size(608, 277);
+            this.ClientSize = new System.Drawing.Size(608, 307);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -358,6 +398,7 @@
             this.Text = "Добавить конкретную ремонтную работу";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantityDays)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -385,5 +426,7 @@
         private System.Windows.Forms.Label labelWorkHours;
         private System.Windows.Forms.ComboBox cbStatusRepair;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown nudQuantityDays;
     }
 }

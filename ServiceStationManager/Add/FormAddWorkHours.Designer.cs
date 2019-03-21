@@ -31,25 +31,25 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddWorkHours));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.cbDateOfWeek = new System.Windows.Forms.ComboBox();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.btAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cbSurnameEmployee = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.clbEmployees = new System.Windows.Forms.CheckedListBox();
-            this.cbDateMoreEmployees = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btAddMoreEmployees = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cbDateStart = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbRegularity = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btAddRegularity = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cbSurnameEmployeeRegularity = new System.Windows.Forms.ComboBox();
+            this.dtpDateMoreEmployees = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateStart = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -72,7 +72,7 @@
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage1.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
-            this.tabPage1.Controls.Add(this.cbDateOfWeek);
+            this.tabPage1.Controls.Add(this.dtpDate);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.btAdd);
             this.tabPage1.Controls.Add(this.label1);
@@ -84,27 +84,24 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Добавить смену";
             // 
-            // cbDateOfWeek
+            // dtpDate
             // 
-            this.cbDateOfWeek.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDateOfWeek.FormattingEnabled = true;
-            this.cbDateOfWeek.Location = new System.Drawing.Point(242, 109);
-            this.cbDateOfWeek.Name = "cbDateOfWeek";
-            this.cbDateOfWeek.Size = new System.Drawing.Size(220, 21);
-            this.cbDateOfWeek.TabIndex = 1;
-            this.cbDateOfWeek.SelectedIndexChanged += new System.EventHandler(this.cbDateOfWeek_SelectedIndexChanged);
+            this.dtpDate.Location = new System.Drawing.Point(221, 121);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(220, 20);
+            this.dtpDate.TabIndex = 56;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(62, 110);
+            this.label2.Location = new System.Drawing.Point(145, 121);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 20);
+            this.label2.Size = new System.Drawing.Size(48, 20);
             this.label2.TabIndex = 54;
-            this.label2.Text = "День недели";
+            this.label2.Text = "Дата";
             // 
             // btAdd
             // 
@@ -124,18 +121,18 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(62, 58);
+            this.label1.Location = new System.Drawing.Point(102, 82);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 20);
+            this.label1.Size = new System.Drawing.Size(91, 20);
             this.label1.TabIndex = 53;
-            this.label1.Text = "Фамилия сотрудника";
+            this.label1.Text = "Сотрудник";
             // 
             // cbSurnameEmployee
             // 
             this.cbSurnameEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSurnameEmployee.FormattingEnabled = true;
-            this.cbSurnameEmployee.Location = new System.Drawing.Point(242, 57);
+            this.cbSurnameEmployee.Location = new System.Drawing.Point(221, 82);
             this.cbSurnameEmployee.Name = "cbSurnameEmployee";
             this.cbSurnameEmployee.Size = new System.Drawing.Size(220, 21);
             this.cbSurnameEmployee.TabIndex = 0;
@@ -144,8 +141,8 @@
             // tabPage3
             // 
             this.tabPage3.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
+            this.tabPage3.Controls.Add(this.dtpDateMoreEmployees);
             this.tabPage3.Controls.Add(this.clbEmployees);
-            this.tabPage3.Controls.Add(this.cbDateMoreEmployees);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.btAddMoreEmployees);
             this.tabPage3.Controls.Add(this.label7);
@@ -163,17 +160,8 @@
             this.clbEmployees.FormattingEnabled = true;
             this.clbEmployees.Location = new System.Drawing.Point(12, 26);
             this.clbEmployees.Name = "clbEmployees";
-            this.clbEmployees.Size = new System.Drawing.Size(186, 244);
+            this.clbEmployees.Size = new System.Drawing.Size(219, 244);
             this.clbEmployees.TabIndex = 61;
-            // 
-            // cbDateMoreEmployees
-            // 
-            this.cbDateMoreEmployees.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDateMoreEmployees.FormattingEnabled = true;
-            this.cbDateMoreEmployees.Location = new System.Drawing.Point(330, 26);
-            this.cbDateMoreEmployees.Name = "cbDateMoreEmployees";
-            this.cbDateMoreEmployees.Size = new System.Drawing.Size(220, 21);
-            this.cbDateMoreEmployees.TabIndex = 57;
             // 
             // label6
             // 
@@ -183,9 +171,9 @@
             this.label6.Location = new System.Drawing.Point(375, 3);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(109, 20);
+            this.label6.Size = new System.Drawing.Size(48, 20);
             this.label6.TabIndex = 59;
-            this.label6.Text = "День недели";
+            this.label6.Text = "Дата";
             // 
             // btAddMoreEmployees
             // 
@@ -206,18 +194,18 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(8, 3);
+            this.label7.Location = new System.Drawing.Point(73, 3);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(173, 20);
+            this.label7.Size = new System.Drawing.Size(91, 20);
             this.label7.TabIndex = 58;
-            this.label7.Text = "Фамилия сотрудника";
+            this.label7.Text = "Сотрудник";
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.tabPage2.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
-            this.tabPage2.Controls.Add(this.cbDateStart);
+            this.tabPage2.Controls.Add(this.dtpDateStart);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.cbRegularity);
             this.tabPage2.Controls.Add(this.label3);
@@ -230,16 +218,6 @@
             this.tabPage2.Size = new System.Drawing.Size(575, 278);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Добавить закономерность в расписание";
-            // 
-            // cbDateStart
-            // 
-            this.cbDateStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDateStart.FormattingEnabled = true;
-            this.cbDateStart.Location = new System.Drawing.Point(211, 143);
-            this.cbDateStart.Name = "cbDateStart";
-            this.cbDateStart.Size = new System.Drawing.Size(220, 21);
-            this.cbDateStart.TabIndex = 61;
-            this.cbDateStart.SelectedIndexChanged += new System.EventHandler(this.cbDateStart_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -314,6 +292,20 @@
             this.cbSurnameEmployeeRegularity.TabIndex = 56;
             this.cbSurnameEmployeeRegularity.SelectedIndexChanged += new System.EventHandler(this.cbSurnameEmployeeRegularity_SelectedIndexChanged);
             // 
+            // dtpDateMoreEmployees
+            // 
+            this.dtpDateMoreEmployees.Location = new System.Drawing.Point(347, 26);
+            this.dtpDateMoreEmployees.Name = "dtpDateMoreEmployees";
+            this.dtpDateMoreEmployees.Size = new System.Drawing.Size(220, 20);
+            this.dtpDateMoreEmployees.TabIndex = 62;
+            // 
+            // dtpDateStart
+            // 
+            this.dtpDateStart.Location = new System.Drawing.Point(211, 144);
+            this.dtpDateStart.Name = "dtpDateStart";
+            this.dtpDateStart.Size = new System.Drawing.Size(220, 20);
+            this.dtpDateStart.TabIndex = 63;
+            // 
             // FormAddWorkHours
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,13 +332,11 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.ComboBox cbDateOfWeek;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btAdd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbSurnameEmployee;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ComboBox cbDateStart;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbRegularity;
         private System.Windows.Forms.Label label3;
@@ -358,6 +348,8 @@
         private System.Windows.Forms.Button btAddMoreEmployees;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckedListBox clbEmployees;
-        private System.Windows.Forms.ComboBox cbDateMoreEmployees;
+        private System.Windows.Forms.DateTimePicker dtpDate;
+        private System.Windows.Forms.DateTimePicker dtpDateMoreEmployees;
+        private System.Windows.Forms.DateTimePicker dtpDateStart;
     }
 }

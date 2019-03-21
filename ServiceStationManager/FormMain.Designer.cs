@@ -61,6 +61,7 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBtHelp = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.наглядноеРасписаниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -118,7 +119,8 @@
             this.информацияОСотрудникахToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.списокСотрудниковToolStripMenuItem,
             this.расписаниеToolStripMenuItem,
-            this.расписаниеРаботToolStripMenuItem});
+            this.расписаниеРаботToolStripMenuItem,
+            this.наглядноеРасписаниеToolStripMenuItem});
             this.информацияОСотрудникахToolStripMenuItem.Name = "информацияОСотрудникахToolStripMenuItem";
             this.информацияОСотрудникахToolStripMenuItem.Size = new System.Drawing.Size(174, 20);
             this.информацияОСотрудникахToolStripMenuItem.Text = "Информация о сотрудниках";
@@ -126,21 +128,21 @@
             // списокСотрудниковToolStripMenuItem
             // 
             this.списокСотрудниковToolStripMenuItem.Name = "списокСотрудниковToolStripMenuItem";
-            this.списокСотрудниковToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.списокСотрудниковToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.списокСотрудниковToolStripMenuItem.Text = "Список сотрудников";
             this.списокСотрудниковToolStripMenuItem.Click += new System.EventHandler(this.списокСотрудниковToolStripMenuItem_Click);
             // 
             // расписаниеToolStripMenuItem
             // 
             this.расписаниеToolStripMenuItem.Name = "расписаниеToolStripMenuItem";
-            this.расписаниеToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.расписаниеToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.расписаниеToolStripMenuItem.Text = "Расписание";
             this.расписаниеToolStripMenuItem.Click += new System.EventHandler(this.расписаниеToolStripMenuItem_Click);
             // 
             // расписаниеРаботToolStripMenuItem
             // 
             this.расписаниеРаботToolStripMenuItem.Name = "расписаниеРаботToolStripMenuItem";
-            this.расписаниеРаботToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.расписаниеРаботToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.расписаниеРаботToolStripMenuItem.Text = "Расписание работ";
             this.расписаниеРаботToolStripMenuItem.Click += new System.EventHandler(this.расписаниеРаботToolStripMenuItem_Click);
             // 
@@ -334,6 +336,13 @@
             this.tabControl1.Size = new System.Drawing.Size(1155, 547);
             this.tabControl1.TabIndex = 10;
             // 
+            // наглядноеРасписаниеToolStripMenuItem
+            // 
+            this.наглядноеРасписаниеToolStripMenuItem.Name = "наглядноеРасписаниеToolStripMenuItem";
+            this.наглядноеРасписаниеToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.наглядноеРасписаниеToolStripMenuItem.Text = "Наглядное расписание";
+            this.наглядноеРасписаниеToolStripMenuItem.Click += new System.EventHandler(this.наглядноеРасписаниеToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,5 +401,6 @@
         private System.Windows.Forms.ToolStripButton toolStripBtHelp;
         private System.Windows.Forms.ToolStripMenuItem списокВсехРаботToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem магазинАвтозапчастейToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem наглядноеРасписаниеToolStripMenuItem;
     }
 }

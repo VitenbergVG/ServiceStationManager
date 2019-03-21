@@ -33,8 +33,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.добавитьРаботуыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьВыбраннуюРаботуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.treeViewDates = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkHours)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvWorkHours
@@ -44,10 +50,10 @@
             this.dgvWorkHours.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvWorkHours.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvWorkHours.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvWorkHours.Location = new System.Drawing.Point(0, 24);
+            this.dgvWorkHours.Location = new System.Drawing.Point(0, 0);
             this.dgvWorkHours.Name = "dgvWorkHours";
             this.dgvWorkHours.ReadOnly = true;
-            this.dgvWorkHours.Size = new System.Drawing.Size(1103, 495);
+            this.dgvWorkHours.Size = new System.Drawing.Size(876, 495);
             this.dgvWorkHours.TabIndex = 5;
             // 
             // menuStrip1
@@ -76,13 +82,40 @@
             this.удалитьВыбраннуюРаботуToolStripMenuItem.Text = "Удалить выбранную смену";
             this.удалитьВыбраннуюРаботуToolStripMenuItem.Click += new System.EventHandler(this.btDelete_Click);
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.treeViewDates);
+            this.splitContainer1.Panel1MinSize = 100;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.dgvWorkHours);
+            this.splitContainer1.Size = new System.Drawing.Size(1103, 495);
+            this.splitContainer1.SplitterDistance = 223;
+            this.splitContainer1.TabIndex = 9;
+            // 
+            // treeViewDates
+            // 
+            this.treeViewDates.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewDates.Location = new System.Drawing.Point(0, 0);
+            this.treeViewDates.Name = "treeViewDates";
+            this.treeViewDates.Size = new System.Drawing.Size(223, 495);
+            this.treeViewDates.TabIndex = 0;
+            this.treeViewDates.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewDates_BeforeSelect);
+            // 
             // FormWorkHours
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
             this.ClientSize = new System.Drawing.Size(1103, 519);
-            this.Controls.Add(this.dgvWorkHours);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -92,6 +125,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkHours)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,5 +139,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem добавитьРаботуыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьВыбраннуюРаботуToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TreeView treeViewDates;
     }
 }

@@ -13,24 +13,21 @@ namespace ServiceStationManager.Add
     public partial class FormAddWorkHours : Form
     {
         ClassDB db;
+
+        List<string> surnameEmployees;
+
         string currentDate;
         int currentIdEmployee;
 
-        List<int> globalidEmployees;
+        List<int> globalidEmployees = new List<int>();
         List<DateTime> globalDates;
 
-        public FormAddWorkHours(ClassDB db, List<DateTime> dates, 
-            List<string> surnameEmployees, List<int> idEmployees)
+        public FormAddWorkHours(ClassDB db)
         {
             InitializeComponent();
             this.db = db;
 
-            for (int i = 0; i < dates.Count; i++)
-            {
-                cbDateOfWeek.Items.Add(dates[i].ToShortDateString());
-                cbDateStart.Items.Add(dates[i].ToShortDateString());
-                cbDateMoreEmployees.Items.Add(dates[i].ToShortDateString());
-            }
+            surnameEmployees = db.GetEmployees(globalidEmployees);
 
             for (int i = 0; i < surnameEmployees.Count; i++)
             {
@@ -38,27 +35,24 @@ namespace ServiceStationManager.Add
                 cbSurnameEmployeeRegularity.Items.Add(surnameEmployees[i]);
                 clbEmployees.Items.Add(surnameEmployees[i]);
             }
-
-            globalidEmployees = idEmployees;
-            globalDates = dates;
         }
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if (cbSurnameEmployee.Text == "" || cbDateOfWeek.Text == "")
+            if (cbSurnameEmployee.Text == "")
             {
                 MessageBox.Show("Заполните все поля!", "Ошибка");
             }
             else
             {
-                db.AddWorkHour(currentIdEmployee, currentDate);
+                db.AddWorkHour(currentIdEmployee, dtpDate.Value.ToString("yyyy-MM-dd"));
                 Hide();
             }
         }
 
         private void btAddRegularity_Click(object sender, EventArgs e)
         {
-            if (cbSurnameEmployeeRegularity.Text == "" || cbRegularity.Text == "" || cbDateStart.Text == "")
+            if (cbSurnameEmployeeRegularity.Text == "" || cbRegularity.Text == "")
             {
                 MessageBox.Show("Заполните все поля!", "Ошибка");
             }
@@ -73,8 +67,9 @@ namespace ServiceStationManager.Add
 
                 switch (cbRegularity.SelectedItem)
                 {
+                    //Добавить дату конца и смотреть от даты начала до даты конца, предлагать месяц
                     case "2 через 2":
-                        for (int i = cbDateStart.SelectedIndex; i < globalDates.Count; i++)
+                        for (int i = Convert.ToInt32(dtpDateStart.Value); i < globalDates.Count; i++)
                         {
                             if (checkRegularity < 3)
                             {
@@ -140,36 +135,24 @@ namespace ServiceStationManager.Add
         {
             currentIdEmployee = globalidEmployees[cbSurnameEmployee.SelectedIndex];
         }
-
-        private void cbDateOfWeek_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            currentDate = globalDates[cbDateOfWeek.SelectedIndex].ToString("yyyy-MM-dd");
-        }
-
+        
         private void cbSurnameEmployeeRegularity_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentIdEmployee = globalidEmployees[cbSurnameEmployeeRegularity.SelectedIndex];
         }
-
-        private void cbDateStart_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            currentDate = globalDates[cbDateStart.SelectedIndex].ToString("yyyy-MM-dd");
-        }
-
+        
         private void btAddMoreEmployees_Click(object sender, EventArgs e)
         {
-            if (cbDateMoreEmployees.Text == "" || clbEmployees.CheckedItems.Count == 0)
+            if (clbEmployees.CheckedItems.Count == 0)
             {
                 MessageBox.Show("Добавьте смену хотя-бы одному сотрунику", "Ошибка");
             }
             else
             {
-                DateTime dateWorkHours = Convert.ToDateTime(cbDateMoreEmployees.Text);
-
                 for (int i = 0; i < clbEmployees.Items.Count; i++)
                 {
                     if (clbEmployees.GetItemChecked(i))
-                        db.AddWorkHour(globalidEmployees[i], dateWorkHours.ToString("yyyy-MM-dd"));
+                        db.AddWorkHour(globalidEmployees[i], dtpDateMoreEmployees.Value.ToString("yyyy-MM-dd"));
                 }
 
                 Hide();

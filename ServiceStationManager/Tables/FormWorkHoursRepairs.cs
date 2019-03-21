@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,11 @@ namespace ServiceStationManager
     {
         ClassDB db;
 
-        List<DateTime> allDates;
-        List<int> allYearsUsed;//Все года уже учтеные в дереве
+        List<int> allYears;//Все года 
+        List<int> allMonth;//Все месяца 
+        List<int> allDays;//Все дни
         List<DateTime> dates;
+
         List<int> idEmployees;
         List<string> surnameEmployees;
 
@@ -27,68 +30,48 @@ namespace ServiceStationManager
 
             this.db = db;
 
-            allDates = db.GetDatesOfRepairs();
-            allYearsUsed = new List<int>();
-
-            for (int i = 0; i < allDates.Count(); i++)
-            {
-                //TreeNode yearNode = new TreeNode(allDates[i].Year.ToString());
-                //TreeNode monthNode = new TreeNode(allDates[i].Month.ToString());
-                //TreeNode dayNode = new TreeNode(allDates[i].Day.ToString());
-
-                treeViewDates.Nodes.Add(allDates[i].Year.ToString());
-                
-
-                if (allYearsUsed.Contains(Convert.ToInt32(allDates[i].Year.ToString())))
-                {
-                    treeViewDates.Nodes[treeViewDates.Nodes.Count-1].Nodes.Add(allDates[i].Month.ToString());
-                    //monthNode.Nodes.Add(dayNode);
-                }
-
-                allYearsUsed.Add(Convert.ToInt32(allDates[i].Year.ToString()));
-                //else
-                //{
-                //    treeViewDates.Nodes.Add(yearNode);
-                //    allYearsUsed.Add(Convert.ToInt32(yearNode.Text));
-                //    yearNode.Nodes.Add(monthNode);
-                //    monthNode.Nodes.Add(dayNode);
-                //}
-
-
-            }
-
-            treeViewDates.ExpandAll();
-
-            RefreshTable();
-        }
-
-
-        private void RefreshTable()
-        {
-            dgvWorkHoursRepairs.Rows.Clear();
             dates = new List<DateTime>();//Список дат
             idEmployees = new List<int>();//Список id сотрудников
             surnameEmployees = new List<string>();//Список фамилий сотрудников
 
-            DateTime today = DateTime.Today;
+            RefreshTable();
+        }
 
-            dgvWorkHoursRepairs.ColumnCount = 21;
+        //или переделать или удалить этот метод
+        private void RefreshTable()
+        {
+            treeViewDates.Nodes.Clear();
+            allYears = db.GetYearsOfRepairs();
 
-            for (int i = -7; i < 14; i++)
+            for (int i = 0; i < allYears.Count(); i++)
             {
-                dates.Add(today.AddDays(i));
+                treeViewDates.Nodes.Add(allYears[i].ToString());
+                allMonth = db.GetMonthsOfRepairs(allYears[i]);
+
+                for (int j = 0; j < allMonth.Count(); j++)
+                {
+                    treeViewDates.Nodes[i].Nodes.Add(DateTimeFormatInfo.CurrentInfo.MonthNames[allMonth[j] - 1].ToString());
+
+                    allDays = db.GetDaysOfRepairs(allYears[i], allMonth[j]);
+
+                    for (int k = 0; k < allDays.Count(); k++)
+                    {
+                        treeViewDates.Nodes[i].Nodes[j].Nodes.Add(allDays[k].ToString());
+
+                        string picDate = treeViewDates.Nodes[i].Nodes[j].Nodes[k].Text + "." +
+                            treeViewDates.Nodes[i].Nodes[j].Text + "." +
+                            treeViewDates.Nodes[i].Text;
+
+                        treeViewDates.Nodes[i].Nodes[j].Nodes[k].Text += " - " +
+                            Convert.ToDateTime(picDate).ToString("ddd", CultureInfo.GetCultureInfo("ru-ru"));
+                    }
+                }
             }
+            treeViewDates.ExpandAll();
 
-            for (int i = 0; i < 21; i++)
-            {
-                dgvWorkHoursRepairs.Columns[i].HeaderCell.Value = dates[i].ToShortDateString();
-            }
-
-            db.WorkHoursRepairsNameEmployees(dgvWorkHoursRepairs, idEmployees, surnameEmployees, dates);
-
-            dgvWorkHoursRepairs.FirstDisplayedCell = dgvWorkHoursRepairs.Rows[0].Cells[7];
-            dgvWorkHoursRepairs.CurrentCell = dgvWorkHoursRepairs.Rows[0].Cells[7];
-            dgvWorkHoursRepairs.Columns[7].DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
+            //dgvWorkHoursRepairs.FirstDisplayedCell = dgvWorkHoursRepairs.Rows[0].Cells[7];
+            //dgvWorkHoursRepairs.CurrentCell = dgvWorkHoursRepairs.Rows[0].Cells[7];
+            //dgvWorkHoursRepairs.Columns[7].DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
         }
 
         private void btAdd_Click(object sender, EventArgs e)
@@ -106,7 +89,6 @@ namespace ServiceStationManager
 
             FormAboutCurrentRepair facr = new FormAboutCurrentRepair(db, surnameEmployee, strDate);
             facr.ShowDialog();
-            RefreshTable();
         }
 
         private void btDelete_Click(object sender, EventArgs e)
@@ -123,6 +105,51 @@ namespace ServiceStationManager
                 RefreshTable();
             }
 
+
+        }
+
+        private void treeViewDates_BeforeSelect(object sender, TreeViewCancelEventArgs e)
+        {
+            dgvWorkHoursRepairs.Rows.Clear();
+            dates.Clear();
+
+            switch (e.Node.Level)
+            {
+                //Если выбран конкретный месяц
+                case 1:
+                    {
+                        DateTime firstDate = Convert.ToDateTime(e.Node.Parent.Text + "." + e.Node.Text + "." + 22);
+
+                        int countDaysInMonth = DateTime.DaysInMonth(Convert.ToInt32(e.Node.Parent.Text), firstDate.Month);
+
+                        for (int i = 1; i <= countDaysInMonth; i++)
+                        {
+                            string picDates = e.Node.Parent.Text + "." + e.Node.Text + "." + i;
+                            dates.Add(Convert.ToDateTime(picDates));
+                        }
+                    }
+                    break;
+
+                //Если выбран конкретный день
+                case 2:
+                    {
+                        string[] day = e.Node.Text.Split(new char[] { ' ' });
+                        string picDate = e.Node.Parent.Parent.Text + "." + e.Node.Parent.Text + "." + day[0];
+                        dates.Add(Convert.ToDateTime(picDate));
+                    }
+                    break;
+            }
+
+            if (e.Node.Level != 0)
+            {
+                dgvWorkHoursRepairs.ColumnCount = dates.Count;
+                for (int i = 0; i < dgvWorkHoursRepairs.Columns.Count; i++)
+                {
+                    dgvWorkHoursRepairs.Columns[i].HeaderText = dates[i].ToShortDateString();
+                }
+
+                db.WorkHoursRepairsNameEmployees(dgvWorkHoursRepairs, idEmployees, surnameEmployees, dates);
+            }
 
         }
     }

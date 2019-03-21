@@ -294,5 +294,11 @@ namespace ServiceStationManager
             FormPerformedRepairs fpr = new FormPerformedRepairs(db);
             fpr.ShowDialog();
         }
+
+        private void наглядноеРасписаниеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormViewWorkHours fvwh = new FormViewWorkHours();
+            fvwh.ShowDialog();
+        }
     }
 }
