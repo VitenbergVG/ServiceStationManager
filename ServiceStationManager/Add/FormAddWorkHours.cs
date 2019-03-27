@@ -35,6 +35,9 @@ namespace ServiceStationManager.Add
                 cbSurnameEmployeeRegularity.Items.Add(surnameEmployees[i]);
                 clbEmployees.Items.Add(surnameEmployees[i]);
             }
+
+            dtpDateFinish.MinDate = dtpDateStart.Value;
+            dtpDateFinish.Value = dtpDateStart.Value.AddDays(7);
         }
 
         private void btAdd_Click(object sender, EventArgs e)
@@ -69,14 +72,14 @@ namespace ServiceStationManager.Add
                 {
                     //Добавить дату конца и смотреть от даты начала до даты конца, предлагать месяц
                     case "2 через 2":
-                        for (int i = Convert.ToInt32(dtpDateStart.Value); i < globalDates.Count; i++)
+                        for (DateTime i = dtpDateStart.Value; i < dtpDateFinish.Value; i = i.AddDays(1))
                         {
                             if (checkRegularity < 3)
                             {
-                                datesRegularity.Add(globalDates[i]);
+                                datesRegularity.Add(i);
                                 checkRegularity++;
                             }
-                            else { checkRegularity = 1; i++; }
+                            else { checkRegularity = 1; i = i.AddDays(1); }
                         }
 
                         for (int i = 0; i < datesRegularity.Count() - 1; i++)
@@ -88,11 +91,11 @@ namespace ServiceStationManager.Add
                         break;
 
                     case "2 через 1":
-                        for (int i = cbDateStart.SelectedIndex; i < globalDates.Count; i++)
+                        for (DateTime i = dtpDateStart.Value; i < dtpDateFinish.Value; i = i.AddDays(1))
                         {
                             if (checkRegularity < 3)
                             {
-                                datesRegularity.Add(globalDates[i]);
+                                datesRegularity.Add(i);
                                 checkRegularity++;
                             }
                             else { checkRegularity = 1; }
@@ -107,14 +110,14 @@ namespace ServiceStationManager.Add
                         break;
 
                     case "3 через 3":
-                        for (int i = cbDateStart.SelectedIndex; i < globalDates.Count; i++)
+                        for (DateTime i = dtpDateStart.Value; i < dtpDateFinish.Value; i = i.AddDays(1))
                         {
                             if (checkRegularity < 4)
                             {
-                                datesRegularity.Add(globalDates[i]);
+                                datesRegularity.Add(i);
                                 checkRegularity++;
                             }
-                            else { checkRegularity = 1; i = i + 2; }
+                            else { checkRegularity = 1; i = i.AddDays(2); }
                         }
 
                         for (int i = 0; i < datesRegularity.Count() - 1; i++)
@@ -157,6 +160,12 @@ namespace ServiceStationManager.Add
 
                 Hide();
             }
+        }
+
+        private void dtpDateStart_ValueChanged(object sender, EventArgs e)
+        {
+            dtpDateFinish.MinDate = dtpDateStart.Value;
+            dtpDateFinish.Value = dtpDateStart.Value.AddDays(7);
         }
     }
 }

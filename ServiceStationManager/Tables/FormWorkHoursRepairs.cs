@@ -68,10 +68,6 @@ namespace ServiceStationManager
                 }
             }
             treeViewDates.ExpandAll();
-
-            //dgvWorkHoursRepairs.FirstDisplayedCell = dgvWorkHoursRepairs.Rows[0].Cells[7];
-            //dgvWorkHoursRepairs.CurrentCell = dgvWorkHoursRepairs.Rows[0].Cells[7];
-            //dgvWorkHoursRepairs.Columns[7].DefaultCellStyle.BackColor = System.Drawing.Color.Gray;
         }
 
         private void btAdd_Click(object sender, EventArgs e)

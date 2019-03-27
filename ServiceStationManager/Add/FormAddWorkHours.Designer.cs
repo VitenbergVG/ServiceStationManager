@@ -37,19 +37,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbSurnameEmployee = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dtpDateMoreEmployees = new System.Windows.Forms.DateTimePicker();
             this.clbEmployees = new System.Windows.Forms.CheckedListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btAddMoreEmployees = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dtpDateStart = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.cbRegularity = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btAddRegularity = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cbSurnameEmployeeRegularity = new System.Windows.Forms.ComboBox();
-            this.dtpDateMoreEmployees = new System.Windows.Forms.DateTimePicker();
-            this.dtpDateStart = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dtpDateFinish = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -154,6 +156,13 @@
             this.tabPage3.Text = "Добавить смены нескольким сотрудникам";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // dtpDateMoreEmployees
+            // 
+            this.dtpDateMoreEmployees.Location = new System.Drawing.Point(347, 26);
+            this.dtpDateMoreEmployees.Name = "dtpDateMoreEmployees";
+            this.dtpDateMoreEmployees.Size = new System.Drawing.Size(220, 20);
+            this.dtpDateMoreEmployees.TabIndex = 62;
+            // 
             // clbEmployees
             // 
             this.clbEmployees.CheckOnClick = true;
@@ -205,7 +214,9 @@
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.tabPage2.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
+            this.tabPage2.Controls.Add(this.dtpDateFinish);
             this.tabPage2.Controls.Add(this.dtpDateStart);
+            this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.cbRegularity);
             this.tabPage2.Controls.Add(this.label3);
@@ -219,12 +230,20 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Добавить закономерность в расписание";
             // 
+            // dtpDateStart
+            // 
+            this.dtpDateStart.Location = new System.Drawing.Point(212, 130);
+            this.dtpDateStart.Name = "dtpDateStart";
+            this.dtpDateStart.Size = new System.Drawing.Size(220, 20);
+            this.dtpDateStart.TabIndex = 63;
+            this.dtpDateStart.ValueChanged += new System.EventHandler(this.dtpDateStart_ValueChanged);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(31, 144);
+            this.label5.Location = new System.Drawing.Point(31, 130);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 20);
@@ -239,7 +258,7 @@
             "2 через 2",
             "2 через 1",
             "3 через 3"});
-            this.cbRegularity.Location = new System.Drawing.Point(211, 90);
+            this.cbRegularity.Location = new System.Drawing.Point(211, 80);
             this.cbRegularity.Name = "cbRegularity";
             this.cbRegularity.Size = new System.Drawing.Size(220, 21);
             this.cbRegularity.TabIndex = 57;
@@ -249,7 +268,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(31, 91);
+            this.label3.Location = new System.Drawing.Point(31, 78);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(137, 20);
@@ -275,7 +294,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(31, 39);
+            this.label4.Location = new System.Drawing.Point(31, 27);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(173, 20);
@@ -286,25 +305,30 @@
             // 
             this.cbSurnameEmployeeRegularity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSurnameEmployeeRegularity.FormattingEnabled = true;
-            this.cbSurnameEmployeeRegularity.Location = new System.Drawing.Point(211, 38);
+            this.cbSurnameEmployeeRegularity.Location = new System.Drawing.Point(212, 29);
             this.cbSurnameEmployeeRegularity.Name = "cbSurnameEmployeeRegularity";
             this.cbSurnameEmployeeRegularity.Size = new System.Drawing.Size(220, 21);
             this.cbSurnameEmployeeRegularity.TabIndex = 56;
             this.cbSurnameEmployeeRegularity.SelectedIndexChanged += new System.EventHandler(this.cbSurnameEmployeeRegularity_SelectedIndexChanged);
             // 
-            // dtpDateMoreEmployees
+            // label8
             // 
-            this.dtpDateMoreEmployees.Location = new System.Drawing.Point(347, 26);
-            this.dtpDateMoreEmployees.Name = "dtpDateMoreEmployees";
-            this.dtpDateMoreEmployees.Size = new System.Drawing.Size(220, 20);
-            this.dtpDateMoreEmployees.TabIndex = 62;
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(31, 180);
+            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(132, 20);
+            this.label8.TabIndex = 62;
+            this.label8.Text = "Дата окончания";
             // 
-            // dtpDateStart
+            // dtpDateFinish
             // 
-            this.dtpDateStart.Location = new System.Drawing.Point(211, 144);
-            this.dtpDateStart.Name = "dtpDateStart";
-            this.dtpDateStart.Size = new System.Drawing.Size(220, 20);
-            this.dtpDateStart.TabIndex = 63;
+            this.dtpDateFinish.Location = new System.Drawing.Point(212, 179);
+            this.dtpDateFinish.Name = "dtpDateFinish";
+            this.dtpDateFinish.Size = new System.Drawing.Size(220, 20);
+            this.dtpDateFinish.TabIndex = 63;
             // 
             // FormAddWorkHours
             // 
@@ -351,5 +375,7 @@
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.DateTimePicker dtpDateMoreEmployees;
         private System.Windows.Forms.DateTimePicker dtpDateStart;
+        private System.Windows.Forms.DateTimePicker dtpDateFinish;
+        private System.Windows.Forms.Label label8;
     }
 }
