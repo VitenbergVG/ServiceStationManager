@@ -31,7 +31,7 @@ namespace ServiceStationManager
         {
             if (tbIP.Text == "" || tbLogin.Text == "" || tbLoginDB.Text == "" || tbPass.Text == "" || tbPassDB.Text == "" || tbPort.Text == "")
             {
-                MessageBox.Show("Неверно указаны данные для подключения к БД", "Ошибка");
+                MessageBox.Show("Не все данные заполнены", "Система управления СТО", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 error = true;
             }
             else
@@ -46,13 +46,12 @@ namespace ServiceStationManager
                 }
                 catch
                 {
-                    MessageBox.Show("Неверно указаны данные для подключения к БД", "Ошибка");
+                    MessageBox.Show("Неверно указаны данные для подключения к БД", "Система управления СТО", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     error = true;
                 }
 
                 if (!error)
                 {
-                    Hide();
                     switch (tbLogin.Text)
                     {
                         case "admin":
@@ -64,19 +63,18 @@ namespace ServiceStationManager
                             }
                             else
                             {
-                                MessageBox.Show("Введены неверные данные", "Ошибка");
+                                MessageBox.Show("Введены неверные данные", "Система управления СТО", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             break;
 
                         case "user":
                             statusLogin = USER;
                             FormMain fmUser = new FormMain(db, statusLogin);
-
                             fmUser.ShowDialog();
                             break;
 
                         default:
-                            MessageBox.Show("Введены неверные данные");
+                            MessageBox.Show("Введены неверные данные", "Система управления СТО", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                     }
                 }

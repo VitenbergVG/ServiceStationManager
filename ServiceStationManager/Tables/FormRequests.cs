@@ -36,11 +36,14 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            string id = dgvRequests.CurrentRow.Cells[0].Value.ToString();
-
-            db.Delete("requests", "id_request", id);
-            dgvRequests.Rows.Clear();
-            db.LoadTables("requests", dgvRequests);
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить заявку, без возможности восстановления?", "Система управления СТО", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                string id = dgvRequests.CurrentRow.Cells[0].Value.ToString();
+                db.Delete("requests", "id_request", id);
+                dgvRequests.Rows.Clear();
+                db.LoadTables("requests", dgvRequests);
+            }
         }
 
         private void btRefresh_Click(object sender, EventArgs e)
@@ -53,12 +56,12 @@ namespace ServiceStationManager
         {
             FormRequestProcessing frp = new FormRequestProcessing();
             frp.ShowDialog();
-            
+
 
 
             //int id = Convert.ToInt32(dgvRequests.CurrentRow.Cells[0].Value);
             //db.Delete("requests", "id_request", id);
-            
+
 
             //TabPage newTabPage = new TabPage();
             //tabControl.TabPages.Add(newTabPage);
@@ -88,7 +91,7 @@ namespace ServiceStationManager
 
             //FormAddRepairForCurrentClient farfcc = new FormAddRepairForCurrentClient(db, categoryRepairs);
             //farfcc.ShowDialog();
-            
+
             //if (StaticData.DataBufferNameRepair != null && StaticData.DataBufferEmployee != null)
             //{
             //    if (ucct.clbRepairs.Items.Contains(StaticData.DataBufferNameRepair))

@@ -49,6 +49,11 @@ namespace ServiceStationManager.Add
             else
             {
                 db.AddWorkHour(currentIdEmployee, dtpDate.Value.ToString("yyyy-MM-dd"));
+                if (dtpDate.Value == DateTime.Today)
+                {
+                    string factQuery = "status = 'Работает'";
+                    db.Edit("employees", "id_employee", currentIdEmployee.ToString(), factQuery);
+                }
                 Hide();
             }
         }
@@ -130,6 +135,12 @@ namespace ServiceStationManager.Add
                 }
                 factQuery = "(`employees_id_employee`, `dates_of_month`) VALUES" + values + ";";
                 db.Add("work_hours", factQuery);
+
+                if (datesRegularity.Contains(DateTime.Today))
+                {
+                    factQuery = "status = 'Работает'";
+                    db.Edit("employees", "id_employee", currentIdEmployee.ToString(), factQuery);
+                }
                 Hide();
             }
         }
@@ -138,12 +149,12 @@ namespace ServiceStationManager.Add
         {
             currentIdEmployee = globalidEmployees[cbSurnameEmployee.SelectedIndex];
         }
-        
+
         private void cbSurnameEmployeeRegularity_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentIdEmployee = globalidEmployees[cbSurnameEmployeeRegularity.SelectedIndex];
         }
-        
+
         private void btAddMoreEmployees_Click(object sender, EventArgs e)
         {
             if (clbEmployees.CheckedItems.Count == 0)
@@ -152,12 +163,16 @@ namespace ServiceStationManager.Add
             }
             else
             {
+                string factQuery = "status = 'Работает'";
                 for (int i = 0; i < clbEmployees.Items.Count; i++)
                 {
                     if (clbEmployees.GetItemChecked(i))
+                    {
                         db.AddWorkHour(globalidEmployees[i], dtpDateMoreEmployees.Value.ToString("yyyy-MM-dd"));
+                        if(dtpDateMoreEmployees.Value == DateTime.Today)
+                        db.Edit("employees", "id_employee", currentIdEmployee.ToString(), factQuery);
+                    }
                 }
-
                 Hide();
             }
         }

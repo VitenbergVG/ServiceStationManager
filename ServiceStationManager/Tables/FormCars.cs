@@ -32,16 +32,20 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            string id = dgvCars.CurrentRow.Cells[0].Value.ToString();
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить автомобиль?", "Система управления СТО", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                string id = dgvCars.CurrentRow.Cells[0].Value.ToString();
 
-            if (db.Delete("cars", "number_sts", id) == 0)
-            {
-                MessageBox.Show("Невозможно удалить автомобиль, так как информация о его владельце ещё числится в БД", "Ошибка");
-            }
-            else
-            {
-                dgvCars.Rows.Clear();
-                db.LoadTables("cars", dgvCars);
+                if (db.Delete("cars", "number_sts", id) == 0)
+                {
+                    MessageBox.Show("Невозможно удалить автомобиль, так как информация о его владельце ещё числится в БД", "Система управления СТО", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    dgvCars.Rows.Clear();
+                    db.LoadTables("cars", dgvCars);
+                }
             }
         }
 

@@ -101,7 +101,8 @@
             this.tableLayoutPanel2.Controls.Add(this.tbNameDriver, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.tbNumberSTSCar, 1, 7);
             this.tableLayoutPanel2.Controls.Add(this.cbYearCreated, 1, 6);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 28);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 34);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 8;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -112,8 +113,8 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(388, 242);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(517, 298);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label11
@@ -121,10 +122,10 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(5, 5);
-            this.label11.Margin = new System.Windows.Forms.Padding(5);
+            this.label11.Location = new System.Drawing.Point(7, 6);
+            this.label11.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(81, 20);
+            this.label11.Size = new System.Drawing.Size(103, 25);
             this.label11.TabIndex = 34;
             this.label11.Text = "Фамилия";
             // 
@@ -133,10 +134,10 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(5, 35);
-            this.label12.Margin = new System.Windows.Forms.Padding(5);
+            this.label12.Location = new System.Drawing.Point(7, 43);
+            this.label12.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(40, 20);
+            this.label12.Size = new System.Drawing.Size(54, 25);
             this.label12.TabIndex = 34;
             this.label12.Text = "Имя";
             // 
@@ -145,10 +146,10 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(5, 65);
-            this.label13.Margin = new System.Windows.Forms.Padding(5);
+            this.label13.Location = new System.Drawing.Point(7, 80);
+            this.label13.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(83, 20);
+            this.label13.Size = new System.Drawing.Size(104, 25);
             this.label13.TabIndex = 34;
             this.label13.Text = "Отчество";
             // 
@@ -157,10 +158,10 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(5, 95);
-            this.label14.Margin = new System.Windows.Forms.Padding(5);
+            this.label14.Location = new System.Drawing.Point(7, 117);
+            this.label14.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(171, 20);
+            this.label14.Size = new System.Drawing.Size(211, 25);
             this.label14.TabIndex = 34;
             this.label14.Text = "Мобильный телефон";
             // 
@@ -169,10 +170,10 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(5, 125);
-            this.label15.Margin = new System.Windows.Forms.Padding(5);
+            this.label15.Location = new System.Drawing.Point(7, 154);
+            this.label15.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(154, 20);
+            this.label15.Size = new System.Drawing.Size(190, 25);
             this.label15.TabIndex = 34;
             this.label15.Text = "Марка автомобиля";
             // 
@@ -181,10 +182,10 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(5, 155);
-            this.label16.Margin = new System.Windows.Forms.Padding(5);
+            this.label16.Location = new System.Drawing.Point(7, 191);
+            this.label16.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(70, 20);
+            this.label16.Size = new System.Drawing.Size(84, 25);
             this.label16.TabIndex = 34;
             this.label16.Text = "Модель";
             // 
@@ -193,10 +194,10 @@
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(5, 185);
-            this.label17.Margin = new System.Windows.Forms.Padding(5);
+            this.label17.Location = new System.Drawing.Point(7, 228);
+            this.label17.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(103, 20);
+            this.label17.Size = new System.Drawing.Size(126, 25);
             this.label17.TabIndex = 34;
             this.label17.Text = "Год выпуска";
             // 
@@ -205,70 +206,70 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(5, 216);
-            this.label18.Margin = new System.Windows.Forms.Padding(5);
+            this.label18.Location = new System.Drawing.Point(7, 265);
+            this.label18.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(94, 20);
+            this.label18.Size = new System.Drawing.Size(118, 25);
             this.label18.TabIndex = 34;
             this.label18.Text = "Номер СТС";
             // 
             // tbSurnameDriver
             // 
-            this.tbSurnameDriver.Location = new System.Drawing.Point(186, 5);
-            this.tbSurnameDriver.Margin = new System.Windows.Forms.Padding(5);
+            this.tbSurnameDriver.Location = new System.Drawing.Point(232, 6);
+            this.tbSurnameDriver.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tbSurnameDriver.Name = "tbSurnameDriver";
-            this.tbSurnameDriver.Size = new System.Drawing.Size(190, 20);
+            this.tbSurnameDriver.Size = new System.Drawing.Size(252, 22);
             this.tbSurnameDriver.TabIndex = 2;
             // 
             // tbModelCar
             // 
-            this.tbModelCar.Location = new System.Drawing.Point(186, 155);
-            this.tbModelCar.Margin = new System.Windows.Forms.Padding(5);
+            this.tbModelCar.Location = new System.Drawing.Point(232, 191);
+            this.tbModelCar.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tbModelCar.Name = "tbModelCar";
-            this.tbModelCar.Size = new System.Drawing.Size(190, 20);
+            this.tbModelCar.Size = new System.Drawing.Size(252, 22);
             this.tbModelCar.TabIndex = 7;
             // 
             // tbBrandCar
             // 
-            this.tbBrandCar.Location = new System.Drawing.Point(186, 125);
-            this.tbBrandCar.Margin = new System.Windows.Forms.Padding(5);
+            this.tbBrandCar.Location = new System.Drawing.Point(232, 154);
+            this.tbBrandCar.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tbBrandCar.Name = "tbBrandCar";
-            this.tbBrandCar.Size = new System.Drawing.Size(190, 20);
+            this.tbBrandCar.Size = new System.Drawing.Size(252, 22);
             this.tbBrandCar.TabIndex = 6;
             // 
             // tbPhoneNumber
             // 
-            this.tbPhoneNumber.Location = new System.Drawing.Point(186, 95);
-            this.tbPhoneNumber.Margin = new System.Windows.Forms.Padding(5);
+            this.tbPhoneNumber.Location = new System.Drawing.Point(232, 117);
+            this.tbPhoneNumber.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tbPhoneNumber.MaxLength = 11;
             this.tbPhoneNumber.Name = "tbPhoneNumber";
-            this.tbPhoneNumber.Size = new System.Drawing.Size(190, 20);
+            this.tbPhoneNumber.Size = new System.Drawing.Size(252, 22);
             this.tbPhoneNumber.TabIndex = 5;
             this.tbPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPhoneNumber_KeyPress);
             // 
             // tbPatronimycDriver
             // 
-            this.tbPatronimycDriver.Location = new System.Drawing.Point(186, 65);
-            this.tbPatronimycDriver.Margin = new System.Windows.Forms.Padding(5);
+            this.tbPatronimycDriver.Location = new System.Drawing.Point(232, 80);
+            this.tbPatronimycDriver.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tbPatronimycDriver.Name = "tbPatronimycDriver";
-            this.tbPatronimycDriver.Size = new System.Drawing.Size(190, 20);
+            this.tbPatronimycDriver.Size = new System.Drawing.Size(252, 22);
             this.tbPatronimycDriver.TabIndex = 4;
             // 
             // tbNameDriver
             // 
-            this.tbNameDriver.Location = new System.Drawing.Point(186, 35);
-            this.tbNameDriver.Margin = new System.Windows.Forms.Padding(5);
+            this.tbNameDriver.Location = new System.Drawing.Point(232, 43);
+            this.tbNameDriver.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tbNameDriver.Name = "tbNameDriver";
-            this.tbNameDriver.Size = new System.Drawing.Size(190, 20);
+            this.tbNameDriver.Size = new System.Drawing.Size(252, 22);
             this.tbNameDriver.TabIndex = 3;
             // 
             // tbNumberSTSCar
             // 
-            this.tbNumberSTSCar.Location = new System.Drawing.Point(186, 216);
-            this.tbNumberSTSCar.Margin = new System.Windows.Forms.Padding(5);
+            this.tbNumberSTSCar.Location = new System.Drawing.Point(232, 265);
+            this.tbNumberSTSCar.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tbNumberSTSCar.MaxLength = 10;
             this.tbNumberSTSCar.Name = "tbNumberSTSCar";
-            this.tbNumberSTSCar.Size = new System.Drawing.Size(190, 20);
+            this.tbNumberSTSCar.Size = new System.Drawing.Size(252, 22);
             this.tbNumberSTSCar.TabIndex = 9;
             this.tbNumberSTSCar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumberSTSCar_KeyPress);
             // 
@@ -276,10 +277,10 @@
             // 
             this.cbYearCreated.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYearCreated.FormattingEnabled = true;
-            this.cbYearCreated.Location = new System.Drawing.Point(186, 185);
-            this.cbYearCreated.Margin = new System.Windows.Forms.Padding(5);
+            this.cbYearCreated.Location = new System.Drawing.Point(232, 228);
+            this.cbYearCreated.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.cbYearCreated.Name = "cbYearCreated";
-            this.cbYearCreated.Size = new System.Drawing.Size(190, 21);
+            this.cbYearCreated.Size = new System.Drawing.Size(252, 24);
             this.cbYearCreated.TabIndex = 35;
             // 
             // tableLayoutPanel3
@@ -296,13 +297,14 @@
             this.tableLayoutPanel3.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.clbRepairs, 0, 1);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(449, 28);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(599, 34);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(581, 627);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(775, 772);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // lbRepairsTotalCost
@@ -310,10 +312,10 @@
             this.lbRepairsTotalCost.AutoSize = true;
             this.lbRepairsTotalCost.BackColor = System.Drawing.Color.Transparent;
             this.lbRepairsTotalCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRepairsTotalCost.Location = new System.Drawing.Point(349, 555);
-            this.lbRepairsTotalCost.Margin = new System.Windows.Forms.Padding(5);
+            this.lbRepairsTotalCost.Location = new System.Drawing.Point(464, 684);
+            this.lbRepairsTotalCost.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lbRepairsTotalCost.Name = "lbRepairsTotalCost";
-            this.lbRepairsTotalCost.Size = new System.Drawing.Size(94, 40);
+            this.lbRepairsTotalCost.Size = new System.Drawing.Size(122, 50);
             this.lbRepairsTotalCost.TabIndex = 35;
             this.lbRepairsTotalCost.Text = "Итоговая\r\nстоимость:";
             // 
@@ -322,28 +324,32 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 5);
-            this.label1.Margin = new System.Windows.Forms.Padding(5);
+            this.label1.Location = new System.Drawing.Point(7, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(241, 20);
+            this.label1.Size = new System.Drawing.Size(304, 25);
             this.label1.TabIndex = 35;
             this.label1.Text = "Ремонтные работы по машине";
             // 
             // lbRepairsCosts
             // 
             this.lbRepairsCosts.FormattingEnabled = true;
-            this.lbRepairsCosts.Location = new System.Drawing.Point(347, 33);
+            this.lbRepairsCosts.ItemHeight = 16;
+            this.lbRepairsCosts.Location = new System.Drawing.Point(461, 41);
+            this.lbRepairsCosts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbRepairsCosts.Name = "lbRepairsCosts";
-            this.lbRepairsCosts.Size = new System.Drawing.Size(104, 511);
+            this.lbRepairsCosts.Size = new System.Drawing.Size(137, 628);
             this.lbRepairsCosts.TabIndex = 1;
             this.lbRepairsCosts.SelectedIndexChanged += new System.EventHandler(this.lbRepairsCosts_SelectedIndexChanged);
             // 
             // lbEmployeesRepairs
             // 
             this.lbEmployeesRepairs.FormattingEnabled = true;
-            this.lbEmployeesRepairs.Location = new System.Drawing.Point(457, 33);
+            this.lbEmployeesRepairs.ItemHeight = 16;
+            this.lbEmployeesRepairs.Location = new System.Drawing.Point(606, 41);
+            this.lbEmployeesRepairs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbEmployeesRepairs.Name = "lbEmployeesRepairs";
-            this.lbEmployeesRepairs.Size = new System.Drawing.Size(120, 511);
+            this.lbEmployeesRepairs.Size = new System.Drawing.Size(159, 628);
             this.lbEmployeesRepairs.TabIndex = 2;
             this.lbEmployeesRepairs.SelectedIndexChanged += new System.EventHandler(this.lbEmployeesRepairs_SelectedIndexChanged);
             // 
@@ -352,10 +358,10 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(349, 5);
-            this.label2.Margin = new System.Windows.Forms.Padding(5);
+            this.label2.Location = new System.Drawing.Point(464, 6);
+            this.label2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 20);
+            this.label2.Size = new System.Drawing.Size(119, 25);
             this.label2.TabIndex = 35;
             this.label2.Text = "Стоимость";
             // 
@@ -364,19 +370,20 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(459, 5);
-            this.label3.Margin = new System.Windows.Forms.Padding(5);
+            this.label3.Location = new System.Drawing.Point(609, 6);
+            this.label3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 20);
+            this.label3.Size = new System.Drawing.Size(112, 25);
             this.label3.TabIndex = 35;
             this.label3.Text = "Сотрудник";
             // 
             // clbRepairs
             // 
             this.clbRepairs.FormattingEnabled = true;
-            this.clbRepairs.Location = new System.Drawing.Point(3, 33);
+            this.clbRepairs.Location = new System.Drawing.Point(4, 41);
+            this.clbRepairs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.clbRepairs.Name = "clbRepairs";
-            this.clbRepairs.Size = new System.Drawing.Size(338, 514);
+            this.clbRepairs.Size = new System.Drawing.Size(449, 633);
             this.clbRepairs.TabIndex = 3;
             this.clbRepairs.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbRepairs_ItemCheck);
             this.clbRepairs.SelectedIndexChanged += new System.EventHandler(this.clbRepairs_SelectedIndexChanged);
@@ -384,6 +391,7 @@
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.SeaShell;
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripBtSave,
@@ -402,7 +410,7 @@
             this.toolStripSeparator6});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1117, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1489, 28);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -412,7 +420,7 @@
             this.toolStripBtSave.Image = global::ServiceStationManager.Properties.Resources.disk;
             this.toolStripBtSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtSave.Name = "toolStripBtSave";
-            this.toolStripBtSave.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBtSave.Size = new System.Drawing.Size(24, 25);
             this.toolStripBtSave.Text = "Сохранить информацию о клиенте";
             this.toolStripBtSave.Click += new System.EventHandler(this.toolStripBtSave_Click);
             // 
@@ -422,19 +430,19 @@
             this.toolStripBtPrint.Image = global::ServiceStationManager.Properties.Resources.printer;
             this.toolStripBtPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtPrint.Name = "toolStripBtPrint";
-            this.toolStripBtPrint.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBtPrint.Size = new System.Drawing.Size(24, 25);
             this.toolStripBtPrint.Text = "Печатать счёт";
             this.toolStripBtPrint.Click += new System.EventHandler(this.toolStripBtPrint_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripBtAddRepair
             // 
@@ -442,7 +450,7 @@
             this.toolStripBtAddRepair.Image = global::ServiceStationManager.Properties.Resources.cog_add;
             this.toolStripBtAddRepair.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtAddRepair.Name = "toolStripBtAddRepair";
-            this.toolStripBtAddRepair.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBtAddRepair.Size = new System.Drawing.Size(24, 25);
             this.toolStripBtAddRepair.Text = "Добавить ремонтную работу";
             this.toolStripBtAddRepair.Click += new System.EventHandler(this.toolStripBtAddRepair_Click);
             // 
@@ -452,7 +460,7 @@
             this.toolStripBtFinishRepair.Image = global::ServiceStationManager.Properties.Resources.tick;
             this.toolStripBtFinishRepair.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtFinishRepair.Name = "toolStripBtFinishRepair";
-            this.toolStripBtFinishRepair.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBtFinishRepair.Size = new System.Drawing.Size(24, 25);
             this.toolStripBtFinishRepair.Text = "Закончить выбранную ремонтную работу";
             this.toolStripBtFinishRepair.Click += new System.EventHandler(this.toolStripBtFinishRepair_Click);
             // 
@@ -462,24 +470,24 @@
             this.toolStripBtDeleteRepair.Image = global::ServiceStationManager.Properties.Resources.cog_delete;
             this.toolStripBtDeleteRepair.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtDeleteRepair.Name = "toolStripBtDeleteRepair";
-            this.toolStripBtDeleteRepair.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBtDeleteRepair.Size = new System.Drawing.Size(24, 25);
             this.toolStripBtDeleteRepair.Text = "Удалить ремонтную работу";
             this.toolStripBtDeleteRepair.Click += new System.EventHandler(this.toolStripBtDeleteRepair_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(104, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(133, 25);
             this.toolStripLabel1.Text = "Продление работ";
             // 
             // toolStripBtExtension
@@ -488,7 +496,7 @@
             this.toolStripBtExtension.Image = global::ServiceStationManager.Properties.Resources.date_next;
             this.toolStripBtExtension.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtExtension.Name = "toolStripBtExtension";
-            this.toolStripBtExtension.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBtExtension.Size = new System.Drawing.Size(24, 25);
             this.toolStripBtExtension.Text = "Продление работ";
             this.toolStripBtExtension.Click += new System.EventHandler(this.toolStripBtExtension_Click);
             // 
@@ -504,19 +512,19 @@
             "7"});
             this.toolStripComboBoxQuantityDays.MaxLength = 2;
             this.toolStripComboBoxQuantityDays.Name = "toolStripComboBoxQuantityDays";
-            this.toolStripComboBoxQuantityDays.Size = new System.Drawing.Size(136, 27);
+            this.toolStripComboBoxQuantityDays.Size = new System.Drawing.Size(180, 28);
             this.toolStripComboBoxQuantityDays.Text = "Количество дней";
             this.toolStripComboBoxQuantityDays.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripComboBoxQuantityDays_KeyPress);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 28);
             // 
             // printDocument1
             // 
@@ -529,9 +537,10 @@
             this.toolStripStatusLabelInfoClient,
             this.toolStripStatusLabel2,
             this.toolStripProgressBarStatusRepairs});
-            this.statusStrip.Location = new System.Drawing.Point(0, 704);
+            this.statusStrip.Location = new System.Drawing.Point(0, 867);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1117, 22);
+            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip.Size = new System.Drawing.Size(1489, 27);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 6;
             this.statusStrip.Text = "statusStrip";
@@ -541,7 +550,7 @@
             this.toolStripStatusLabelInfoClient.ActiveLinkColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabelInfoClient.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabelInfoClient.Name = "toolStripStatusLabelInfoClient";
-            this.toolStripStatusLabelInfoClient.Size = new System.Drawing.Size(123, 17);
+            this.toolStripStatusLabelInfoClient.Size = new System.Drawing.Size(157, 22);
             this.toolStripStatusLabelInfoClient.Text = "Всего дней работы: 1";
             // 
             // toolStripStatusLabel2
@@ -550,7 +559,7 @@
             this.toolStripStatusLabel2.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel2.Margin = new System.Windows.Forms.Padding(600, 3, 0, 2);
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(293, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(370, 22);
             this.toolStripStatusLabel2.Text = "Статус выполнения работ для выбранного клиента:";
             // 
             // toolStripProgressBarStatusRepairs
@@ -558,11 +567,11 @@
             this.toolStripProgressBarStatusRepairs.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripProgressBarStatusRepairs.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.toolStripProgressBarStatusRepairs.Name = "toolStripProgressBarStatusRepairs";
-            this.toolStripProgressBarStatusRepairs.Size = new System.Drawing.Size(75, 22);
+            this.toolStripProgressBarStatusRepairs.Size = new System.Drawing.Size(100, 27);
             // 
             // UserControlClientsToday
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = global::ServiceStationManager.Properties.Resources._0003_005_;
@@ -570,8 +579,9 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserControlClientsToday";
-            this.Size = new System.Drawing.Size(1117, 726);
+            this.Size = new System.Drawing.Size(1489, 894);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);

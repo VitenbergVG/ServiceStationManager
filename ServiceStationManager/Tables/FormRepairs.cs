@@ -41,11 +41,15 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить работу?", "Система управления СТО", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
 
-            db.Delete("repairs", "id_repair", id);
-            dataGridView1.Rows.Clear();
-            db.LoadTables("repairs", dataGridView1);
+                db.Delete("repairs", "id_repair", id);
+                dataGridView1.Rows.Clear();
+                db.LoadTables("repairs", dataGridView1);
+            }
         }
 
         private void редактироватьРаботуToolStripMenuItem_Click(object sender, EventArgs e)

@@ -32,17 +32,22 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            string id = dgvClients.CurrentRow.Cells[0].Value.ToString();
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить клиента?", "Система управления СТО", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                string id = dgvClients.CurrentRow.Cells[0].Value.ToString();
 
-            if (db.Delete("clients", "id_client", id) == 0)
-            {
-                MessageBox.Show("Невозможно удалить клиента, так как информация о работах с его машиной ещё числится в БД", "Ошибка");
+                if (db.Delete("clients", "id_client", id) == 0)
+                {
+                    MessageBox.Show("Невозможно удалить клиента, так как информация о работах с его машиной ещё числится в БД", "Система управления СТО", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    dgvClients.Rows.Clear();
+                    db.LoadTables("clients", dgvClients);
+                }
             }
-            else
-            {
-                dgvClients.Rows.Clear();
-                db.LoadTables("clients", dgvClients);
-            }
+
         }
 
         private void btSearch_Click(object sender, EventArgs e)

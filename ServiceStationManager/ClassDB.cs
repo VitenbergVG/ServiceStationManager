@@ -727,7 +727,7 @@ namespace ServiceStationManager
 
         //Добавить или редактировать работу
         public void UpdateOrInsertCurrentRepairs(int idCurrentRepair, int idWorkHours, int idRepair,
-           int idClient, string timeStart, string timeFinish, string statusRepair)
+           int idClient, string timeStart, string timeFinish, string quantityDays, string statusRepair)
         {
             conn.Open();
 
@@ -738,11 +738,11 @@ namespace ServiceStationManager
                    "work_hours_id_work_hours = '" + idWorkHours + "', " +
                    "repairs_id_repair = '" + idRepair + "', clients_id_client = '" + idClient + "', " +
                    "time_start = '" + timeStart + "', time_finish = '" + timeFinish +
-                   "', status_repair = '" + statusRepair + "' " +
+                   "', quantity_days = '" + quantityDays + "',status_repair = '" + statusRepair + "' " +
                    "ON DUPLICATE KEY UPDATE id_current_repair = '" + idCurrentRepair + "', " +
                    "work_hours_id_work_hours = '" + idWorkHours + "', " +
                    "repairs_id_repair = '" + idRepair + "', clients_id_client = '" + idClient + "', " +
-                   "time_start = '" + timeStart + "', time_finish = '" + timeFinish +
+                   "time_start = '" + timeStart + "', time_finish = '" + timeFinish + "', quantity_days = '" + quantityDays +
                    "', status_repair = '" + statusRepair + "'; ", conn);
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Close();
@@ -753,11 +753,11 @@ namespace ServiceStationManager
                    "SET id_current_repair = '" + idCurrentRepair + "', " +
                    "work_hours_id_work_hours = '" + idWorkHours + "', " +
                    "repairs_id_repair = '" + idRepair + "', clients_id_client = '" + idClient + "', " +
-                   "time_finish = '" + timeFinish + "', status_repair = '" + statusRepair + "' " +
+                   "time_finish = '" + timeFinish + "', quantity_days = '" + quantityDays + "', status_repair = '" + statusRepair + "' " +
                    "ON DUPLICATE KEY UPDATE id_current_repair = '" + idCurrentRepair + "', " +
                    "work_hours_id_work_hours = '" + idWorkHours + "', " +
                    "repairs_id_repair = '" + idRepair + "', clients_id_client = '" + idClient + "', " +
-                   "time_finish = '" + timeFinish +
+                   "time_finish = '" + timeFinish + "', quantity_days = '" + quantityDays +
                    "', status_repair = '" + statusRepair + "'; ", conn);
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Close();
@@ -768,11 +768,11 @@ namespace ServiceStationManager
                    "SET id_current_repair = '" + idCurrentRepair + "', " +
                    "work_hours_id_work_hours = '" + idWorkHours + "', " +
                    "repairs_id_repair = '" + idRepair + "', clients_id_client = '" + idClient + "', " +
-                   "time_start = '" + timeStart + "', status_repair = '" + statusRepair + "' " +
+                   "time_start = '" + timeStart + "', quantity_days = '" + quantityDays + "', status_repair = '" + statusRepair + "' " +
                    "ON DUPLICATE KEY UPDATE id_current_repair = '" + idCurrentRepair + "', " +
                    "work_hours_id_work_hours = '" + idWorkHours + "', " +
                    "repairs_id_repair = '" + idRepair + "', clients_id_client = '" + idClient + "', " +
-                   "time_start = '" + timeStart +
+                   "time_start = '" + timeStart + "', quantity_days = '" + quantityDays +
                    "', status_repair = '" + statusRepair + "'; ", conn);
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Close();
@@ -783,10 +783,10 @@ namespace ServiceStationManager
                    "SET id_current_repair = '" + idCurrentRepair + "', " +
                    "work_hours_id_work_hours = '" + idWorkHours + "', " +
                    "repairs_id_repair = '" + idRepair + "', clients_id_client = '" + idClient + "', " +
-                   "status_repair = '" + statusRepair + "' " +
+                   "', quantity_days = '" + quantityDays + "status_repair = '" + statusRepair + "' " +
                    "ON DUPLICATE KEY UPDATE id_current_repair = '" + idCurrentRepair + "', " +
                    "work_hours_id_work_hours = '" + idWorkHours + "', " +
-                   "repairs_id_repair = '" + idRepair + "', clients_id_client = '" + idClient + "', " +
+                   "repairs_id_repair = '" + idRepair + "', clients_id_client = '" + idClient + "', " + "', quantity_days = '" + quantityDays +
                    "status_repair = '" + statusRepair + "'; ", conn);
                 MySqlDataReader reader = command.ExecuteReader();
                 reader.Close();
@@ -1137,13 +1137,44 @@ namespace ServiceStationManager
             while (reader.Read())
             {
                 idEmployees.Add(Convert.ToInt32(reader[0].ToString()));
-                resEmployees.Add(reader[1].ToString() + " " + reader[2].ToString() + "." + reader[3].ToString() + 
-                    ". (" + reader[4].ToString() +")");
+                resEmployees.Add(reader[1].ToString() + " " + reader[2].ToString() + "." + reader[3].ToString() +
+                    ". (" + reader[4].ToString() + ")");
             }
 
             reader.Close();
             conn.Close();
             return resEmployees;
+        }
+
+        //Редактирование статуса сотрудников
+        public void SetStausEmployee()
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("UPDATE `employees` SET `status` = " +
+                "IF(EXISTS(SELECT id_work_hours FROM work_hours " +
+                "WHERE employees_id_employee = employees.id_employee AND dates_of_month = '" + DateTime.Today.ToString("yyyy-MM-dd") + "')," +
+                " 'Работает', " +
+                "CASE" +
+                "    WHEN status = 'Уволен' THEN 'Уволен'" +
+                "    WHEN status = 'Выходной' THEN 'Выходной'" +
+                "    WHEN status = 'В отпуске' THEN 'В отпуске'" +
+                "    WHEN status = 'На больничном' THEN 'На больничном' " +
+                "    ELSE 'Выходной' " +
+                "END);", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            conn.Close();
+        }
+
+        //Отключение СэйфМода mysql
+        public void DisableSafeMode()
+        {
+            conn.Open();
+            MySqlCommand command = new MySqlCommand("SET SQL_SAFE_UPDATES = 0;", conn);
+            MySqlDataReader reader = command.ExecuteReader();
+            reader.Close();
+            conn.Close();
         }
     }
 }

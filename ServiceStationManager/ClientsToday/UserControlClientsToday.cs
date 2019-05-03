@@ -268,7 +268,7 @@ namespace ServiceStationManager
                 string timeFinishRepair = DateTime.Now.ToString("HH:mm:ss");
 
                 db.UpdateOrInsertCurrentRepairs(idCurrentRepairs[clbRepairs.SelectedIndex], idWorkHours,
-                    idRepair, idClient, timeStartRepair, timeFinishRepair, "Выполнено");
+                    idRepair, idClient, timeStartRepair, timeFinishRepair, quantityDays.ToString(), "Выполнено");
 
                 toolStripBtFinishRepair.Enabled = false;
                 toolStripBtDeleteRepair.Enabled = false;
@@ -278,14 +278,13 @@ namespace ServiceStationManager
                 toolStripProgressBarStatusRepairs.Maximum = clbRepairs.Items.Count;
                 toolStripProgressBarStatusRepairs.Value = clbRepairs.CheckedItems.Count;
 
-                string factQuery;
+                //string factQuery;
+                //factQuery = "(work_hours_id_work_hours, repairs_id_repair, clients_id_client, start_date, finish_date, " +
+                //    "time_start, time_finish, quantity_days, status_repair) " +
+                //    "VALUES('" + idClient + "', '" + tbNumberSTSCar.Text + "', '" + idRepair + "', '" +
+                //    idEmployee + "', '" + DateTime.Today.ToString("yyyy-MM-dd") + "', '" + timeFinishRepair + "');";
 
-                factQuery = "(clients_id_client, cars_number_sts_car, repairs_id_repair, " +
-                    "employees_id_employee, date, time) " +
-                    "VALUES('" + idClient + "', '" + tbNumberSTSCar.Text + "', '" + idRepair + "', '" +
-                    idEmployee + "', '" + DateTime.Today.ToString("yyyy-MM-dd") + "', '" + timeFinishRepair + "');";
-
-                db.Add("performed_repairs", factQuery);
+                //db.Add("current_repairs", factQuery);
             }
         }
 
@@ -391,7 +390,7 @@ namespace ServiceStationManager
             {
                 db.AddExtentionRepairs(oldIdExtentionRepair, idCurrentRepairs[i], quantityDays);
                 db.UpdateOrInsertCurrentRepairs(idCurrentRepairs[i], idWorkHours[i], idRepairs[i],
-                    idClient, timeStartRepair, timeFinish, "Продлено");
+                    idClient, timeStartRepair, timeFinish, quantityDays.ToString(), "Продлено");
             }
 
             toolStripStatusLabelInfoClient.Text = "Всего дней работы: " + quantityDays;

@@ -22,10 +22,18 @@ namespace ServiceStationManager
 
         //Клиенты сегодня
         int i = 1;
+        int numberTab = -1;//Номер вкладки, выделенной контекстным меню
 
         public FormMain(ClassDB db, int statusLogin)
         {
             InitializeComponent();
+
+            //Подготовительные этапы (Обновление некоторых таблиц БД, и тд) - прериквизиты
+            db.DisableSafeMode();//Отключаем safe mode MySQL
+            db.SetStausEmployee();//Обновляем статусы для сотрудников
+
+
+            //Завершение пререквизитов
 
             toolStripBtDeleteClient.Enabled = false;
             toolStripBtSave.Enabled = false;
@@ -220,6 +228,11 @@ namespace ServiceStationManager
 
         private void toolStripBtNewClient_Click(object sender, EventArgs e)
         {
+            if (TLPWelcome.Visible)
+            {
+                TLPWelcome.Visible = false;
+            }
+
             DialogResult dialogResult = MessageBox.Show("Добавить клиента из уже существующих?", "Новый клиент", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -273,7 +286,7 @@ namespace ServiceStationManager
         {
             FormPicExtensionClients fpec = new FormPicExtensionClients(db);
             fpec.ShowDialog();
-            
+
             List<int> idExtensionRepairs = db.GetExtensionWorksForPickClient(fpec.currentRow);
             CreateTab(fpec.currentRow.ToString(), idExtensionRepairs, fpec.quantityDays);
 
@@ -299,6 +312,39 @@ namespace ServiceStationManager
         {
             FormViewWorkHours fvwh = new FormViewWorkHours();
             fvwh.ShowDialog();
+        }
+
+        private void tabControl1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                for (int i = 0; i < tabControl1.TabCount; i++)
+                {
+                    // получаем область таба и проверяем входит ли курсор в него или нет
+                    Rectangle r = tabControl1.GetTabRect(i);
+                    if (r.Contains(e.Location))
+                    {
+                        // показываем контекстое меню и сохраняем номер таба
+                        numberTab = i;
+                        contextMenuTabControl.Show(tabControl1, e.Location);
+                    }
+                }
+            }
+        }
+
+        private void ContextMenuItemDeleteClient_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Завершить работу с клиентом? Все внесённые изменения не сохранятся", "Подтверждение", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                tabControl1.TabPages.RemoveAt(numberTab);
+
+                if (tabControl1.TabPages.Count == 0)
+                {
+                    toolStripBtDeleteClient.Enabled = false;
+                    toolStripBtSave.Enabled = false;
+                }
+            }
         }
     }
 }

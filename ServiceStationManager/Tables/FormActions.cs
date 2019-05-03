@@ -39,10 +39,14 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            string id = dgvActions.CurrentRow.Cells[0].Value.ToString();
-            db.Delete("actions", "id_action", id);
-            dgvActions.Rows.Clear();
-            db.LoadTables("actions", dgvActions);
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить акцию?", "Система управления СТО", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                string id = dgvActions.CurrentRow.Cells[0].Value.ToString();
+                db.Delete("actions", "id_action", id);
+                dgvActions.Rows.Clear();
+                db.LoadTables("actions", dgvActions);
+            }
         }
 
         private void dgvActions_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)

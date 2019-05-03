@@ -21,14 +21,15 @@ namespace ServiceStationManager
 
             this.db = db;
 
-            dgvEmployees.ColumnCount = 7;
+            dgvEmployees.ColumnCount = 8;
             dgvEmployees.Columns[0].HeaderCell.Value = "ID сотрудника";
             dgvEmployees.Columns[1].HeaderCell.Value = "Фамилия";
             dgvEmployees.Columns[2].HeaderCell.Value = "Имя";
             dgvEmployees.Columns[3].HeaderCell.Value = "Отчество";
             dgvEmployees.Columns[4].HeaderCell.Value = "Мобильный телефон";
             dgvEmployees.Columns[5].HeaderCell.Value = "Должность";
-            dgvEmployees.Columns[6].HeaderCell.Value = "Соредняя оценка";
+            dgvEmployees.Columns[6].HeaderCell.Value = "Статус";
+            dgvEmployees.Columns[7].HeaderCell.Value = "Соредняя оценка";
             db.LoadTables("employees", dgvEmployees);
         }
 
@@ -42,16 +43,22 @@ namespace ServiceStationManager
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            string id = dgvEmployees.CurrentRow.Cells[0].Value.ToString();
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить информацию о сотруднике ("+dgvEmployees.CurrentRow.Cells[1].Value.ToString() +")?", 
+                "Система управления СТО", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                string id = dgvEmployees.CurrentRow.Cells[0].Value.ToString();
 
-            if (db.Delete("employees", "id_employee", id) == 0)
-            {
-                MessageBox.Show("Невозможно удалить сотрудника, так как информация о его расписании или работах ещё числится в БД", "Ошибка");
-            }
-            else
-            {
-                dgvEmployees.Rows.Clear();
-                db.LoadTables("employees", dgvEmployees);
+                if (db.Delete("employees", "id_employee", id) == 0)
+                {
+                    MessageBox.Show("Невозможно удалить сотрудника (" + dgvEmployees.CurrentRow.Cells[1].Value.ToString() + "), так как информация о его расписании или работах ещё числится в БД",
+                        "Система управления СТО", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    dgvEmployees.Rows.Clear();
+                    db.LoadTables("employees", dgvEmployees);
+                }
             }
         }
 
@@ -75,6 +82,12 @@ namespace ServiceStationManager
         private void dgvEmployees_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             dgvEmployees.CurrentCell = dgvEmployees.Rows[e.RowIndex].Cells[e.ColumnIndex];
+        }
+
+        private void заведениеОтпускаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormVacation fv = new FormVacation(db);
+            fv.ShowDialog();
         }
     }
 }

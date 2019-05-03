@@ -65,6 +65,7 @@ namespace ServiceStationManager
                     }
                 }
             }
+            treeViewDates.ExpandAll();
         }
 
         private void btAdd_Click(object sender, EventArgs e)
@@ -79,7 +80,11 @@ namespace ServiceStationManager
         {
             int indexRow = dgvWorkHours.CurrentCell.RowIndex;
             int indexCol = dgvWorkHours.CurrentCell.ColumnIndex;
-
+            if (dates[indexCol] == DateTime.Today)
+            {
+                string factQuery = "status = 'Выходной'";
+                db.Edit("employees", "id_employee", idEmployees[indexRow].ToString(), factQuery);
+            }
             db.DeleteFromWorkHours(idEmployees[indexRow], dates[indexCol].ToString("yyyy-MM-dd"));
             RefreshTable();
         }
